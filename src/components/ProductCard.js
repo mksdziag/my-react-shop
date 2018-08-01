@@ -27,7 +27,7 @@ const ProductCard = props => {
 
   const addToCartClickHandler = e => {
     e.preventDefault();
-    console.log('to cart');
+    onAddItemToCart(id);
   };
   const onQuickViewClickHandler = e => {
     e.preventDefault();
@@ -79,7 +79,7 @@ const ProductCard = props => {
         </Link>
       </div>
       <footer className="product-card__actions">
-        <button onClick={() => onAddItemToCart(id)} className="button is-primary">
+        <button onClick={e => addToCartClickHandler(e)} className="button is-primary">
           <Icon className="button-icon" icon={cart} />Add To Cart
         </button>
         <Link to={`/product/${id}`} target="_blank" className="button is-primary is-outlined">

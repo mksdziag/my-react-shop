@@ -5,6 +5,7 @@ import { Icon } from 'react-icons-kit';
 import { cart } from 'react-icons-kit/icomoon/cart';
 import products from '../database/products';
 import { addItemToCart } from '../store/actions';
+import FloatingCart from '../components/FloatingCart';
 
 class ProductPage extends Component {
   state = {
@@ -63,6 +64,7 @@ class ProductPage extends Component {
             </div>
           </div>
         </div>
+        <FloatingCart />
       </div>
     );
   }

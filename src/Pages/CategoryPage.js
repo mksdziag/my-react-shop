@@ -3,6 +3,7 @@ import products from '../database/products';
 import CategoryHeader from '../components/CategoryHeader';
 import ProductCard from '../components/ProductCard';
 import ProductPreviewModal from '../components/UiElements/Modals/ProductPreviewModal';
+import FloatingCart from '../components/FloatingCart';
 
 class CategoryPage extends Component {
   state = {
@@ -68,6 +69,7 @@ class CategoryPage extends Component {
           onQuickViewCloseHandler={this.closeProductPreview}
           {...currentProduct}
         />
+        <FloatingCart />
       </div>
     );
   }
