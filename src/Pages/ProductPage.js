@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Icon } from 'react-icons-kit';
 import { cart } from 'react-icons-kit/icomoon/cart';
 import products from '../database/products';
+import { addItemToCart } from '../store/actions';
+import { ADD_ITEM_TO_CART } from '../store/actionTypes/actionTypes';
 
 class ProductPage extends Component {
   state = {
@@ -36,6 +39,7 @@ class ProductPage extends Component {
       sizes,
       tags,
     } = this.state.product;
+    const { onAddItemToCart } = this.props;
 
     return (
       <div className="container">
@@ -54,7 +58,7 @@ class ProductPage extends Component {
               <p>{description}</p>
             </div>
             <div className="product-actions">
-              <button className="button is-primary is-large">
+              <button className="button is-primary is-large" onClick={() => onAddItemToCart(id)}>
                 <Icon className="button-icon" icon={cart} />Buy Now
               </button>
             </div>
@@ -65,4 +69,13 @@ class ProductPage extends Component {
   }
 }
 
-export default ProductPage;
+const mapDispatchToProps = dispatch => {
+  return {
+    onAddItemToCart: () => dispatch(addItemToCart({ item: 'to jest item' })),
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(ProductPage);
