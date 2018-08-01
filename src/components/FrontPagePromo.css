@@ -1,0 +1,16 @@
+.front-promo .tile a {
+  text-decoration: none;
+}
+
+.front-promo__article {
+  background-size: cover;
+}
+.front-promo__article--background-right {
+  background-position: top right;
+}
+
+.front-promo__best-seller-image {
+  width: auto;
+  height: 100%;
+  border-radius: 5px;
+}

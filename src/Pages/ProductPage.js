@@ -27,17 +27,17 @@ class ProductPage extends Component {
     const {
       id,
       name,
-      index,
-      isActive,
-      price,
+      // index,
+      // isActive,
+      // price,
       picture,
-      category,
-      color,
+      // category,
+      // color,
       manufacturer,
       description,
-      added,
-      sizes,
-      tags,
+      // added,
+      // sizes,
+      // tags,
     } = this.state.product;
     const { onAddItemToCart } = this.props;
 

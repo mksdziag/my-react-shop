@@ -16,7 +16,7 @@ const ProductCard = props => {
     id,
     name,
     picture,
-    category,
+    // category,
     manufacturer,
     onQuickViewOpenHandler,
     onAddItemToCart,

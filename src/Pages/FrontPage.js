@@ -1,10 +1,11 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import FrontPagePromo from '../components/FrontPagePromo';
 
 class MainPage extends Component {
   render() {
     return (
-      <div>
-        <h3>Front Page</h3>
+      <div className="container">
+        <FrontPagePromo />
       </div>
     );
   }

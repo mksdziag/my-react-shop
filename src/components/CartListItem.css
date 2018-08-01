@@ -1,0 +1,17 @@
+.cart-item {
+  display: flex;
+}
+.art-item__cell {
+  margin: 0.5rem;
+  border-right: 1px solid rgb(179, 179, 179);
+}
+.cart-item__lp {
+}
+.cart-item__qty {
+}
+.cart-item__name {
+}
+.cart-item__price {
+}
+.cart-item__actions {
+}
