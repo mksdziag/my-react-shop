@@ -10,7 +10,7 @@ const cartReducer = (state = initalState, action) => {
       console.log('adding');
       return {
         ...state,
-        inCartItems: [...state.inCartItems, action.payload.item],
+        inCartItems: [...state.inCartItems, action.payload.id],
       };
     case actionTypes.REMOVE_ITEM_FROM_CART:
       console.log('removing');

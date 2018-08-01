@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { addItemToCart, addItemToWishList, removeItemFromWishList } from '../store/actions';
 import { Link } from 'react-router-dom';
 import { Icon } from 'react-icons-kit';
 import { link } from 'react-icons-kit/icomoon/link';
@@ -9,7 +11,21 @@ import './ProductCard.css';
 
 import WishListButton from './UiElements/Buttons/WishListButton';
 
-const ProductCard = ({ id, name, picture, category, manufacturer, onQuickViewOpenHandler }) => {
+const ProductCard = props => {
+  console.log(props);
+  const {
+    id,
+    name,
+    picture,
+    category,
+    manufacturer,
+    onQuickViewOpenHandler,
+    onAddItemToCart,
+    wishListItems,
+    onAddItemToWishList,
+    onRemoveItemFromWishList,
+  } = props;
+
   const addToCartClickHandler = e => {
     e.preventDefault();
     console.log('to cart');
@@ -17,6 +33,15 @@ const ProductCard = ({ id, name, picture, category, manufacturer, onQuickViewOpe
   const onQuickViewClickHandler = e => {
     e.preventDefault();
     onQuickViewOpenHandler();
+  };
+
+  const isOnWishList = wishListItems.includes(id);
+  const changeProductWishListStatus = () => {
+    if (isOnWishList) {
+      onRemoveItemFromWishList(id);
+    } else {
+      onAddItemToWishList(id);
+    }
   };
 
   return (
@@ -40,7 +65,10 @@ const ProductCard = ({ id, name, picture, category, manufacturer, onQuickViewOpe
               <Icon icon={eye} />
             </button>
           </div>
-          <WishListButton />
+          <WishListButton
+            isOnWishList={isOnWishList}
+            wishListChange={changeProductWishListStatus}
+          />
         </Link>
       </div>
       <div className="card-content product-card__info">
@@ -64,4 +92,20 @@ const ProductCard = ({ id, name, picture, category, manufacturer, onQuickViewOpe
   );
 };
 
-export default ProductCard;
+const mapStateToProps = state => {
+  return {
+    wishListItems: state.wishList.wishListItems,
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    onAddItemToCart: id => dispatch(addItemToCart(id)),
+    onAddItemToWishList: id => dispatch(addItemToWishList(id)),
+    onRemoveItemFromWishList: id => dispatch(removeItemFromWishList(id)),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProductCard);

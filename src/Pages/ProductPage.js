@@ -5,7 +5,6 @@ import { Icon } from 'react-icons-kit';
 import { cart } from 'react-icons-kit/icomoon/cart';
 import products from '../database/products';
 import { addItemToCart } from '../store/actions';
-import { ADD_ITEM_TO_CART } from '../store/actionTypes/actionTypes';
 
 class ProductPage extends Component {
   state = {
@@ -71,7 +70,7 @@ class ProductPage extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAddItemToCart: () => dispatch(addItemToCart({ item: 'to jest item' })),
+    onAddItemToCart: id => dispatch(addItemToCart(id)),
   };
 };
 
