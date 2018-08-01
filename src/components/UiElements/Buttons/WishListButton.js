@@ -2,6 +2,8 @@ import React from 'react';
 import { Icon } from 'react-icons-kit';
 import { heart } from 'react-icons-kit/icomoon/heart';
 
+import './WishListButton.css';
+
 const WishListButton = props => {
   const { wishListChange, isOnWishList } = props;
 
@@ -16,7 +18,7 @@ const WishListButton = props => {
     >
       <Icon
         className="product-card__wishlist-icon"
-        style={{ color: isOnWishList ? 'red' : 'white' }}
+        style={{ color: isOnWishList && '#DB5461' }}
         size={24}
         icon={heart}
       />

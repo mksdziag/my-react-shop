@@ -12,7 +12,6 @@ import './ProductCard.css';
 import WishListButton from './UiElements/Buttons/WishListButton';
 
 const ProductCard = props => {
-  console.log(props);
   const {
     id,
     name,
@@ -80,7 +79,7 @@ const ProductCard = props => {
         </Link>
       </div>
       <footer className="product-card__actions">
-        <button className="button is-primary">
+        <button onClick={() => onAddItemToCart(id)} className="button is-primary">
           <Icon className="button-icon" icon={cart} />Add To Cart
         </button>
         <Link to={`/product/${id}`} target="_blank" className="button is-primary is-outlined">

@@ -1,10 +1,12 @@
 import React from 'react';
 import { CSSTransition } from 'react-transition-group';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Icon } from 'react-icons-kit';
 import { cart } from 'react-icons-kit/icomoon/cart';
 
 import './ProductPreviewModal.css';
+import { addItemToCart, addItemToWishList, removeItemFromWishList } from '../../../store/actions';
 
 const ProductPreviewModal = props => {
   const {
@@ -18,6 +20,7 @@ const ProductPreviewModal = props => {
     sizes,
     isModalActive,
     onQuickViewCloseHandler,
+    onAddItemToCart,
   } = props;
 
   return (
@@ -38,7 +41,7 @@ const ProductPreviewModal = props => {
                 </Link>
               </div>
               <div className="product-preview-modal__actions">
-                <button className="button is-primary is-large">
+                <button onClick={() => onAddItemToCart(id)} className="button is-primary is-large">
                   <Icon className="button-icon" icon={cart} />Buy Now
                 </button>
               </div>
@@ -55,4 +58,15 @@ const ProductPreviewModal = props => {
   );
 };
 
-export default ProductPreviewModal;
+const mapDispatchToProps = dispatch => {
+  return {
+    onAddItemToCart: id => dispatch(addItemToCart(id)),
+    onAddItemToWishList: id => dispatch(addItemToWishList(id)),
+    onRemoveItemFromWishList: id => dispatch(removeItemFromWishList(id)),
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(ProductPreviewModal);
