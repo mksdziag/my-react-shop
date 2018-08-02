@@ -6,6 +6,7 @@ import { Icon } from 'react-icons-kit';
 import { link } from 'react-icons-kit/icomoon/link';
 import { cart } from 'react-icons-kit/icomoon/cart';
 import { eye } from 'react-icons-kit/icomoon/eye';
+import { checkmark } from 'react-icons-kit/icomoon/checkmark';
 
 import './ProductCard.css';
 
@@ -25,6 +26,7 @@ const ProductCard = props => {
     wishListItems,
     onAddItemToWishList,
     onRemoveItemFromWishList,
+    inCartItems,
   } = props;
 
   const addToCartClickHandler = e => {
@@ -44,6 +46,7 @@ const ProductCard = props => {
       onAddItemToWishList(id);
     }
   };
+  const isInCart = inCartItems.some(item => item.id === id);
 
   return (
     <div className="card product-card">
@@ -81,8 +84,12 @@ const ProductCard = props => {
         </Link>
       </div>
       <footer className="product-card__actions">
-        <button onClick={e => addToCartClickHandler(e)} className="button is-primary">
-          <Icon className="button-icon" icon={cart} />Add To Cart
+        <button
+          onClick={e => addToCartClickHandler(e)}
+          className={`button ${isInCart ? 'is-warning' : 'is-primary'}`}
+        >
+          <Icon className="button-icon" icon={isInCart ? checkmark : cart} />
+          {isInCart ? 'in cart' : 'Add To Cart'}
         </button>
         <Link to={`/product/${id}`} target="_blank" className="button is-primary is-outlined">
           <Icon className="button-icon" icon={link} />
@@ -96,6 +103,7 @@ const ProductCard = props => {
 const mapStateToProps = state => {
   return {
     wishListItems: state.wishList.wishListItems,
+    inCartItems: state.cart.inCartItems,
   };
 };
 const mapDispatchToProps = dispatch => {

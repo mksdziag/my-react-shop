@@ -9,6 +9,7 @@
   overflow: hidden;
 }
 .product-card__figure {
+  max-height: 300px;
 }
 .product-card__image-holder:hover .product-card__figure-overlay {
   top: 0;

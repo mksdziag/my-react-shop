@@ -18,7 +18,7 @@ const WishListButton = props => {
     >
       <Icon
         className="product-card__wishlist-icon"
-        style={{ color: isOnWishList && '#DB5461' }}
+        style={{ color: isOnWishList && '#ff6666' }}
         size={24}
         icon={heart}
       />
