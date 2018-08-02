@@ -16,6 +16,7 @@ const products = [
     tags: ['tempor', 'tempor', 'non', 'sit', 'non'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff361f044b7e267c4b',
@@ -34,6 +35,7 @@ const products = [
     tags: ['magna', 'eu', 'ut', 'non', 'ullamco'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff4a3a1746b17f1652',
@@ -52,6 +54,7 @@ const products = [
     tags: ['sint', 'ea', 'veniam', 'enim', 'aliquip'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51fff24fc5db104bff4d',
@@ -70,6 +73,7 @@ const products = [
     tags: ['ad', 'deserunt', 'consectetur', 'excepteur', 'aliquip'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff4e5431d28e6c2c72',
@@ -88,6 +92,7 @@ const products = [
     tags: ['voluptate', 'commodo', 'ipsum', 'deserunt', 'culpa'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ffe2970c9f27265e65',
@@ -106,6 +111,7 @@ const products = [
     tags: ['ad', 'labore', 'amet', 'eiusmod', 'velit'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51fff93fe6f1389bdcb3',
@@ -124,6 +130,7 @@ const products = [
     tags: ['eu', 'amet', 'commodo', 'exercitation', 'dolore'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ffdae15f7a488788f8',
@@ -142,6 +149,7 @@ const products = [
     tags: ['minim', 'sunt', 'id', 'commodo', 'excepteur'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ffa508ed6f14e64704',
@@ -160,6 +168,7 @@ const products = [
     tags: ['do', 'aliquip', 'elit', 'aliquip', 'excepteur'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ffe88ab3b6cf2aa927',
@@ -178,6 +187,7 @@ const products = [
     tags: ['ipsum', 'ex', 'ipsum', 'ea', 'qui'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff4e6dfec1b33fe09d',
@@ -196,6 +206,7 @@ const products = [
     tags: ['excepteur', 'eiusmod', 'id', 'amet', 'non'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ffc85b96e4ac30d139',
@@ -214,6 +225,7 @@ const products = [
     tags: ['reprehenderit', 'excepteur', 'veniam', 'consequat', 'nulla'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff735dba45b6eb9c4b',
@@ -232,6 +244,7 @@ const products = [
     tags: ['non', 'officia', 'irure', 'et', 'anim'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ffa6b42522b8254623',
@@ -250,6 +263,7 @@ const products = [
     tags: ['occaecat', 'mollit', 'Lorem', 'mollit', 'id'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ffb940188c7187b250',
@@ -268,6 +282,7 @@ const products = [
     tags: ['incididunt', 'ea', 'do', 'aute', 'aliqua'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ffcebfb376d8d7a72e',
@@ -286,6 +301,7 @@ const products = [
     tags: ['dolor', 'tempor', 'laborum', 'ut', 'dolor'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff06e37321afd7674b',
@@ -304,6 +320,7 @@ const products = [
     tags: ['qui', 'ex', 'nulla', 'consequat', 'tempor'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff84befa463b16098c',
@@ -322,6 +339,7 @@ const products = [
     tags: ['in', 'dolor', 'amet', 'elit', 'proident'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff8607ae4749d26de6',
@@ -340,6 +358,7 @@ const products = [
     tags: ['ipsum', 'id', 'aliquip', 'mollit', 'laboris'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff1ca24409bfc1e85d',
@@ -358,6 +377,7 @@ const products = [
     tags: ['elit', 'duis', 'consequat', 'nostrud', 'voluptate'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ffa4dd5ebbb1050477',
@@ -376,6 +396,7 @@ const products = [
     tags: ['aliquip', 'cupidatat', 'reprehenderit', 'enim', 'in'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff6e6451b7581cbdc5',
@@ -394,6 +415,7 @@ const products = [
     tags: ['ullamco', 'quis', 'anim', 'et', 'culpa'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ffdfaaf501a6577107',
@@ -412,6 +434,7 @@ const products = [
     tags: ['velit', 'dolore', 'in', 'Lorem', 'reprehenderit'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff38f78c240d873ac2',
@@ -430,6 +453,7 @@ const products = [
     tags: ['Lorem', 'ut', 'do', 'aliqua', 'ipsum'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ffbcf5070e17752c53',
@@ -448,6 +472,7 @@ const products = [
     tags: ['adipisicing', 'mollit', 'in', 'elit', 'duis'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff0b1e794813bdc28c',
@@ -466,6 +491,7 @@ const products = [
     tags: ['quis', 'ipsum', 'consequat', 'voluptate', 'enim'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ffd7bade9544a5bd73',
@@ -484,6 +510,7 @@ const products = [
     tags: ['qui', 'ullamco', 'tempor', 'sunt', 'dolor'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff4feeaecddc00c0aa',
@@ -502,6 +529,7 @@ const products = [
     tags: ['in', 'sunt', 'culpa', 'nisi', 'est'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff15f818849b62ba5f',
@@ -520,6 +548,7 @@ const products = [
     tags: ['aute', 'laboris', 'enim', 'ad', 'fugiat'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff95cdc1e0f18e9dae',
@@ -538,6 +567,7 @@ const products = [
     tags: ['cupidatat', 'tempor', 'sint', 'culpa', 'cupidatat'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51fff31d58a4cc17007c',
@@ -556,6 +586,7 @@ const products = [
     tags: ['officia', 'voluptate', 'quis', 'culpa', 'deserunt'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff5363712c7dbd7951',
@@ -574,6 +605,7 @@ const products = [
     tags: ['est', 'anim', 'adipisicing', 'anim', 'occaecat'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ffdfaaf021ae82ae48',
@@ -592,6 +624,7 @@ const products = [
     tags: ['ullamco', 'sint', 'cupidatat', 'non', 'nisi'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ffecf7c74a6a238106',
@@ -610,6 +643,7 @@ const products = [
     tags: ['proident', 'exercitation', 'excepteur', 'eu', 'adipisicing'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ffd61bef14326c92dc',
@@ -628,6 +662,7 @@ const products = [
     tags: ['adipisicing', 'do', 'consectetur', 'enim', 'nostrud'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff69a0c0affc9343f5',
@@ -646,6 +681,7 @@ const products = [
     tags: ['mollit', 'dolor', 'mollit', 'incididunt', 'elit'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ffd20081d206336d1b',
@@ -664,6 +700,7 @@ const products = [
     tags: ['cillum', 'non', 'aute', 'aliqua', 'occaecat'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff8d84d8c0179e8a83',
@@ -682,6 +719,7 @@ const products = [
     tags: ['velit', 'ad', 'ex', 'anim', 'qui'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff764b7413d08db9b7',
@@ -700,6 +738,7 @@ const products = [
     tags: ['id', 'labore', 'labore', 'ad', 'nulla'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff46156105376b3d74',
@@ -718,6 +757,7 @@ const products = [
     tags: ['aliqua', 'minim', 'exercitation', 'velit', 'id'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff305e7c5908ecf8f5',
@@ -736,6 +776,7 @@ const products = [
     tags: ['veniam', 'Lorem', 'anim', 'ex', 'anim'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff28423c3db3395eff',
@@ -754,6 +795,7 @@ const products = [
     tags: ['sunt', 'incididunt', 'eu', 'nostrud', 'ex'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ffb4957a9f49c01053',
@@ -772,6 +814,7 @@ const products = [
     tags: ['incididunt', 'culpa', 'nisi', 'amet', 'enim'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff93caa67db4635534',
@@ -790,6 +833,7 @@ const products = [
     tags: ['eiusmod', 'nostrud', 'enim', 'officia', 'ut'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ffc5c3bcf69de05417',
@@ -808,6 +852,7 @@ const products = [
     tags: ['tempor', 'exercitation', 'nostrud', 'amet', 'consequat'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ffb7f6faf9e8b769b1',
@@ -826,6 +871,7 @@ const products = [
     tags: ['labore', 'consectetur', 'tempor', 'proident', 'do'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff52e68da0bb6e73b3',
@@ -844,6 +890,7 @@ const products = [
     tags: ['laboris', 'voluptate', 'in', 'minim', 'laboris'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ffe3deeae0c8d23eac',
@@ -862,6 +909,7 @@ const products = [
     tags: ['dolor', 'officia', 'ex', 'sit', 'mollit'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff3283c9034e94c9dc',
@@ -880,6 +928,7 @@ const products = [
     tags: ['ipsum', 'excepteur', 'occaecat', 'qui', 'veniam'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ffa7109f9be5e7ef36',
@@ -898,6 +947,7 @@ const products = [
     tags: ['incididunt', 'proident', 'nisi', 'eiusmod', 'excepteur'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff2d8fb9a49ba1a584',
@@ -916,6 +966,7 @@ const products = [
     tags: ['exercitation', 'consectetur', 'labore', 'qui', 'commodo'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff7038b7f83428604a',
@@ -934,6 +985,7 @@ const products = [
     tags: ['amet', 'laborum', 'magna', 'deserunt', 'qui'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff4c15d4b727b8a645',
@@ -952,6 +1004,7 @@ const products = [
     tags: ['eiusmod', 'magna', 'id', 'anim', 'eu'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff8bc6c983d94dda00',
@@ -970,6 +1023,7 @@ const products = [
     tags: ['exercitation', 'Lorem', 'cupidatat', 'elit', 'exercitation'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff9d773f60af1977cf',
@@ -988,6 +1042,7 @@ const products = [
     tags: ['amet', 'aute', 'occaecat', 'irure', 'magna'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff677f28b631ea40fb',
@@ -1006,6 +1061,7 @@ const products = [
     tags: ['ut', 'excepteur', 'anim', 'pariatur', 'adipisicing'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff823173ba7649d6a4',
@@ -1024,6 +1080,7 @@ const products = [
     tags: ['laboris', 'elit', 'excepteur', 'enim', 'commodo'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff99774f71678df639',
@@ -1042,6 +1099,7 @@ const products = [
     tags: ['aliqua', 'nulla', 'in', 'elit', 'occaecat'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ffd645213eb17b8e75',
@@ -1060,6 +1118,7 @@ const products = [
     tags: ['culpa', 'velit', 'sit', 'non', 'anim'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ffbf1f88f35ed6b56f',
@@ -1078,6 +1137,7 @@ const products = [
     tags: ['qui', 'voluptate', 'nostrud', 'quis', 'nulla'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ffecddba89b6ad8e9b',
@@ -1096,6 +1156,7 @@ const products = [
     tags: ['ullamco', 'in', 'do', 'cupidatat', 'aliquip'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff2059de6ada450bdd',
@@ -1114,6 +1175,7 @@ const products = [
     tags: ['aute', 'excepteur', 'voluptate', 'excepteur', 'qui'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff4939b2212e8e72de',
@@ -1132,6 +1194,7 @@ const products = [
     tags: ['qui', 'est', 'esse', 'consectetur', 'excepteur'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff114534115e80024e',
@@ -1150,6 +1213,7 @@ const products = [
     tags: ['et', 'esse', 'nulla', 'Lorem', 'magna'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff997bd2a2be83fce6',
@@ -1168,6 +1232,7 @@ const products = [
     tags: ['sint', 'adipisicing', 'excepteur', 'tempor', 'commodo'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
   {
     id: '5b5f51ff524136655cad4d9b',
@@ -1186,6 +1251,7 @@ const products = [
     tags: ['incididunt', 'reprehenderit', 'laborum', 'veniam', 'sint'],
     orders: 0,
     discount: 0,
+    pieces: 0,
   },
 ];
 

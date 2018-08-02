@@ -3,7 +3,7 @@ import React from 'react';
 import './CartListItem.css';
 
 const CartListItem = props => {
-  const { idx, name, price, onItemRemove } = props;
+  const { idx, name, price, onItemRemove, pieces } = props;
 
   return (
     <li className="cart-item box">
@@ -11,7 +11,17 @@ const CartListItem = props => {
         <p className="cart-item__lp">{idx + 1}</p>
       </div>
       <div className="cart-item__cell">
-        <p className="cart-item__qty">quantity: 1</p>
+        <div className="field">
+          <div className="control">
+            <input
+              className="input is-primary"
+              type="number"
+              value={pieces}
+              placeholder="quantity"
+              onChange={() => console.log('zmiana')}
+            />
+          </div>
+        </div>
       </div>
       <div className="cart-item__cell">
         <p className="cart-item__size">size: S</p>

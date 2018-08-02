@@ -1,0 +1,18 @@
+.wish-list {
+}
+.wish-list__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgb(223, 223, 223);
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+.wish-list__item-cell {
+}
+.wish-list__image {
+  max-width: 50px;
+  width: 100%;
+  display: block;
+  height: auto;
+}

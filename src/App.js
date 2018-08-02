@@ -13,6 +13,7 @@ import CartPage from './Screens/CartPage';
 import ContactPage from './Screens/ContactPage';
 import ProductPage from './Screens/ProductPage';
 import Footer from './components/Footer/Footer';
+import FloatingCart from './components/Cart/FloatingCart';
 
 class App extends Component {
   render() {
@@ -30,6 +31,7 @@ class App extends Component {
             <Route path="/cart" component={CartPage} />
           </Switch>
         </main>
+        <FloatingCart />
         <Footer />
       </div>
     );
