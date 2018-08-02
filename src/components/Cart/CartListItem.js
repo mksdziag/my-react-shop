@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import './CartListItem.css';
 
 const CartListItem = props => {
-  const { idx, name, price } = props;
+  const { idx, name, price, onItemRemove } = props;
 
   return (
     <li className="cart-item box">
@@ -11,17 +11,22 @@ const CartListItem = props => {
         <p className="cart-item__lp">{idx + 1}</p>
       </div>
       <div className="cart-item__cell">
-        <p className="cart-item__qty">ilosc: 1</p>
+        <p className="cart-item__qty">quantity: 1</p>
       </div>
       <div className="cart-item__cell">
-        <p className="cart-item__name">{name}</p>
+        <p className="cart-item__size">size: S</p>
       </div>
       <div className="cart-item__cell">
-        <p className="cart-item__price">{price}</p>
+        <p className="cart-item__name">product: {name}</p>
+      </div>
+      <div className="cart-item__cell">
+        <p className="cart-item__price">price: {price}</p>
       </div>
       <div className="cart-item__cell">
         <div className="cart-item_a_ctions">
-          <button className="button is-danger is-uppercase">remove item</button>
+          <button onClick={onItemRemove} className="button is-small is-danger is-uppercase">
+            remove item
+          </button>
         </div>
       </div>
     </li>

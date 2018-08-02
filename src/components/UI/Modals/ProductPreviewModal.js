@@ -10,14 +10,16 @@ import { addItemToCart, addItemToWishList, removeItemFromWishList } from '../../
 
 const ProductPreviewModal = props => {
   const {
-    id,
-    name,
-    // price,
-    picture,
-    // category,
-    manufacturer,
-    // added,
-    // sizes,
+    product: {
+      // id,
+      name,
+      // price,
+      picture,
+      // category,
+      manufacturer,
+      // added,
+      // sizes,
+    },
     isModalActive,
     onQuickViewCloseHandler,
     onAddItemToCart,
@@ -41,7 +43,10 @@ const ProductPreviewModal = props => {
                 </Link>
               </div>
               <div className="product-preview-modal__actions">
-                <button onClick={() => onAddItemToCart(id)} className="button is-primary is-large">
+                <button
+                  onClick={() => onAddItemToCart(props.product)}
+                  className="button is-primary is-large"
+                >
                   <Icon className="button-icon" icon={cart} />Buy Now
                 </button>
               </div>
@@ -60,7 +65,7 @@ const ProductPreviewModal = props => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAddItemToCart: id => dispatch(addItemToCart(id)),
+    onAddItemToCart: item => dispatch(addItemToCart(item)),
     onAddItemToWishList: id => dispatch(addItemToWishList(id)),
     onRemoveItemFromWishList: id => dispatch(removeItemFromWishList(id)),
   };

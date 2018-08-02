@@ -36,7 +36,11 @@ const FrontPagePromo = () => {
                   <p className="title">Best Seller</p>
                   <p className="subtitle">clients cant be wrong</p>
                   <figure className="image">
-                    <img src={bestSellerImage} className="front-promo__best-seller-image" />
+                    <img
+                      src={bestSellerImage}
+                      alt="product"
+                      className="front-promo__best-seller-image"
+                    />
                   </figure>
                 </Link>
               </article>

@@ -5,7 +5,7 @@ import { Icon } from 'react-icons-kit';
 import { cart } from 'react-icons-kit/icomoon/cart';
 import products from '../database/products';
 import { addItemToCart } from '../store/actions';
-import FloatingCart from '../components/FloatingCart';
+import FloatingCart from '../components/Cart/FloatingCart';
 
 class ProductPage extends Component {
   state = {
@@ -25,7 +25,7 @@ class ProductPage extends Component {
 
   render() {
     const {
-      id,
+      // id,
       name,
       // index,
       // isActive,
@@ -58,7 +58,10 @@ class ProductPage extends Component {
               <p>{description}</p>
             </div>
             <div className="product-actions">
-              <button className="button is-primary is-large" onClick={() => onAddItemToCart(id)}>
+              <button
+                className="button is-primary is-large"
+                onClick={() => onAddItemToCart(this.state.product)}
+              >
                 <Icon className="button-icon" icon={cart} />Buy Now
               </button>
             </div>
@@ -72,7 +75,7 @@ class ProductPage extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAddItemToCart: id => dispatch(addItemToCart(id)),
+    onAddItemToCart: item => dispatch(addItemToCart(item)),
   };
 };
 

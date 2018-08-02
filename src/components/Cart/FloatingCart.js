@@ -8,13 +8,14 @@ import './FloatingCart.css';
 
 const FloatingCart = props => {
   const { inCartItems } = props;
+  const qty = inCartItems.length;
   return (
     <Link to="/cart">
       <div className="floating-cart has-background-primary">
         <Icon className="floating-cart__icon has-text-white" icon={cart} size={32} />
         <div className="floating-cart__quantity-indicator has-background-white ">
-          <span className="floating-cart__quantity has-text-grey has-text-weight-semibold ">
-            {inCartItems.length}
+          <span className="floating-cart__quantity has-text-grey has-text-weight-semibold">
+            {qty}
           </span>
         </div>
       </div>

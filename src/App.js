@@ -6,13 +6,13 @@ import './App.css';
 
 import Navigation from './components/Navigation/Navigation';
 import AppHeader from './components/AppHeader';
-import FrontPage from './Pages/FrontPage';
-import CategoryPage from './Pages/CategoryPage';
-import MyAccount from './Pages/MyAccount';
-import CartPage from './Pages/CartPage';
-import ContactPage from './Pages/ContactPage';
-import ProductPage from './Pages/ProductPage';
-import Footer from './components/Footer';
+import FrontPage from './Screens/FrontPage';
+import CategoryPage from './Screens/CategoryPage';
+import MyAccount from './Screens/MyAccount';
+import CartPage from './Screens/CartPage';
+import ContactPage from './Screens/ContactPage';
+import ProductPage from './Screens/ProductPage';
+import Footer from './components/Footer/Footer';
 
 class App extends Component {
   render() {

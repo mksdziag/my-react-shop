@@ -9,15 +9,17 @@ import { eye } from 'react-icons-kit/icomoon/eye';
 
 import './ProductCard.css';
 
-import WishListButton from './UiElements/Buttons/WishListButton';
+import WishListButton from './UI/Buttons/WishListButton';
 
 const ProductCard = props => {
   const {
-    id,
-    name,
-    picture,
-    // category,
-    manufacturer,
+    product: {
+      id,
+      name,
+      picture,
+      // category,
+      manufacturer,
+    },
     onQuickViewOpenHandler,
     onAddItemToCart,
     wishListItems,
@@ -27,7 +29,7 @@ const ProductCard = props => {
 
   const addToCartClickHandler = e => {
     e.preventDefault();
-    onAddItemToCart(id);
+    onAddItemToCart(props.product);
   };
   const onQuickViewClickHandler = e => {
     e.preventDefault();
@@ -98,7 +100,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    onAddItemToCart: id => dispatch(addItemToCart(id)),
+    onAddItemToCart: item => dispatch(addItemToCart(item)),
     onAddItemToWishList: id => dispatch(addItemToWishList(id)),
     onRemoveItemFromWishList: id => dispatch(removeItemFromWishList(id)),
   };

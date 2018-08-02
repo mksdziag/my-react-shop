@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { Icon } from 'react-icons-kit';
 import { user } from 'react-icons-kit/icomoon/user';
 import { cart } from 'react-icons-kit/icomoon/cart';
+import NavigationCartIncicator from './NavigationCartIncicator';
 
 class Navigation extends Component {
   render() {
@@ -49,6 +50,7 @@ class Navigation extends Component {
             <Link to="/cart" className="navbar-item">
               <Icon className="navbar-icon" icon={cart} />
               Cart
+              <NavigationCartIncicator />
             </Link>
           </div>
         </div>

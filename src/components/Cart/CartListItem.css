@@ -1,9 +1,9 @@
 .cart-item {
   display: flex;
+  align-items: center;
 }
-.art-item__cell {
-  margin: 0.5rem;
-  border-right: 1px solid rgb(179, 179, 179);
+.cart-item__cell:not(:last-of-type) {
+  margin-right: 0.5rem;
 }
 .cart-item__lp {
 }

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import products from '../database/products';
 import CategoryHeader from '../components/CategoryHeader';
 import ProductCard from '../components/ProductCard';
-import ProductPreviewModal from '../components/UiElements/Modals/ProductPreviewModal';
-import FloatingCart from '../components/FloatingCart';
+import ProductPreviewModal from '../components/UI/Modals/ProductPreviewModal';
+import FloatingCart from '../components/Cart/FloatingCart';
 
 class CategoryPage extends Component {
   state = {
@@ -43,16 +43,11 @@ class CategoryPage extends Component {
 
   render() {
     const productCards = this.state.productsInCategory.map(product => {
-      const { id, name, picture, category, manufacturer } = product;
       return (
-        <div key={id} className="column is-4-tablet is-3-widescreen">
+        <div key={product.id} className="column is-4-tablet is-3-widescreen">
           <ProductCard
-            id={id}
-            name={name}
-            picture={picture}
-            category={category}
-            manufacturer={manufacturer}
-            onQuickViewOpenHandler={() => this.showProductPreview(id)}
+            product={product}
+            onQuickViewOpenHandler={() => this.showProductPreview(product.id)}
           />
         </div>
       );
@@ -67,7 +62,7 @@ class CategoryPage extends Component {
         <ProductPreviewModal
           isModalActive={isModalActive}
           onQuickViewCloseHandler={this.closeProductPreview}
-          {...currentProduct}
+          product={{ ...currentProduct }}
         />
         <FloatingCart />
       </div>
