@@ -14,7 +14,7 @@ class CategoryPage extends Component {
 
   // setting state when component mounts first time
   componentDidMount() {
-    const categoryName = this.props.match.params.categoryName;
+    const { categoryName } = this.props.match.params;
     const productsInCategory = products.filter(product => product.category === categoryName);
     this.setState({ categoryName, productsInCategory });
   }
@@ -22,8 +22,8 @@ class CategoryPage extends Component {
   // if route changes fetching and filtering products
   componentDidUpdate(prevProps) {
     const currentCategoryName = this.props.match.params.categoryName;
-    const preciousCategoryName = prevProps.match.params.categoryName;
-    if (currentCategoryName !== preciousCategoryName) {
+    const previousCategoryName = prevProps.match.params.categoryName;
+    if (currentCategoryName !== previousCategoryName) {
       const productsInCategory = products.filter(
         product => product.category === currentCategoryName
       );
@@ -37,22 +37,19 @@ class CategoryPage extends Component {
   };
 
   closeProductPreview = () => {
-    this.setState({ isModalActive: false });
+    this.setState({ currentProduct: '', isModalActive: false });
   };
 
   render() {
-    const productCards = this.state.productsInCategory.map(product => {
-      return (
-        <div key={product.id} className="column is-4-tablet is-3-widescreen">
-          <ProductCard
-            product={product}
-            onQuickViewOpenHandler={() => this.showProductPreview(product.id)}
-          />
-        </div>
-      );
-    });
-
-    const { categoryName, isModalActive, currentProduct } = this.state;
+    const { categoryName, isModalActive, currentProduct, productsInCategory } = this.state;
+    const productCards = productsInCategory.map(product => (
+      <div key={product.id} className="column is-4-tablet is-3-widescreen">
+        <ProductCard
+          product={product}
+          onQuickViewOpenHandler={() => this.showProductPreview(product.id)}
+        />
+      </div>
+    ));
 
     return (
       <div className="container">

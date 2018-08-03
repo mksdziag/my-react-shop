@@ -1,3 +1,7 @@
 .button-icon:not(:only-child) {
   margin-right: 0.5rem;
 }
+
+.add-to-cart-button {
+  transition: all 150ms ease;
+}

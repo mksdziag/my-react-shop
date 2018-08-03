@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
+import './FrontPagePromo.css';
+
 import todaysPickBackground from '../assets/images/girl-vertical.jpg';
 import blogBackground from '../assets/images/blog.jpg';
 import promotionsBackground from '../assets/images/girl1.jpg';
 import bestSellerImage from '../assets/images/overall.jpg';
-
-import './FrontPagePromo.css';
 
 const FrontPagePromo = () => {
   return (

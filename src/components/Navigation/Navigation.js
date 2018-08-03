@@ -1,14 +1,36 @@
 import React, { Component } from 'react';
-
-import './Navigation.css';
-
 import { Link } from 'react-router-dom';
 import { Icon } from 'react-icons-kit';
 import { user } from 'react-icons-kit/icomoon/user';
 import { cart } from 'react-icons-kit/icomoon/cart';
+
+import './Navigation.css';
+
 import NavigationCartIncicator from './NavigationCartIncicator';
+import SearchButton from '../Search/SearchButton';
+import Search from '../Search/Search';
 
 class Navigation extends Component {
+  state = {
+    isSearchOpen: false,
+    isMobileMenuOpen: false,
+  };
+  // ! Must add hiding mobile menu after route change or any click
+
+  menuOpenHandler = () => {
+    this.setState(prevState => {
+      return { isMobileMenuOpen: !prevState.isMobileMenuOpen };
+    });
+  };
+
+  searchOpenHandler = () => {
+    this.setState({ isSearchOpen: true });
+  };
+
+  searchCloseHandler = () => {
+    this.setState({ isSearchOpen: false });
+  };
+
   render() {
     return (
       <nav className="navbar is-primary	" aria-label="main navigation">
@@ -16,15 +38,21 @@ class Navigation extends Component {
           <Link to="/" className="navbar-item">
             MyReactShop
           </Link>
-          <div className="navbar-burger burger">
+          <div
+            className={`navbar-burger burger  ${this.state.isMobileMenuOpen && 'is-active'}`}
+            onClick={this.menuOpenHandler}
+          >
             <span />
             <span />
             <span />
           </div>
         </div>
-        <div className="navbar-menu">
+        <div className={`navbar-menu is-primary ${this.state.isMobileMenuOpen && 'is-active'}`}>
           <div className="navbar-start" />
           <div className="navbar-end">
+            <div className="navbar-item">
+              <SearchButton onClickHandler={this.searchOpenHandler} />
+            </div>
             <Link to="/category/dress" className="navbar-item">
               Dresses
             </Link>
@@ -54,6 +82,7 @@ class Navigation extends Component {
             </Link>
           </div>
         </div>
+        <Search isSearchOpen={this.state.isSearchOpen} onCloseHandler={this.searchCloseHandler} />
       </nav>
     );
   }

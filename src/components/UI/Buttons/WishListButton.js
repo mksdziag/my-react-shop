@@ -1,16 +1,25 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Icon } from 'react-icons-kit';
 import { heart } from 'react-icons-kit/icomoon/heart';
 
 import './WishListButton.css';
 
-const WishListButton = props => {
-  const { wishListChange, isOnWishList } = props;
+import { addItemToWishList, removeItemFromWishList } from '../../../store/actions';
 
+const WishListButton = props => {
+  const { itemId, wishListItems, onAddItemToWishList, onRemoveItemFromWishList } = props;
+
+  const isOnWishList = wishListItems.includes(itemId);
   const onClichHandler = e => {
     e.preventDefault();
-    wishListChange();
+    if (isOnWishList) {
+      onRemoveItemFromWishList(itemId);
+    } else {
+      onAddItemToWishList(itemId);
+    }
   };
+
   return (
     <div
       onClick={e => onClichHandler(e)}
@@ -26,4 +35,19 @@ const WishListButton = props => {
   );
 };
 
-export default WishListButton;
+const mapStateToProps = state => {
+  return {
+    wishListItems: state.wishList.wishListItems,
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    onAddItemToWishList: id => dispatch(addItemToWishList(id)),
+    onRemoveItemFromWishList: id => dispatch(removeItemFromWishList(id)),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(WishListButton);

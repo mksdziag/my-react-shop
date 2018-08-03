@@ -2,7 +2,9 @@ import React from 'react';
 
 import './CategoryHeader.css';
 
-const CategoryHeader = ({ title }) => {
+const CategoryHeader = props => {
+  const { title } = props;
+
   return (
     <header className="category-header">
       <h2 className="title is-size-3 category-title">

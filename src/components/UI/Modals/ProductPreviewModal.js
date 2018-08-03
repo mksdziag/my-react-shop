@@ -2,16 +2,17 @@ import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Icon } from 'react-icons-kit';
-import { cart } from 'react-icons-kit/icomoon/cart';
 
 import './ProductPreviewModal.css';
+
 import { addItemToCart, addItemToWishList, removeItemFromWishList } from '../../../store/actions';
+import AddToCartButton from '../Buttons/AddToCartButton';
 
 const ProductPreviewModal = props => {
   const {
+    product,
     product: {
-      // id,
+      id,
       name,
       // price,
       picture,
@@ -21,9 +22,12 @@ const ProductPreviewModal = props => {
       // sizes,
     },
     isModalActive,
+    inCartItems,
     onQuickViewCloseHandler,
     onAddItemToCart,
   } = props;
+
+  const isInCart = inCartItems.some(item => item.id === id);
 
   return (
     <CSSTransition in={isModalActive} timeout={300} classNames="fade" unmountOnExit mountOnEnter>
@@ -43,24 +47,29 @@ const ProductPreviewModal = props => {
                 </Link>
               </div>
               <div className="product-preview-modal__actions">
-                <button
-                  onClick={() => onAddItemToCart(props.product)}
-                  className="button is-primary is-large"
-                >
-                  <Icon className="button-icon" icon={cart} />Buy Now
-                </button>
+                <AddToCartButton
+                  onClickHandler={() => onAddItemToCart(product)}
+                  isInCart={isInCart}
+                />
               </div>
             </div>
           </div>
           <button
             className="delete is-large product-preview-modal__close"
             aria-label="close"
-            onClick={() => onQuickViewCloseHandler()}
+            onClick={onQuickViewCloseHandler}
           />
         </div>
       </div>
     </CSSTransition>
   );
+};
+
+const mapStateToProps = state => {
+  return {
+    wishListIds: state.wishList.wishListItems,
+    inCartItems: state.cart.inCartItems,
+  };
 };
 
 const mapDispatchToProps = dispatch => {
@@ -72,6 +81,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(ProductPreviewModal);

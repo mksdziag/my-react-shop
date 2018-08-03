@@ -9,12 +9,13 @@ import './FloatingCart.css';
 const FloatingCart = props => {
   const { inCartItems } = props;
   const qty = inCartItems.length;
+
   return (
     <Link to="/cart">
-      <div className="floating-cart has-background-primary">
-        <Icon className="floating-cart__icon has-text-white" icon={cart} size={32} />
-        <div className="floating-cart__quantity-indicator has-background-white ">
-          <span className="floating-cart__quantity has-text-grey has-text-weight-semibold">
+      <div className="has-background-primary floating-cart">
+        <Icon className="has-text-white floating-cart__icon" icon={cart} size={32} />
+        <div className="has-background-white  floating-cart__quantity-indicator">
+          <span className="has-text-grey has-text-weight-semibold floating-cart__quantity">
             {qty}
           </span>
         </div>
@@ -29,7 +30,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  null
-)(FloatingCart);
+export default connect(mapStateToProps)(FloatingCart);

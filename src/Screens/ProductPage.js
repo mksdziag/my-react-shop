@@ -5,6 +5,7 @@ import products from '../database/products';
 import { addItemToCart } from '../store/actions';
 import FloatingCart from '../components/Cart/FloatingCart';
 import AddToCartButton from '../components/UI/Buttons/AddToCartButton';
+import SubPageHeader from '../components/SubPageHeader';
 
 class ProductPage extends Component {
   state = {
@@ -30,7 +31,7 @@ class ProductPage extends Component {
       // isActive,
       // price,
       picture,
-      // category,
+      category,
       // color,
       manufacturer,
       description,
@@ -38,35 +39,41 @@ class ProductPage extends Component {
       // sizes,
       // tags,
     } = this.state.product;
-    const { onAddItemToCart } = this.props;
+    const { onAddItemToCart, inCartItems } = this.props;
 
-    const isInCart = this.props.inCartItems.some(item => item.id === this.state.productId);
+    const isInCart = inCartItems.some(item => item.id === this.state.productId);
 
     return (
+      // ! nowy tyo headeru dodac trzeba
       <div className="container">
-        <div className="columns">
-          <div className="column is-5">
-            <img src={picture} alt="" />
+        <SubPageHeader title={name} subtitle={category} />
+        <section className="section">
+          <div className="container">
+            <div className="columns">
+              <div className="column is-5">
+                <img src={picture} alt="" />
+              </div>
+              <div className="column is-7">
+                <div className="product-name">
+                  <h2 className="title">{name}</h2>
+                  <Link to={`/manufacturer/${manufacturer}`}>
+                    <h4 className="subtitle">{manufacturer}</h4>
+                  </Link>
+                </div>
+                <div className="product-description">
+                  <p>{description}</p>
+                </div>
+                <div className="product-actions">
+                  <AddToCartButton
+                    onClickHandler={() => onAddItemToCart(this.state.product)}
+                    isInCart={isInCart}
+                  />
+                </div>
+              </div>
+            </div>
+            <FloatingCart />
           </div>
-          <div className="column is-7">
-            <div className="product-name">
-              <h2 className="title">{name}</h2>
-              <Link to={`/manufacturer/${manufacturer}`}>
-                <h4 className="subtitle">{manufacturer}</h4>
-              </Link>
-            </div>
-            <div className="product-description">
-              <p>{description}</p>
-            </div>
-            <div className="product-actions">
-              <AddToCartButton
-                onClickHandler={() => onAddItemToCart(this.state.product)}
-                isInCart={isInCart}
-              />
-            </div>
-          </div>
-        </div>
-        <FloatingCart />
+        </section>
       </div>
     );
   }

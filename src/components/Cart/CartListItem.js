@@ -1,9 +1,15 @@
 import React from 'react';
+import { Icon } from 'react-icons-kit';
+import { ic_remove_shopping_cart as cartRemove } from 'react-icons-kit/md/ic_remove_shopping_cart';
 
 import './CartListItem.css';
 
 const CartListItem = props => {
   const { idx, name, price, onItemRemove, pieces } = props;
+
+  const onQtyChange = () => {
+    console.log('zmiana');
+  };
 
   return (
     <li className="cart-item box">
@@ -18,7 +24,7 @@ const CartListItem = props => {
               type="number"
               value={pieces}
               placeholder="quantity"
-              onChange={() => console.log('zmiana')}
+              onChange={onQtyChange}
             />
           </div>
         </div>
@@ -30,12 +36,12 @@ const CartListItem = props => {
         <p className="cart-item__name">product: {name}</p>
       </div>
       <div className="cart-item__cell">
-        <p className="cart-item__price">price: {price}</p>
+        <p className="has-text-weight-semibold cart-item__price">price: {price}</p>
       </div>
       <div className="cart-item__cell">
         <div className="cart-item_a_ctions">
           <button onClick={onItemRemove} className="button is-small is-danger is-uppercase">
-            remove item
+            <Icon size={18} icon={cartRemove} />
           </button>
         </div>
       </div>

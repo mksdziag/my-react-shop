@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addItemToCart, addItemToWishList, removeItemFromWishList } from '../store/actions';
 import { Link } from 'react-router-dom';
 import { Icon } from 'react-icons-kit';
 import { link } from 'react-icons-kit/icomoon/link';
 import { eye } from 'react-icons-kit/icomoon/eye';
 
 import './ProductCard.css';
+import { addItemToCart } from '../store/actions';
 
 import WishListButton from './UI/Buttons/WishListButton';
 import AddToCartButton from './UI/Buttons/AddToCartButton';
@@ -20,12 +20,9 @@ const ProductCard = props => {
       // category,
       manufacturer,
     },
-    onQuickViewOpenHandler,
-    onAddItemToCart,
-    wishListItems,
-    onAddItemToWishList,
-    onRemoveItemFromWishList,
     inCartItems,
+    onAddItemToCart,
+    onQuickViewOpenHandler,
   } = props;
 
   const addToCartClickHandler = e => {
@@ -37,14 +34,6 @@ const ProductCard = props => {
     onQuickViewOpenHandler();
   };
 
-  const isOnWishList = wishListItems.includes(id);
-  const changeProductWishListStatus = () => {
-    if (isOnWishList) {
-      onRemoveItemFromWishList(id);
-    } else {
-      onAddItemToWishList(id);
-    }
-  };
   const isInCart = inCartItems.some(item => item.id === id);
 
   return (
@@ -58,7 +47,7 @@ const ProductCard = props => {
             <AddToCartButton
               onClickHandler={e => addToCartClickHandler(e)}
               isInCart={isInCart}
-              iconOnly={true}
+              iconOnly
             />
             <button
               className="button is-primary is-outlined product-card__figure-overlay-button"
@@ -67,10 +56,7 @@ const ProductCard = props => {
               <Icon icon={eye} />
             </button>
           </div>
-          <WishListButton
-            isOnWishList={isOnWishList}
-            wishListChange={changeProductWishListStatus}
-          />
+          <WishListButton itemId={id} />
         </Link>
       </div>
       <div className="card-content product-card__info">
@@ -82,10 +68,10 @@ const ProductCard = props => {
         </Link>
       </div>
       <footer className="product-card__actions">
-        <AddToCartButton onClickHandler={e => addToCartClickHandler(e)} isInCart={isInCart} />
+        <AddToCartButton onClickHandler={addToCartClickHandler} isInCart={isInCart} />
         <Link to={`/product/${id}`} target="_blank" className="button is-primary is-outlined">
           <Icon className="button-icon" icon={link} />
-          New card
+          <span>New card</span>
         </Link>
       </footer>
     </div>
@@ -94,15 +80,12 @@ const ProductCard = props => {
 
 const mapStateToProps = state => {
   return {
-    wishListItems: state.wishList.wishListItems,
     inCartItems: state.cart.inCartItems,
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
     onAddItemToCart: item => dispatch(addItemToCart(item)),
-    onAddItemToWishList: id => dispatch(addItemToWishList(id)),
-    onRemoveItemFromWishList: id => dispatch(removeItemFromWishList(id)),
   };
 };
 

@@ -10,7 +10,7 @@
 }
 .wish-list__item-cell {
 }
-.wish-list__image {
+.wish-list__item-image {
   max-width: 50px;
   width: 100%;
   display: block;
