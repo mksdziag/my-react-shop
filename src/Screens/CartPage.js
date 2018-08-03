@@ -7,8 +7,8 @@ import SubPageHeader from '../components/SubPageHeader';
 import CartListItem from '../components/Cart/CartListItem';
 import CartSummary from '../components/Cart/CartSummary';
 
-const CartPage = () => {
-  const { inCartItems, removeItemFromCart } = this.props;
+const CartPage = props => {
+  const { inCartItems, removeItemFromCart } = props;
 
   let total = 0;
   if (inCartItems.length > 0) {
