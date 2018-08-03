@@ -4,13 +4,12 @@ import { addItemToCart, addItemToWishList, removeItemFromWishList } from '../sto
 import { Link } from 'react-router-dom';
 import { Icon } from 'react-icons-kit';
 import { link } from 'react-icons-kit/icomoon/link';
-import { cart } from 'react-icons-kit/icomoon/cart';
 import { eye } from 'react-icons-kit/icomoon/eye';
-import { checkmark } from 'react-icons-kit/icomoon/checkmark';
 
 import './ProductCard.css';
 
 import WishListButton from './UI/Buttons/WishListButton';
+import AddToCartButton from './UI/Buttons/AddToCartButton';
 
 const ProductCard = props => {
   const {
@@ -56,12 +55,11 @@ const ProductCard = props => {
         </figure>
         <Link to={`/product/${id}`}>
           <div className="product-card__figure-overlay">
-            <button
-              className="button is-primary product-card__figure-overlay-button"
-              onClick={e => addToCartClickHandler(e)}
-            >
-              <Icon icon={cart} />
-            </button>
+            <AddToCartButton
+              onClickHandler={e => addToCartClickHandler(e)}
+              isInCart={isInCart}
+              iconOnly={true}
+            />
             <button
               className="button is-primary is-outlined product-card__figure-overlay-button"
               onClick={e => onQuickViewClickHandler(e)}
@@ -84,13 +82,7 @@ const ProductCard = props => {
         </Link>
       </div>
       <footer className="product-card__actions">
-        <button
-          onClick={e => addToCartClickHandler(e)}
-          className={`button ${isInCart ? 'is-warning' : 'is-primary'}`}
-        >
-          <Icon className="button-icon" icon={isInCart ? checkmark : cart} />
-          {isInCart ? 'in cart' : 'Add To Cart'}
-        </button>
+        <AddToCartButton onClickHandler={e => addToCartClickHandler(e)} isInCart={isInCart} />
         <Link to={`/product/${id}`} target="_blank" className="button is-primary is-outlined">
           <Icon className="button-icon" icon={link} />
           New card

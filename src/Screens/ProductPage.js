@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Icon } from 'react-icons-kit';
-import { cart } from 'react-icons-kit/icomoon/cart';
 import products from '../database/products';
 import { addItemToCart } from '../store/actions';
 import FloatingCart from '../components/Cart/FloatingCart';
+import AddToCartButton from '../components/UI/Buttons/AddToCartButton';
 
 class ProductPage extends Component {
   state = {
@@ -41,6 +40,8 @@ class ProductPage extends Component {
     } = this.state.product;
     const { onAddItemToCart } = this.props;
 
+    const isInCart = this.props.inCartItems.some(item => item.id === this.state.productId);
+
     return (
       <div className="container">
         <div className="columns">
@@ -58,12 +59,10 @@ class ProductPage extends Component {
               <p>{description}</p>
             </div>
             <div className="product-actions">
-              <button
-                className="button is-primary is-large"
-                onClick={() => onAddItemToCart(this.state.product)}
-              >
-                <Icon className="button-icon" icon={cart} />Buy Now
-              </button>
+              <AddToCartButton
+                onClickHandler={() => onAddItemToCart(this.state.product)}
+                isInCart={isInCart}
+              />
             </div>
           </div>
         </div>
@@ -73,6 +72,13 @@ class ProductPage extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    wishListItems: state.wishList.wishListItems,
+    inCartItems: state.cart.inCartItems,
+  };
+};
+
 const mapDispatchToProps = dispatch => {
   return {
     onAddItemToCart: item => dispatch(addItemToCart(item)),
@@ -80,6 +86,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(ProductPage);
