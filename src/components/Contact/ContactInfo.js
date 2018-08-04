@@ -8,7 +8,7 @@ const ContactInfo = () => {
       <address>tel: 658 255 225 email: kontakt@koko.pl</address>
       <p>
         <strong>Godziny pracy:</strong>
-        <div>poniedziałek - sobota 9:00 - 19:00</div>
+        <span>poniedziałek - sobota 9:00 - 19:00</span>
       </p>
     </div>
   );

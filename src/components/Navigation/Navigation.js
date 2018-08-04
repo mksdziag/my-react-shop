@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Icon } from 'react-icons-kit';
 import { user } from 'react-icons-kit/icomoon/user';
@@ -15,7 +16,14 @@ class Navigation extends Component {
     isSearchOpen: false,
     isMobileMenuOpen: false,
   };
-  // ! Must add hiding mobile menu after route change or any click
+
+  componentDidUpdate(prevProps) {
+    const currentLocation = this.props.location.key;
+    const previousLocattion = prevProps.location.key;
+    if (currentLocation !== previousLocattion) {
+      this.setState({ isMobileMenuOpen: false });
+    }
+  }
 
   menuOpenHandler = () => {
     this.setState(prevState => {
@@ -88,4 +96,4 @@ class Navigation extends Component {
   }
 }
 
-export default Navigation;
+export default withRouter(Navigation);
