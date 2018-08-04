@@ -5,9 +5,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.5rem;
+  padding: 0.5rem 0.75rem;
   border-radius: 5px;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 .floating-cart__icon {
 }
@@ -21,7 +21,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.2);
 }
 .floating-cart__quantity {
   font-size: 1.05rem;

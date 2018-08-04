@@ -10,11 +10,11 @@ const ContactPage = () => {
         title="Contact"
         subtitle="Feel free to contact us if you have any questions."
       />
-      <div className="columns">
-        <div className="column is-8">
+      <div className="columns is-multiline">
+        <div className="column is-12-touch is-8">
           <ContactForm />
         </div>
-        <div className="column is-4">
+        <div className="column is-12-touch is-4">
           <ContactInfo />
         </div>
       </div>

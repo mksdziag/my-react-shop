@@ -7,7 +7,7 @@ class ContactForm extends Component {
         <div className="columns">
           <div className="column">
             <div className="field">
-              <label className="label">Name</label>
+              <label className="label is-italic">Name</label>
               <div className="control">
                 <input className="input" type="text" placeholder="Your Name" />
               </div>
@@ -16,7 +16,7 @@ class ContactForm extends Component {
 
           <div className="column">
             <div className="field">
-              <label className="label">Username</label>
+              <label className="label is-italic">Username</label>
               <div className="control has-icons-left">
                 <input className="input" type="text" placeholder="Your username" />
               </div>
@@ -27,7 +27,7 @@ class ContactForm extends Component {
         <div className="columns">
           <div className="column">
             <div className="field">
-              <label className="label">Email</label>
+              <label className="label is-italic">Email</label>
               <div className="control ">
                 <input className="input" type="email" placeholder="Email input" />
               </div>
@@ -36,7 +36,7 @@ class ContactForm extends Component {
 
           <div className="column">
             <div className="field">
-              <label className="label">Subject</label>
+              <label className="label is-italic">Subject</label>
               <div className="control">
                 <div className="select is-fullwidth">
                   <select>
@@ -52,7 +52,7 @@ class ContactForm extends Component {
         </div>
 
         <div className="field">
-          <label className="label">Message</label>
+          <label className="label is-italic">Message</label>
           <div className="control">
             <textarea className="textarea" placeholder="Textarea" />
           </div>
