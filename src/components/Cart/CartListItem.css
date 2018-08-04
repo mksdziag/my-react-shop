@@ -1,9 +1,12 @@
-.cart-item {
-  display: flex;
-  align-items: center;
+.cart-item.box {
+  margin-bottom: 0.5rem;
+  padding: 1rem;
 }
+.cart-item .column {
+  padding: 0.25rem;
+}
+
 .cart-item__cell:not(:last-of-type) {
-  margin-right: 0.5rem;
 }
 .cart-item__lp {
 }

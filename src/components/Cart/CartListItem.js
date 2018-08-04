@@ -12,37 +12,50 @@ const CartListItem = props => {
   };
 
   return (
-    <li className="cart-item box">
-      <div className="cart-item__cell">
-        <p className="cart-item__lp">{idx + 1}</p>
-      </div>
-      <div className="cart-item__cell">
-        <div className="field">
-          <div className="control">
-            <input
-              className="input is-primary"
-              type="number"
-              value={pieces}
-              placeholder="quantity"
-              onChange={onQtyChange}
-            />
+    <li className="box cart-item">
+      <div className="columns level ">
+        <div
+          className="column is-1 has-text-left-touch	
+ has-text-centered"
+        >
+          <p className="cart-item__lp">{idx + 1}.</p>
+        </div>
+        <div className="column is-2">
+          <div className="field">
+            <div className="control">
+              <input
+                className="input"
+                type="number"
+                value={pieces}
+                placeholder="quantity"
+                onChange={onQtyChange}
+              />
+              <div className="is-size-7 has-text-grey-lighter ">qty:</div>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="cart-item__cell">
-        <p className="cart-item__size">size: S</p>
-      </div>
-      <div className="cart-item__cell">
-        <p className="cart-item__name">product: {name}</p>
-      </div>
-      <div className="cart-item__cell">
-        <p className="has-text-weight-semibold cart-item__price">price: {price}</p>
-      </div>
-      <div className="cart-item__cell">
-        <div className="cart-item_a_ctions">
-          <button onClick={onItemRemove} className="button is-small is-danger is-uppercase">
-            <Icon size={18} icon={cartRemove} />
-          </button>
+        <div className="column is-1 ">
+          <p className="cart-item__size">S</p>
+          <div className="is-size-7 has-text-grey-lighter ">size:</div>
+        </div>
+        <div className="column is-5">
+          <p className="cart-item__name  has-text-weight-semibold">{name}</p>
+          <div className="is-size-7 has-text-grey-lighter ">product:</div>
+        </div>
+        <div className="column is-2">
+          <p className="has-text-weight-semibold cart-item__price">{price}</p>
+          <div className="is-size-7 has-text-grey-lighter ">price:</div>
+        </div>
+        <div className="column is-1">
+          <div
+            className="cart-item_a_ctions has-text-left-touch	
+ has-text-centered"
+          >
+            <button onClick={onItemRemove} className="button is-small is-danger is-uppercase">
+              <Icon size={18} icon={cartRemove} />
+            </button>
+            <div className="is-size-7 has-text-grey-lighter ">remove</div>
+          </div>
         </div>
       </div>
     </li>
