@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Icon } from 'react-icons-kit';
-import { link } from 'react-icons-kit/icomoon/link';
+import { circleRight } from 'react-icons-kit/icomoon/circleRight';
 import { eye } from 'react-icons-kit/icomoon/eye';
 
 import './ProductCard.css';
@@ -19,6 +19,7 @@ const ProductCard = props => {
       picture,
       // category,
       manufacturer,
+      price,
     },
     inCartItems,
     onAddItemToCart,
@@ -61,17 +62,24 @@ const ProductCard = props => {
       </div>
       <div className="card-content product-card__info">
         <Link to={`/product/${id}`}>
-          <p className="title is-4 product-card__name">{name}</p>
+          <p className="title is-5 product-card__name ">{name}</p>
         </Link>
         <Link to={`/manufacturer/${manufacturer}`}>
-          <p className="subtitle is-6 product-card__manufacturer">{manufacturer}</p>
+          <p className="subtitle is-7 has-text-dark-grey product-card__manufacturer has-text-right is-italic">
+            {manufacturer}
+          </p>
         </Link>
+        <div className="columns is-centered">
+          <div className="column is-4 has-text-centered has-text-danger has-text-weight-semibold product-card__price">
+            {price}$
+          </div>
+        </div>
       </div>
       <footer className="product-card__actions">
-        <AddToCartButton onClickHandler={addToCartClickHandler} isInCart={isInCart} />
-        <Link to={`/product/${id}`} target="_blank" className="button is-primary is-outlined">
-          <Icon className="button-icon" icon={link} />
-          <span>New card</span>
+        <AddToCartButton isFullWidth onClickHandler={addToCartClickHandler} isInCart={isInCart} />
+        <Link to={`/product/${id}`} className="button is-fullwidth is-primary is-outlined">
+          <Icon className="button-icon" icon={circleRight} />
+          <span>open</span>
         </Link>
       </footer>
     </div>
