@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group';
 import { Link } from 'react-router-dom';
 import { Icon } from 'react-icons-kit';
 import { user } from 'react-icons-kit/icomoon/user';
@@ -90,7 +91,16 @@ class Navigation extends Component {
             </Link>
           </div>
         </div>
-        <Search isSearchOpen={this.state.isSearchOpen} onCloseHandler={this.searchCloseHandler} />
+
+        <CSSTransition
+          in={this.state.isSearchOpen}
+          timeout={300}
+          classNames="fade"
+          unmountOnExit
+          mountOnEnter
+        >
+          <Search onCloseHandler={this.searchCloseHandler} />
+        </CSSTransition>
       </nav>
     );
   }

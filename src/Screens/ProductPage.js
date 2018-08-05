@@ -10,20 +10,29 @@ import SubPageHeader from '../components/SubPageHeader';
 class ProductPage extends Component {
   state = {
     productId: '',
-    product: {},
   };
 
-  componentWillMount() {
-    const { productId } = this.props.match.params;
-    this.setState({ productId });
+  // componentDidMount() {
+  //   const product = products.find(product => product.id === this.state.productId);
+  //   this.setState({ product: { ...product } });
+  // }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.match.params.productId !== prevState.productId) {
+      return { productId: nextProps.match.params.productId };
+    } else return null;
   }
 
-  componentDidMount() {
-    const product = products.find(product => product.id === this.state.productId);
-    this.setState({ product: { ...product } });
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevProps.match.params.productId !== this.state.productId) {
+  //     console.log('from didupdate');
+  //     const product = products.find(product => product.id === this.state.productId);
+  //     this.setState({ product: { ...product } });
+  //   }
+  // }
 
   render() {
+    const product = products.find(product => product.id === this.state.productId);
     const {
       // id,
       name,
@@ -38,13 +47,12 @@ class ProductPage extends Component {
       // added,
       // sizes,
       // tags,
-    } = this.state.product;
+    } = product;
     const { onAddItemToCart, inCartItems } = this.props;
 
     const isInCart = inCartItems.some(item => item.id === this.state.productId);
 
     return (
-      // ! nowy tyo headeru dodac trzeba
       <div className="container">
         <SubPageHeader title={name} subtitle={category} />
         <section className="section">
@@ -65,7 +73,7 @@ class ProductPage extends Component {
                 </div>
                 <div className="product-actions">
                   <AddToCartButton
-                    onClickHandler={() => onAddItemToCart(this.state.product)}
+                    onClickHandler={() => onAddItemToCart(product)}
                     isInCart={isInCart}
                   />
                 </div>
