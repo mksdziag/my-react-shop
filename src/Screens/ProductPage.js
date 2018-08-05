@@ -12,24 +12,11 @@ class ProductPage extends Component {
     productId: '',
   };
 
-  // componentDidMount() {
-  //   const product = products.find(product => product.id === this.state.productId);
-  //   this.setState({ product: { ...product } });
-  // }
-
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.match.params.productId !== prevState.productId) {
       return { productId: nextProps.match.params.productId };
     } else return null;
   }
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (prevProps.match.params.productId !== this.state.productId) {
-  //     console.log('from didupdate');
-  //     const product = products.find(product => product.id === this.state.productId);
-  //     this.setState({ product: { ...product } });
-  //   }
-  // }
 
   render() {
     const product = products.find(product => product.id === this.state.productId);
@@ -49,7 +36,6 @@ class ProductPage extends Component {
       // tags,
     } = product;
     const { onAddItemToCart, inCartItems } = this.props;
-
     const isInCart = inCartItems.some(item => item.id === this.state.productId);
 
     return (
