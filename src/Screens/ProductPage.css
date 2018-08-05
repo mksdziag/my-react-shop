@@ -1,0 +1,31 @@
+.product-page {
+}
+.product-page__name-header {
+  margin-bottom: 1rem;
+}
+.product-page__name {
+}
+.product-page__description {
+  margin-bottom: 1rem;
+}
+.product-page__price-wrapper {
+  margin-bottom: 1rem;
+}
+.product-page__price {
+  padding: 0.5rem;
+  border-bottom: 2px solid rgba(255, 124, 48, 0.808);
+}
+.product-page__actions {
+}
+
+@media screen and (min-width: 1024px) {
+  .product-page__name-header {
+    margin-bottom: 2rem;
+  }
+  .product-page__description {
+    margin-bottom: 2rem;
+  }
+  .product-page__price-wrapper {
+    margin-bottom: 2rem;
+  }
+}
