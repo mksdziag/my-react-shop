@@ -6,15 +6,15 @@ import { ic_add_shopping_cart as addToCartIcon } from 'react-icons-kit/md/ic_add
 import './AddToCartButton.css';
 
 const AddToCartButton = props => {
-  const { isFullWidth, onClickHandler, isInCart, iconOnly } = props;
+  const { isFullWidth, onClickHandler, isInCart, iconOnly, additionalClasses } = props;
 
   const buttonClassList = isInCart
     ? isFullWidth
-      ? 'button is-fullwidth is-warning add-to-cart-button'
-      : 'button is-warning add-to-cart-button'
+      ? `button is-fullwidth is-warning add-to-cart-button ${additionalClasses}`
+      : `button is-warning add-to-cart-button ${additionalClasses}`
     : isFullWidth
-      ? 'button is-fullwidth is-primary add-to-cart-button'
-      : 'button is-primary add-to-cart-button';
+      ? `button is-fullwidth is-primary add-to-cart-button ${additionalClasses}`
+      : `button is-primary add-to-cart-button ${additionalClasses}`;
   const buttonText = isInCart ? 'in cart' : 'Add To Cart';
 
   return (

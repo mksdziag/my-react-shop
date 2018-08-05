@@ -71,7 +71,7 @@ class ProductPage extends Component {
                     <AddToCartButton
                       onClickHandler={() => onAddItemToCart(product)}
                       isInCart={isInCart}
-                      size={'is-medium is-fullwidth'}
+                      additionalClasses={'is-medium is-fullwidth'}
                     />
                   </div>
                 </div>
