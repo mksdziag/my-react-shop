@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Lightbox from 'lightbox-react';
 
 import './ProductPage.css';
 import products from '../database/products';
@@ -12,6 +13,7 @@ import SubPageHeader from '../components/SubPageHeader';
 class ProductPage extends Component {
   state = {
     productId: '',
+    lightboxOpen: false,
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -19,6 +21,13 @@ class ProductPage extends Component {
       return { productId: nextProps.match.params.productId };
     } else return null;
   }
+
+  handleLightboxOpen = () => {
+    this.setState({ lightboxOpen: true });
+  };
+  handleLightboxClose = () => {
+    this.setState({ lightboxOpen: false });
+  };
 
   render() {
     const product = products.find(product => product.id === this.state.productId);
@@ -47,7 +56,15 @@ class ProductPage extends Component {
           <div className="container">
             <div className="columns">
               <div className="column is-5">
-                <img src={picture} alt="" />
+                <img
+                  src={picture}
+                  alt=""
+                  className="product-page__picture"
+                  onClick={this.handleLightboxOpen}
+                />
+                {this.state.lightboxOpen && (
+                  <Lightbox mainSrc={picture} onCloseRequest={this.handleLightboxClose} />
+                )}
               </div>
               <div className="column is-7">
                 <header className="product-page__name-header">
