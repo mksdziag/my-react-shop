@@ -5,30 +5,35 @@
   overflow: hidden;
 }
 .product-card__image-holder {
-  position: relative;
-  overflow: hidden;
 }
 .product-card__figure {
+  position: relative;
   height: 350px;
+  overflow: hidden;
 }
-.product-card__image-holder:hover .product-card__figure-overlay {
-  top: 0;
+.product-card__figure:hover .product-card__figure-overlay {
   opacity: 1;
+  transform: translateY(0%);
 }
 
 .product-card__figure-overlay {
-  position: absolute;
-  top: 100%;
-  left: 0;
+  display: flex;
+  align-items: center;
+  background-image: linear-gradient(rgba(61, 64, 104, 0.35) 70%, rgba(0, 0, 0, 0.35));
+  opacity: 0;
+  transform: translateY(100%);
+  transition: transform 250ms ease, opacity 250ms ease 100ms;
+}
+
+.product-card__overlay-actions {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.35);
-  transition: top 250ms ease, opacity 250ms ease 100ms;
-  opacity: 0;
+  padding: 0.25rem;
+  background: rgba(61, 64, 104, 0.7);
 }
+
 .product-card__figure-overlay-button {
   margin: 0.5rem;
 }

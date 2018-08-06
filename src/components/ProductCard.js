@@ -40,24 +40,26 @@ const ProductCard = props => {
   return (
     <div className="card product-card">
       <div className="card-image product-card__image-holder">
-        <figure className="image product-card__figure ">
-          <img className="product-card__image" src={pictures[0]} alt="product" />
-        </figure>
         <Link to={`/product/${id}`}>
-          <div className="product-card__figure-overlay">
-            <AddToCartButton
-              onClickHandler={e => addToCartClickHandler(e)}
-              isInCart={isInCart}
-              iconOnly
-            />
-            <button
-              className="button is-primary is-outlined product-card__figure-overlay-button"
-              onClick={e => onQuickViewClickHandler(e)}
-            >
-              <Icon icon={eye} />
-            </button>
-          </div>
-          <WishListButton itemId={id} />
+          <figure className="image product-card__figure ">
+            <img className="product-card__image" src={pictures[0]} alt="product" />
+            <div className=" is-overlay product-card__figure-overlay">
+              <div className="product-card__overlay-actions">
+                <AddToCartButton
+                  onClickHandler={e => addToCartClickHandler(e)}
+                  isInCart={isInCart}
+                  iconOnly
+                />
+                <button
+                  className="button is-primary product-card__figure-overlay-button"
+                  onClick={e => onQuickViewClickHandler(e)}
+                >
+                  <Icon icon={eye} />
+                </button>
+              </div>
+            </div>
+            <WishListButton itemId={id} />
+          </figure>
         </Link>
       </div>
       <div className="card-content product-card__info">
