@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Lightbox from 'lightbox-react';
+import { Icon } from 'react-icons-kit';
+import { table } from 'react-icons-kit/icomoon/table';
+import { CSSTransition } from 'react-transition-group';
 
 import './ProductPage.css';
 import products from '../database/products';
@@ -9,11 +12,13 @@ import { addItemToCart } from '../store/actions';
 
 import AddToCartButton from '../components/UI/Buttons/AddToCartButton';
 import SubPageHeader from '../components/SubPageHeader';
+import SizesTable from '../components/SizesTable';
 
 class ProductPage extends Component {
   state = {
     productId: '',
     lightboxOpen: false,
+    sizetableOpen: false,
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -27,6 +32,12 @@ class ProductPage extends Component {
   };
   handleLightboxClose = () => {
     this.setState({ lightboxOpen: false });
+  };
+
+  handleSizeTableOpenClose = () => {
+    this.setState(prevState => {
+      return { sizetableOpen: !prevState.sizetableOpen };
+    });
   };
 
   render() {
@@ -43,7 +54,7 @@ class ProductPage extends Component {
       manufacturer,
       description,
       // added,
-      // sizes,
+      sizes,
       // tags,
     } = product;
     const { onAddItemToCart, inCartItems } = this.props;
@@ -86,12 +97,25 @@ class ProductPage extends Component {
                 <div className="columns">
                   <div className="product-page__actions  column is-6-tablet">
                     <AddToCartButton
+                      in={this.state.sizetableOpen}
                       onClickHandler={() => onAddItemToCart(product)}
                       isInCart={isInCart}
                       additionalClasses={'is-medium is-fullwidth'}
                     />
                   </div>
                 </div>
+                <button onClick={this.handleSizeTableOpenClose} className="button is-inverted">
+                  <Icon icon={table} /> Table of sizes
+                </button>
+                <CSSTransition
+                  in={this.state.sizetableOpen}
+                  timeout={300}
+                  classNames="table-reveal"
+                  mountOnEnter
+                  unmountOnExit
+                >
+                  <SizesTable sizes={sizes} />
+                </CSSTransition>
               </div>
             </div>
           </div>

@@ -38,3 +38,20 @@
     margin-bottom: 2rem;
   }
 }
+
+.table-reveal-enter .sizes-table {
+  opacity: 0;
+  transform: scaleY(0.1);
+}
+.table-reveal-enter-active .sizes-table {
+  opacity: 1;
+  transform: scaleY(1);
+}
+.table-reveal-exit {
+  opacity: 1;
+  transform: scaleY(1);
+}
+.table-reveal-exit-active .sizes-table {
+  opacity: 0;
+  transform: scaleY(0.1);
+}

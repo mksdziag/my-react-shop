@@ -1,0 +1,7 @@
+.sizes-table {
+  opacity: 1;
+  transition: all 300ms;
+  transform: scaleY(1);
+  transform-origin: top center;
+  margin-top: 0.5rem;
+}
