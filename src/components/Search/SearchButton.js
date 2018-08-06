@@ -9,7 +9,7 @@ const SearchButton = props => {
 
   return (
     <button onClick={onClickHandler} className="is-size-7 has-text-white button--search">
-      <Icon className="navbar-icon navbar-icon--search " icon={search} />
+      <Icon className="navbar-icon--search " icon={search} />
     </button>
   );
 };
