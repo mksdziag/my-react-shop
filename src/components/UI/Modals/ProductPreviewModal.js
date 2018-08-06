@@ -14,9 +14,9 @@ const ProductPreviewModal = props => {
     product: {
       id,
       name,
-      // price,
+      price,
       pictures,
-      // category,
+      category,
       manufacturer,
       // added,
       // sizes,
@@ -33,19 +33,27 @@ const ProductPreviewModal = props => {
     <CSSTransition in={isModalActive} timeout={300} classNames="fade" unmountOnExit mountOnEnter>
       <div className="product-preview-modal__backdrop">
         <div className="product-preview-modal">
-          <div className="columns">
+          <div className="columns level">
             <div className="column is-5">
               <div className="product-preview-modal__image-holder">
-                <img className="" src={pictures} alt="" />
+                <img className="product-preview-modal__image" src={pictures} alt="" />
               </div>
             </div>
             <div className="column is-7">
-              <div className="product-name">
+              <header className="product-preview-modal__product-header">
                 <h2 className="title">{name}</h2>
-                <Link to={`/manufacturer/${manufacturer}`}>
-                  <h4 className="subtitle">{manufacturer}</h4>
-                </Link>
-              </div>
+                <h4 className="subtitle has-text-grey">
+                  <Link
+                    className="is-size-6-touch has-text-grey "
+                    to={`/manufacturer/${manufacturer}`}
+                  >
+                    {manufacturer}
+                  </Link>
+                </h4>
+              </header>
+              <span className="is-block has-text-danger is-size-5-touch is-size-4-desktop has-text-weight-semibold product-preview-modal__product-price">
+                {price}$
+              </span>
               <div className="product-preview-modal__actions">
                 <AddToCartButton
                   onClickHandler={() => onAddItemToCart(product)}

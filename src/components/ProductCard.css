@@ -61,6 +61,8 @@
 
 .product-card__price {
   padding: 0.5rem;
+  margin-right: auto;
+  margin-left: auto;
   border-bottom: 2px solid rgba(255, 124, 48, 0.808);
 }
 

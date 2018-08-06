@@ -70,7 +70,7 @@ const ProductCard = props => {
           </p>
         </Link>
         <div className="columns is-centered">
-          <div className="column is-4 has-text-centered has-text-danger has-text-weight-semibold product-card__price">
+          <div className="column is-4-touch is-4 has-text-centered has-text-danger has-text-weight-semibold product-card__price">
             {price}$
           </div>
         </div>
