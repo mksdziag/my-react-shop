@@ -14,7 +14,7 @@ const SearchResults = props => {
 
   if (results.length > 1) {
     searchResultsItems = results.map(product => {
-      const { id, name, price, picture, category, manufacturer } = product;
+      const { id, name, price, pictures, category, manufacturer } = product;
 
       return (
         <li className="is-primary has-text-black is-fullwidth search-result" key={id}>
@@ -22,7 +22,7 @@ const SearchResults = props => {
             <article className="media">
               <figure className="media-left">
                 <p className="image is-64x64 search-result__image">
-                  <img src={picture} alt="product thumbnail" />
+                  <img src={pictures[0]} alt="product thumbnail" />
                 </p>
               </figure>
               <div className="media-content">

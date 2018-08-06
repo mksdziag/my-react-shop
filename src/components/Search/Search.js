@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import './Search.css';
@@ -7,9 +7,17 @@ import products from '../../database/products';
 import SearchResults from './SearchResults';
 
 class Search extends Component {
-  state = {
-    searchResults: [],
-  };
+  constructor(props) {
+    super(props);
+    this.textInput = createRef();
+    this.state = {
+      searchResults: [],
+    };
+  }
+
+  componentDidMount() {
+    this.textInput.current.focus();
+  }
 
   componentWillUnmount() {
     this.setState({ searchResults: [] });
@@ -34,6 +42,7 @@ class Search extends Component {
           <div className="field">
             <div className="control">
               <input
+                ref={this.textInput}
                 onChange={e => this.handleSearch(e)}
                 className="input is-primary"
                 type="search"
