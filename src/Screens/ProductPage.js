@@ -19,6 +19,7 @@ class ProductPage extends Component {
     productId: '',
     lightboxOpen: false,
     sizetableOpen: false,
+    photoIndex: 0,
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -48,7 +49,7 @@ class ProductPage extends Component {
       // index,
       // isActive,
       price,
-      picture,
+      pictures,
       category,
       // color,
       manufacturer,
@@ -59,7 +60,8 @@ class ProductPage extends Component {
     } = product;
     const { onAddItemToCart, inCartItems } = this.props;
     const isInCart = inCartItems.some(item => item.id === this.state.productId);
-
+    const { photoIndex } = this.state;
+    console.log(photoIndex);
     return (
       <div className="container product-page">
         <SubPageHeader title={name} subtitle={category} />
@@ -68,13 +70,28 @@ class ProductPage extends Component {
             <div className="columns">
               <div className="column is-5">
                 <img
-                  src={picture}
+                  src={pictures[photoIndex]}
                   alt=""
                   className="product-page__picture"
                   onClick={this.handleLightboxOpen}
                 />
                 {this.state.lightboxOpen && (
-                  <Lightbox mainSrc={picture} onCloseRequest={this.handleLightboxClose} />
+                  <Lightbox
+                    mainSrc={pictures[photoIndex]}
+                    nextSrc={pictures[(photoIndex + 1) % pictures.length]}
+                    prevSrc={pictures[(photoIndex + pictures.length - 1) % pictures.length]}
+                    onCloseRequest={this.handleLightboxClose}
+                    onMovePrevRequest={() =>
+                      this.setState({
+                        photoIndex: (photoIndex + pictures.length - 1) % pictures.length,
+                      })
+                    }
+                    onMoveNextRequest={() =>
+                      this.setState({
+                        photoIndex: (photoIndex + 1) % pictures.length,
+                      })
+                    }
+                  />
                 )}
               </div>
               <div className="column is-7">

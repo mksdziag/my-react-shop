@@ -16,7 +16,7 @@ const ProductCard = props => {
     product: {
       id,
       name,
-      picture,
+      pictures,
       // category,
       manufacturer,
       price,
@@ -41,7 +41,7 @@ const ProductCard = props => {
     <div className="card product-card">
       <div className="card-image product-card__image-holder">
         <figure className="image product-card__figure ">
-          <img className="product-card__image" src={picture} alt="product" />
+          <img className="product-card__image" src={pictures[0]} alt="product" />
         </figure>
         <Link to={`/product/${id}`}>
           <div className="product-card__figure-overlay">

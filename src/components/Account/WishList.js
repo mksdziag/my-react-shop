@@ -25,14 +25,14 @@ const WishList = props => {
 
   if (wishListItems.length > 0) {
     wishListItemsOutput = wishListItems.map(item => {
-      const { id, picture, name, price } = item;
+      const { id, pictures, name, price } = item;
       const isInCart = inCartItems.some(itemInCart => itemInCart.id === id);
 
       return (
         <li className="wish-list__item" key={id}>
           <div className="wish-list__item-cell">
             <Link to={`/product/${id}`}>
-              <img src={picture} alt="" className="wish-list__item-image" />
+              <img src={pictures[0]} alt="" className="wish-list__item-image" />
             </Link>
           </div>
           <div className="wish-list__item-cell">

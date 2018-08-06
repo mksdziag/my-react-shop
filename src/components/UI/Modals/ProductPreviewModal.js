@@ -15,7 +15,7 @@ const ProductPreviewModal = props => {
       id,
       name,
       // price,
-      picture,
+      pictures,
       // category,
       manufacturer,
       // added,
@@ -36,7 +36,7 @@ const ProductPreviewModal = props => {
           <div className="columns">
             <div className="column is-5">
               <div className="product-preview-modal__image-holder">
-                <img className="" src={picture} alt="" />
+                <img className="" src={pictures} alt="" />
               </div>
             </div>
             <div className="column is-7">
