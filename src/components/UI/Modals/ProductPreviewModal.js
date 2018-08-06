@@ -16,7 +16,7 @@ const ProductPreviewModal = props => {
       name,
       price,
       pictures,
-      category,
+      // category,
       manufacturer,
       // added,
       // sizes,
