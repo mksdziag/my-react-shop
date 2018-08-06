@@ -1,5 +1,6 @@
 .search-results {
-  overflow-y: scroll;
+  overflow-y: auto;
+  height: 100%;
 }
 .search-result {
   padding: 0.5rem;
@@ -8,5 +9,6 @@
 }
 
 .search-result__image {
-  overflow: hidden;
+  width: 64px;
+  box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
 }

@@ -37,7 +37,7 @@ class Search extends Component {
     const { onCloseHandler } = this.props;
 
     return (
-      <div className="search__backdrop">
+      <div className="is-overlay search__backdrop">
         <div className="search">
           <div className="field">
             <div className="control">
@@ -50,12 +50,7 @@ class Search extends Component {
               />
             </div>
           </div>
-
-          <div className="columns ">
-            <div className="column">
-              <SearchResults results={this.state.searchResults} />
-            </div>
-          </div>
+          <SearchResults results={this.state.searchResults} />
           <button
             className="delete is-large search__close"
             aria-label="close"

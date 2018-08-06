@@ -7,8 +7,10 @@ const SearchResults = props => {
   const { results } = props;
 
   let searchResultsItems = (
-    <div className="box">
-      <p>Srtart searching with new word...</p>
+    <div className="search-results__start-info">
+      <p className="is-size-4 has-text-centered has-text-black-ter">
+        Start searching with new word...
+      </p>
     </div>
   );
 
@@ -21,9 +23,11 @@ const SearchResults = props => {
           <Link className="has-text-grey" to={`/product/${id}`}>
             <article className="media">
               <figure className="media-left">
-                <p className="image is-64x64 search-result__image">
-                  <img src={pictures[0]} alt="product thumbnail" />
-                </p>
+                <img
+                  className="image search-result__image"
+                  src={pictures[0]}
+                  alt="product thumbnail"
+                />
               </figure>
               <div className="media-content">
                 <div className="content">
@@ -44,7 +48,7 @@ const SearchResults = props => {
     });
   }
 
-  return <ul className="search-results">{searchResultsItems}</ul>;
+  return <ul className="search-results ">{searchResultsItems}</ul>;
 };
 
 export default SearchResults;
