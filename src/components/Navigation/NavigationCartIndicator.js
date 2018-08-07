@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import './NavigationCartIncicator.css';
+import './NavigationCartIndicator.css';
 
-const NavigationCartIncicator = props => {
+const NavigationCartIndicator = props => {
   const { inCartItems } = props;
   const qty = inCartItems.length;
 
@@ -24,4 +24,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(NavigationCartIncicator);
+export default connect(mapStateToProps)(NavigationCartIndicator);

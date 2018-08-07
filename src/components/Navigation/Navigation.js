@@ -8,7 +8,7 @@ import { cart } from 'react-icons-kit/icomoon/cart';
 
 import './Navigation.css';
 
-import NavigationCartIncicator from './NavigationCartIncicator';
+import NavigationCartIndicator from './NavigationCartIndicator';
 import SearchButton from '../Search/SearchButton';
 import Search from '../Search/Search';
 
@@ -90,7 +90,7 @@ class Navigation extends Component {
             <Link to="/cart" className="navbar-item has-text-white">
               <Icon className="navbar-icon" icon={cart} />
               Cart
-              <NavigationCartIncicator />
+              <NavigationCartIndicator />
             </Link>
           </div>
         </div>
