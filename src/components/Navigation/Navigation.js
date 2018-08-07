@@ -42,7 +42,7 @@ class Navigation extends Component {
 
   render() {
     return (
-      <nav className="navbar is-primary is-fixed-top  	" aria-label="main navigation">
+      <nav className="navbar is-dark is-fixed-top is-primary 	" aria-label="main navigation">
         <div className="navbar-brand">
           <Link to="/" className="navbar-item">
             MyReactShop
@@ -57,33 +57,33 @@ class Navigation extends Component {
           </div>
         </div>
         <div
-          className={`navbar-menu is-primary has-background-primary ${this.state.isMobileMenuOpen &&
+          className={`navbar-menu has-background-primary ${this.state.isMobileMenuOpen &&
             'is-active'}`}
         >
           <div className="navbar-start" />
-          <div className="navbar-end">
-            <div className="navbar-item is-primary">
+          <div className="navbar-end ">
+            <div className="navbar-item">
               <SearchButton onClickHandler={this.searchOpenHandler} />
             </div>
-            <Link to="/category/dress" className="navbar-item has-text-white">
+            <Link to="/category/dress" className="navbar-item has-text-white ">
               Dresses
             </Link>
-            <Link to="/category/overall" className="navbar-item has-text-white">
+            <Link to="/category/overall" className="navbar-item has-text-white ">
               Overalls
             </Link>
-            <Link to="/category/jacket" className="navbar-item has-text-white">
+            <Link to="/category/jacket" className="navbar-item has-text-white ">
               Jackets
             </Link>
-            <Link to="/category/skirt" className="navbar-item has-text-white">
+            <Link to="/category/skirt" className="navbar-item has-text-white ">
               Skirts
             </Link>
-            <Link to="/category/trousers" className="navbar-item has-text-white">
+            <Link to="/category/trousers" className="navbar-item has-text-white ">
               Trousers
             </Link>
-            <Link to="/contact" className="navbar-item has-text-white">
+            <Link to="/contact" className="navbar-item has-text-white ">
               Contact
             </Link>
-            <Link to="/my-account" className="navbar-item has-text-white">
+            <Link to="/my-account" className="navbar-item has-text-white ">
               <Icon className="navbar-icon" icon={user} />
               My Account
             </Link>
