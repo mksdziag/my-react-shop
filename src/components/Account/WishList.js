@@ -18,8 +18,9 @@ const WishList = props => {
 
   let wishListItemsOutput = (
     <div className="content">
-      <h4>No items on your list Yet</h4>
-      <p>add them to youyr list by clicking in heart icon on product.</p>
+      <h4 className="is-size-6 has-text-weight-light has-text-grey ">
+        No items on your list yet...
+      </h4>
     </div>
   );
 
