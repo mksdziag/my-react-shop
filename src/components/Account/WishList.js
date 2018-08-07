@@ -29,28 +29,31 @@ const WishList = props => {
       const isInCart = inCartItems.some(itemInCart => itemInCart.id === id);
 
       return (
-        <li className="wish-list__item" key={id}>
-          <div className="wish-list__item-cell">
+        <li className="wish-list__item level columns is-mobile" key={id}>
+          <div className="column  is-paddingless  wish-list__item-cell">
             <Link to={`/product/${id}`}>
               <img src={pictures[0]} alt="" className="wish-list__item-image" />
             </Link>
           </div>
-          <div className="wish-list__item-cell">
+          <div className="column is-5 wish-list__item-cell">
             <Link
               to={`/product/${id}`}
-              className="has-text-grey has-text-weight-semibold is-uppercase wish-list__item-name"
+              className="has-text-grey is-size-7 is-size-6-widescreen has-text-weight-semibold is-uppercase wish-list__item-name"
             >
               {name}
             </Link>
           </div>
-          <div className="wish-list__item-cell">
-            <p className="wish-list__price">{price}</p>
+          <div className="column wish-list__item-cell">
+            <p className="has-text-danger has-text-weight-semibold wish-list__price">
+              {price.toFixed(2)}$
+            </p>
           </div>
-          <div className="wish-list__item-cell">
+          <div className="column wish-list__item-cell">
             <AddToCartButton
               iconOnly
               onClickHandler={() => onAddItemToCart(item)}
               isInCart={isInCart}
+              additionalClasses={'is-small '}
             />
           </div>
         </li>

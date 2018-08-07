@@ -24,7 +24,6 @@
   opacity: 0;
   border-radius: 10px;
   transition: all 300ms ease;
-  overflow-y: scroll;
 }
 
 .product-preview-modal__image-holder {

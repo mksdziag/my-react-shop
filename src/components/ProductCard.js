@@ -73,7 +73,7 @@ const ProductCard = props => {
         </Link>
         <div className="columns is-centered">
           <div className="column is-4-touch is-4 has-text-centered has-text-danger has-text-weight-semibold product-card__price">
-            {price}$
+            {price.toFixed(2)}$
           </div>
         </div>
       </div>

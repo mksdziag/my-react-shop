@@ -38,7 +38,10 @@ const SearchResults = props => {
                   </p>
                 </div>
                 <div className="search-result__price">
-                  price: <strong>{price}$</strong>
+                  price:{' '}
+                  <strong className="has-text-primary has-text-weight-semibold">
+                    {price.toFixed(2)}$
+                  </strong>
                 </div>
               </div>
             </article>

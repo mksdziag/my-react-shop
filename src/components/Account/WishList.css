@@ -1,18 +1,21 @@
 .wish-list {
 }
 .wish-list__item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid rgb(223, 223, 223);
-  margin-bottom: 1rem;
-  padding: 1rem;
+  box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+  margin-bottom: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
 }
 .wish-list__item-cell {
+  margin: 0.25rem;
 }
 .wish-list__item-image {
-  max-width: 50px;
+  max-width: 40px;
   width: 100%;
   display: block;
   height: auto;
+}
+
+.wish-list__item .column {
+  padding: 0.25rem;
 }
