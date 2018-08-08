@@ -1,0 +1,18 @@
+.order-details {
+  padding: 1rem;
+}
+
+.order-details__heading {
+  margin-bottom: 1.5rem;
+}
+.order-details__meta {
+  margin-bottom: 0.5rem;
+}
+.order-details__items-list {
+  list-style: none;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.order-details__item {
+  box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+}

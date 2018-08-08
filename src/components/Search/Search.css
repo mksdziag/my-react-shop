@@ -1,7 +1,7 @@
 .search__backdrop {
   position: fixed;
   background-image: linear-gradient(45deg, rgba(61, 64, 104, 0.805), rgba(0, 209, 178, 0.805));
-  transition: opacity 200ms ease;
+  transition: opacity 300ms cubic-bezier(0.25, 0.5, 0.5, 0.9);
   opacity: 0;
 }
 
@@ -14,12 +14,13 @@
   max-width: 1024px;
   max-height: 600px;
   padding: 3rem 2rem;
-  transform: translate(-50%, -50%) scale(0.45);
+  transform: translate(-50%, -35%);
   background-color: #fff;
-  opacity: 0;
+  opacity: 1;
   border-radius: 10px;
   box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.35);
-  transition: all 300ms ease;
+  transition: transform 300ms cubic-bezier(0.25, 0.5, 0.5, 0.9),
+    opacity 300ms cubic-bezier(0.25, 0.5, 0.5, 0.9);
 }
 
 .search-results__start-info {
@@ -43,17 +44,22 @@
   opacity: 0;
 }
 
+/* ? fade enter do sprzwdzenia */
+/* .fade-enter .search {
+  transform: translate(-50%, -50%);
+  opacity: 0;
+} */
 .fade-enter-active .search {
-  transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%);
   opacity: 1;
 }
 .fade-enter-done .search {
-  transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%);
   opacity: 1;
 }
 
 .fade-exit-active .search {
-  transform: translate(-50%, -50%) scale(0.45);
+  transform: translate(-50%, -35%);
   opacity: 0;
 }
 

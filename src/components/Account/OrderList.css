@@ -1,3 +1,6 @@
+.orders {
+  min-height: 200px;
+}
 .orders__header th {
   border: none !important;
 }
