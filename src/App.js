@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import 'bulma/css/bulma.css';
 import './App.css';
+import { fetchOrders, userLoggedIn } from './store/actions';
+import { auth } from './db/db';
 
 import Navigation from './components/Navigation/Navigation';
 import AppHeader from './components/AppHeader';
@@ -16,6 +19,14 @@ import Footer from './components/Footer/Footer';
 import FloatingCart from './components/Cart/FloatingCart';
 
 class App extends Component {
+  componentDidMount() {
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        this.props.userLoggedIn(user);
+      }
+    });
+  }
+
   render() {
     return (
       <div>
@@ -38,4 +49,21 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    user: state.user.user,
+  };
+};
+const mapDispachToProps = dispatch => {
+  return {
+    fetchOrders: user => dispatch(fetchOrders(user)),
+    userLoggedIn: user => dispatch(userLoggedIn(user.email)),
+  };
+};
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispachToProps
+  )(App)
+);

@@ -28,7 +28,7 @@ class OrderList extends Component {
       <tr className="orders__item is-size-6" key={order.id}>
         <td className="is-hidden-mobile">{index + 1}.</td>
         <td className="has-text-primary">{order.total.toFixed(2)}$</td>
-        <td>{order.placed.toLocaleString()}</td>
+        <td>{new Date(order.placed).toLocaleString()}</td>
         <td>{order.items.length}</td>
         <td>
           <button

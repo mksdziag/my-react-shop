@@ -29,8 +29,8 @@ class CartPage extends Component {
 
     const order = {
       id: v4(),
-      placed: new Date(),
-      userId: '22',
+      placed: Date.now(),
+      user: this.props.user,
       total: this.state.total + this.state.shippingCost,
       items: orderedItems,
     };
@@ -74,6 +74,7 @@ class CartPage extends Component {
             total={total}
             shippingCost={this.state.shippingCost}
             onConfirmOrder={this.handleNewOrder}
+            orderingisabled={this.props.user ? false : true}
           />
         </div>
       </div>
@@ -84,6 +85,7 @@ class CartPage extends Component {
 const mapStateToProps = state => {
   return {
     inCartItems: state.cart.inCartItems,
+    user: state.user.user,
   };
 };
 const mapDispatchToProps = dispatch => {

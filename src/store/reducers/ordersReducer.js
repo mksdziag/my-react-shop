@@ -16,6 +16,11 @@ const ordersReducer = (state = initalState, action) => {
         ...state,
         orders: [...state.orders].filter(order => order.id !== action.payload.id),
       };
+    case actionTypes.FETCH_ORDERS:
+      return {
+        ...state,
+        orders: [...action.payload.orders],
+      };
     default:
       return state;
   }

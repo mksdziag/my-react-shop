@@ -3,7 +3,7 @@ import React from 'react';
 import './CartSummary.css';
 
 const CartSummary = props => {
-  const { total, onConfirmOrder, shippingCost } = props;
+  const { total, onConfirmOrder, shippingCost, orderingisabled } = props;
   return (
     <div className="column is-4 cart-summary">
       <div className="box">
@@ -17,8 +17,12 @@ const CartSummary = props => {
           total + shippingCost
         ).toFixed(2)}$`}</p>
         <br />
-        <button onClick={onConfirmOrder} className="button is-success is-medium is-fullwidth">
-          Confirm Your Order
+        <button
+          onClick={onConfirmOrder}
+          disabled={orderingisabled}
+          className="button is-success is-medium is-fullwidth"
+        >
+          {orderingisabled ? 'regiser or log in first' : 'Confirm Your Order'}
         </button>
       </div>
     </div>
