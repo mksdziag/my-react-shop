@@ -1,27 +1,17 @@
 import * as actionTypes from '../actionTypes/actionTypes';
 import db, { auth } from '../../db/db';
 
-const userRegistered = email => {
-  return {
-    type: actionTypes.REGISTER_NEW_USER,
-    payload: {
-      email,
-    },
-  };
-};
+const userRegistered = email => ({
+  type: actionTypes.REGISTER_NEW_USER,
+  payload: { email },
+});
 
 export const registerNewUser = user => dispatch => {
   auth
     .createUserWithEmailAndPassword(user.email, user.password)
-    .then(data => {
-      console.log(data);
-      return dispatch(userRegistered(user.email));
-    })
-    .catch(function(error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      console.log({ errorCode, errorMessage });
-    });
+    .then(() => dispatch(userRegistered(user.email)))
+    .catch(error => console.log(error));
+
   db.collection('users')
     .doc(user.email)
     .set({
@@ -36,58 +26,41 @@ export const registerNewUser = user => dispatch => {
     });
 };
 
-export const userLoggedIn = email => {
-  return {
-    type: actionTypes.LOGIN_USER,
-    payload: {
-      email,
-    },
-  };
-};
+export const userLoggedIn = email => ({
+  type: actionTypes.LOGIN_USER,
+  payload: {
+    email,
+  },
+});
 
 export const logInUser = user => dispatch => {
   auth
     .signInWithEmailAndPassword(user.email, user.password)
-    .then(data => {
-      return dispatch(userLoggedIn(user.email));
-    })
-    .catch(function(error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      console.log({ errorCode, errorMessage });
-    });
+    .then(() => dispatch(userLoggedIn(user.email)))
+    .catch(error => console.log(error));
 };
 
-export const userLoggedOut = () => {
-  return {
-    type: actionTypes.LOG_OUT_USER,
-  };
-};
+const userLoggedOut = () => ({
+  type: actionTypes.LOG_OUT_USER,
+});
+
 export const logOutUser = () => dispatch => {
   auth
     .signOut()
-    .then(() => {
-      return dispatch(userLoggedOut());
-    })
-    .catch(function(error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      console.log({ errorCode, errorMessage });
-    });
+    .then(() => dispatch(userLoggedOut()))
+    .catch(error => console.log(error));
 };
 
 export const updateUserDetails = user => dispatch => {
   db.collection('users')
     .doc(user.userEmail)
-    .update(user);
-  dispatch(updatedUserDetails(user));
+    .update(user)
+    .then(() => dispatch(updatedUserDetails(user)));
 };
 
-export const updatedUserDetails = userDetails => {
-  return {
-    type: actionTypes.UPDATE_USER_DETAILS,
-    payload: {
-      userDetails,
-    },
-  };
-};
+export const updatedUserDetails = userDetails => ({
+  type: actionTypes.UPDATE_USER_DETAILS,
+  payload: {
+    userDetails,
+  },
+});
