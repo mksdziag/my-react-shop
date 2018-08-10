@@ -1,5 +1,6 @@
 import * as actionTypes from '../actionTypes/actionTypes';
-import { auth } from '../../db/db';
+import db, { auth } from '../../db/db';
+
 const userRegistered = email => {
   return {
     type: actionTypes.REGISTER_NEW_USER,
@@ -20,6 +21,18 @@ export const registerNewUser = user => dispatch => {
       var errorCode = error.code;
       var errorMessage = error.message;
       console.log({ errorCode, errorMessage });
+    });
+  db.collection('users')
+    .doc(user.email)
+    .set({
+      userEmail: user.email,
+      name: 'edit your details',
+      secondName: 'edit your details',
+      street: 'edit your details',
+      propNum: 'edit your details',
+      city: 'edit your details',
+      zip: 'edit your details',
+      wishlist: [],
     });
 };
 
@@ -53,7 +66,7 @@ export const userLoggedOut = () => {
 export const logOutUser = () => dispatch => {
   auth
     .signOut()
-    .then(data => {
+    .then(() => {
       return dispatch(userLoggedOut());
     })
     .catch(function(error) {
@@ -61,4 +74,20 @@ export const logOutUser = () => dispatch => {
       var errorMessage = error.message;
       console.log({ errorCode, errorMessage });
     });
+};
+
+export const updateUserDetails = user => dispatch => {
+  db.collection('users')
+    .doc(user.userEmail)
+    .update(user);
+  dispatch(updatedUserDetails(user));
+};
+
+export const updatedUserDetails = userDetails => {
+  return {
+    type: actionTypes.UPDATE_USER_DETAILS,
+    payload: {
+      userDetails,
+    },
+  };
 };

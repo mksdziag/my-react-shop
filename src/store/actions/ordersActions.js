@@ -33,9 +33,9 @@ const ordersFetched = orders => {
   };
 };
 
-export const fetchOrders = user => dispatch => {
+export const fetchOrders = userEmail => dispatch => {
   db.collection('orders')
-    .where('user', '==', user)
+    .where('user', '==', userEmail)
     .get()
     .then(querySnapshot => {
       const orders = [];

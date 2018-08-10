@@ -3,7 +3,7 @@ import React from 'react';
 import './CartSummary.css';
 
 const CartSummary = props => {
-  const { total, onConfirmOrder, shippingCost, orderingisabled } = props;
+  const { total, onConfirmOrder, shippingCost, orderingDisabled } = props;
   return (
     <div className="column is-4 cart-summary">
       <div className="box">
@@ -19,10 +19,10 @@ const CartSummary = props => {
         <br />
         <button
           onClick={onConfirmOrder}
-          disabled={orderingisabled}
+          disabled={orderingDisabled}
           className="button is-success is-medium is-fullwidth"
         >
-          {orderingisabled ? 'regiser or log in first' : 'Confirm Your Order'}
+          confirm order
         </button>
       </div>
     </div>

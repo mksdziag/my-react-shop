@@ -8,15 +8,15 @@ import './WishListButton.css';
 import { addItemToWishList, removeItemFromWishList } from '../../../store/actions';
 
 const WishListButton = props => {
-  const { itemId, wishListItems, onAddItemToWishList, onRemoveItemFromWishList } = props;
+  const { userEmail, itemId, wishListItems, onAddItemToWishList, onRemoveItemFromWishList } = props;
 
   const isOnWishList = wishListItems.includes(itemId);
   const onClichHandler = e => {
     e.preventDefault();
     if (isOnWishList) {
-      onRemoveItemFromWishList(itemId);
+      onRemoveItemFromWishList(userEmail, itemId);
     } else {
-      onAddItemToWishList(itemId);
+      onAddItemToWishList(userEmail, itemId);
     }
   };
 
@@ -38,12 +38,13 @@ const WishListButton = props => {
 const mapStateToProps = state => {
   return {
     wishListItems: state.wishList.wishListItems,
+    userEmail: state.user.userEmail,
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
-    onAddItemToWishList: id => dispatch(addItemToWishList(id)),
-    onRemoveItemFromWishList: id => dispatch(removeItemFromWishList(id)),
+    onAddItemToWishList: (userEmail, id) => dispatch(addItemToWishList(userEmail, id)),
+    onRemoveItemFromWishList: (userEmail, id) => dispatch(removeItemFromWishList(userEmail, id)),
   };
 };
 

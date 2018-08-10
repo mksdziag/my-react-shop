@@ -2,7 +2,14 @@ import * as actionTypes from '../actionTypes/actionTypes';
 
 const initalState = {
   isLogged: false,
-  user: null,
+  userEmail: null,
+  name: 'edit your details...',
+  secondName: 'edit your details...',
+  street: 'edit your details...',
+  propNum: 'edit your details...',
+  city: 'edit your details...',
+  zip: 'edit your details...',
+  wishList: [],
 };
 
 const userReducer = (state = initalState, action) => {
@@ -10,20 +17,24 @@ const userReducer = (state = initalState, action) => {
     case actionTypes.REGISTER_NEW_USER:
       return {
         ...state,
-        user: action.payload.email,
+        userEmail: action.payload.email,
         isLogged: true,
       };
     case actionTypes.LOGIN_USER:
       return {
         ...state,
-        user: action.payload.email,
+        userEmail: action.payload.email,
         isLogged: true,
       };
     case actionTypes.LOG_OUT_USER:
       return {
         ...state,
-        user: null,
+        userEmail: null,
         isLogged: false,
+      };
+    case actionTypes.UPDATE_USER_DETAILS:
+      return {
+        ...state,
       };
     default:
       return state;
