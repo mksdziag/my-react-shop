@@ -3,8 +3,9 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import 'bulma/css/bulma.css';
+import 'bulma-tooltip';
 import './App.css';
-import { fetchOrders, userLoggedIn } from './store/actions';
+import { userLoggedIn } from './store/actions';
 import { auth } from './db/db';
 
 import Navigation from './components/Navigation/Navigation';
@@ -49,21 +50,13 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    user: state.user.user,
-  };
-};
-const mapDispachToProps = dispatch => {
-  return {
-    fetchOrders: user => dispatch(fetchOrders(user)),
-    userLoggedIn: user => dispatch(userLoggedIn(user.email)),
-  };
-};
+const mapDispachToProps = dispatch => ({
+  userLoggedIn: user => dispatch(userLoggedIn(user.email)),
+});
 
 export default withRouter(
   connect(
-    mapStateToProps,
+    null,
     mapDispachToProps
   )(App)
 );

@@ -39,7 +39,6 @@ class UserInfo extends Component {
       .catch(function(error) {
         console.log('Error getting document:', error);
       });
-    console.log('pobrano');
   }
 
   handleLogOut = () => {

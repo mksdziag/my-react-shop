@@ -1,37 +1,27 @@
 import * as actionTypes from '../actionTypes/actionTypes';
 import db from '../../db/db';
 
-const orderCreated = order => {
-  return {
-    type: actionTypes.CREATE_NEW_ORDER,
-    payload: {
-      order,
-    },
-  };
-};
-
 export const createNewOrder = order => dispatch => {
-  db.collection('orders').add(order);
+  console.log(order);
+  db.collection('orders')
+    .add(order)
+    .catch(error => console.log(error));
   dispatch(orderCreated(order));
 };
 
-export const removeOrder = id => {
-  return {
-    type: actionTypes.REMOVE_ORDER,
-    payload: {
-      id,
-    },
-  };
-};
+const orderCreated = order => ({
+  type: actionTypes.CREATE_NEW_ORDER,
+  payload: {
+    order,
+  },
+});
 
-const ordersFetched = orders => {
-  return {
-    type: actionTypes.FETCH_ORDERS,
-    payload: {
-      orders,
-    },
-  };
-};
+export const removeOrder = id => ({
+  type: actionTypes.REMOVE_ORDER,
+  payload: {
+    id,
+  },
+});
 
 export const fetchOrders = userEmail => dispatch => {
   db.collection('orders')
@@ -42,5 +32,13 @@ export const fetchOrders = userEmail => dispatch => {
       querySnapshot.forEach(doc => orders.push(doc.data()));
       return orders;
     })
-    .then(orders => dispatch(ordersFetched(orders)));
+    .then(orders => dispatch(ordersFetched(orders)))
+    .catch(error => console.log(error));
 };
+
+const ordersFetched = orders => ({
+  type: actionTypes.FETCH_ORDERS,
+  payload: {
+    orders,
+  },
+});

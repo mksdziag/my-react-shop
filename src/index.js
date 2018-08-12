@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { createStore, applyMiddleware, compose } from 'redux';
 import reduxThunk from 'redux-thunk';
 import { Provider } from 'react-redux';
-import './index.css';
+
 import App from './App';
 import ScrollToTop from './components/ScrollToTop';
 import registerServiceWorker from './registerServiceWorker';

@@ -4,7 +4,6 @@ import { Icon } from 'react-icons-kit';
 import { heart } from 'react-icons-kit/icomoon/heart';
 
 import './WishListButton.css';
-
 import { addItemToWishList, removeItemFromWishList } from '../../../store/actions';
 
 const WishListButton = props => {
@@ -13,6 +12,7 @@ const WishListButton = props => {
   const isOnWishList = wishListItems.includes(itemId);
   const onClichHandler = e => {
     e.preventDefault();
+    e.stopPropagation();
     if (isOnWishList) {
       onRemoveItemFromWishList(userEmail, itemId);
     } else {
@@ -21,17 +21,20 @@ const WishListButton = props => {
   };
 
   return (
-    <div
+    <button
       onClick={e => onClichHandler(e)}
-      className="has-background-primary product-card__wishlist-add has-text-white"
+      className={`has-background-primary product-card__wishlist-add has-text-white wishlist-button ${!userEmail &&
+        'tooltip is-tooltip-left'}`}
+      data-tooltip="Sign Up to add"
+      disabled={userEmail === null}
     >
       <Icon
-        className="product-card__wishlist-icon"
+        className="wishlist-button__icon"
         style={{ color: isOnWishList && '#ff6666' }}
         size={24}
         icon={heart}
       />
-    </div>
+    </button>
   );
 };
 

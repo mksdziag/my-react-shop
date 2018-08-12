@@ -10,15 +10,22 @@ const AddToCartButton = props => {
 
   const buttonClassList = isInCart
     ? isFullWidth
-      ? `button is-fullwidth is-warning add-to-cart-button ${additionalClasses}`
-      : `button is-warning add-to-cart-button ${additionalClasses}`
+      ? `button is-fullwidth is-warning add-to-cart-button ${additionalClasses} ${isInCart &&
+          'tooltip'}`
+      : `button is-warning add-to-cart-button ${additionalClasses} ${isInCart && 'tooltip'}`
     : isFullWidth
-      ? `button is-fullwidth is-primary add-to-cart-button ${additionalClasses}`
-      : `button is-primary add-to-cart-button ${additionalClasses}`;
+      ? `button is-fullwidth is-primary add-to-cart-button ${additionalClasses} ${isInCart &&
+          'tooltip'}`
+      : `button is-primary add-to-cart-button ${additionalClasses} ${isInCart && 'tooltip'}`;
   const buttonText = isInCart ? 'in cart' : 'Add To Cart';
 
   return (
-    <button onClick={onClickHandler} className={buttonClassList}>
+    <button
+      onClick={onClickHandler}
+      className={buttonClassList}
+      disabled={isInCart}
+      data-tooltip={isInCart && 'change quantity in cart'}
+    >
       <Icon size={18} className="button-icon" icon={isInCart ? inCartIcon : addToCartIcon} />
       {iconOnly || <span>{buttonText}</span>}
     </button>

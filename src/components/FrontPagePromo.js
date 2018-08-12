@@ -6,7 +6,6 @@ import './FrontPagePromo.css';
 import todaysPickBackground from '../assets/images/girl-vertical.jpg';
 import blogBackground from '../assets/images/blog.jpg';
 import promotionsBackground from '../assets/images/girl1.jpg';
-import bestSellerImage from '../assets/images/overall.jpg';
 
 const FrontPagePromo = () => {
   return (
@@ -38,7 +37,7 @@ const FrontPagePromo = () => {
                   <p className="subtitle">clients cant be wrong</p>
                   <figure className="image">
                     <img
-                      src={bestSellerImage}
+                      src={'https://image.ibb.co/nciuBK/kom_czer1.jpg'}
                       alt="product"
                       className="front-promo__best-seller-image"
                     />

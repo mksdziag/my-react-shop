@@ -17,20 +17,27 @@ const userReducer = (state = initalState, action) => {
     case actionTypes.REGISTER_NEW_USER:
       return {
         ...state,
-        userEmail: action.payload.email,
         isLogged: true,
+        userEmail: action.payload.email,
       };
     case actionTypes.LOGIN_USER:
       return {
         ...state,
-        userEmail: action.payload.email,
         isLogged: true,
+        userEmail: action.payload.email,
       };
+    case actionTypes.LOGIN_FAILED:
+      return {
+        ...state,
+        isLogged: false,
+        userEmail: null,
+      };
+
     case actionTypes.LOG_OUT_USER:
       return {
         ...state,
-        userEmail: null,
         isLogged: false,
+        userEmail: null,
       };
     case actionTypes.UPDATE_USER_DETAILS:
       return {

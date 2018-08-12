@@ -73,7 +73,7 @@ class ContactForm extends Component {
           <div className="column">
             <div className="field is-grouped">
               <div className="control">
-                <button className="button is-primary ">Submit</button>
+                <button className="button is-primary">Submit</button>
               </div>
               <div className="control">
                 <button className="button is-text">Cancel</button>

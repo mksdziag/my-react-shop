@@ -7,7 +7,7 @@ import SubPageHeader from '../components/SubPageHeader';
 import WishList from '../components/Account/WishList';
 import OrderList from '../components/Account/OrderList';
 import ModalBlank from '../components/UI/Modals/ModalBlank';
-import LoginForm from './LoginForm';
+import LoginForm from '../components/Account/LoginForm';
 import UserInfo from '../components/Account/UserInfo';
 
 class MyAccount extends Component {
@@ -15,12 +15,22 @@ class MyAccount extends Component {
     userEmail: null,
   };
 
-  componentDidUpdate() {
-    this.props.fetchOrders(this.state.userEmail);
-    if (this.state.userEmail) {
-      this.props.fetchWishList(this.state.userEmail);
+  componentDidMount() {
+    const { userEmail } = this.state;
+    const { isUserLogged, fetchOrders, fetchWishList } = this.props;
+    if (isUserLogged) {
+      fetchOrders(userEmail);
+      fetchWishList(userEmail);
     }
   }
+  // componentDidUpdate() {
+  //   const { userEmail } = this.state;
+  //   const { isUserLogged, fetchOrders, fetchWishList } = this.props;
+  //   if (isUserLogged) {
+  //     fetchOrders(userEmail);
+  //     fetchWishList(userEmail);
+  //   }
+  // }
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.user.userEmail !== prevState.userEmail) {
@@ -37,16 +47,18 @@ class MyAccount extends Component {
         {isUserLogged ? (
           <Fragment>
             <UserInfo user={this.state.userEmail} />
-            <div className="columns">
-              <div className="column is-7">
-                <h3 className="title is-size-4">My orders</h3>
-                <OrderList />
+            <section className="section section--paddingless-vertical">
+              <div className="columns">
+                <div className="column is-7">
+                  <h3 className="title is-size-4">My orders</h3>
+                  <OrderList />
+                </div>
+                <div className="column is-5 is-offset-1-widescreen is-4-widescreen">
+                  <h3 className="title is-size-4">My wish list</h3>
+                  <WishList />
+                </div>{' '}
               </div>
-              <div className="column is-5 is-offset-1-widescreen is-4-widescreen">
-                <h3 className="title is-size-4">My wish list</h3>
-                <WishList />
-              </div>{' '}
-            </div>
+            </section>
           </Fragment>
         ) : (
           <div className="columns">

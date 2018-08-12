@@ -12,11 +12,18 @@ class CartPage extends Component {
   state = {
     orderStatus: 'active',
     shippingCost: 5,
-    total: this.props.inCartItems.reduce((acc, currItem) => acc + currItem.price, 0),
+    pricesSum: this.props.inCartItems.reduce((acc, currItem) => acc + currItem.price, 0),
   };
 
   handleNewOrder = () => {
-    const { inCartItems, createNewOrder, removeAllItemsFromCart } = this.props;
+    const {
+      inCartItems,
+      createNewOrder,
+      removeAllItemsFromCart,
+      user: { userEmail },
+    } = this.props;
+    const { pricesSum, shippingCost } = this.state;
+
     const orderedItems = inCartItems.map(item => {
       return {
         id: item.id,
@@ -30,8 +37,8 @@ class CartPage extends Component {
     const order = {
       id: v4(),
       placed: Date.now(),
-      user: this.props.user.userEmail,
-      total: this.state.total + this.state.shippingCost,
+      user: userEmail,
+      total: pricesSum + shippingCost,
       items: orderedItems,
     };
 
@@ -42,11 +49,7 @@ class CartPage extends Component {
 
   render() {
     const { inCartItems, removeItemFromCart } = this.props;
-
-    let total = 0;
-    if (inCartItems.length > 0) {
-      total = inCartItems.reduce((acc, currItem) => acc + currItem.price, 0);
-    }
+    const { pricesSum, shippingCost } = this.state;
 
     let cartItemsOutput = inCartItems.map((product, index) => (
       <CartListItem
@@ -71,10 +74,10 @@ class CartPage extends Component {
         <div className="columns">
           <ul className="column is-8 cart-list">{cartItemsOutput}</ul>
           <CartSummary
-            total={total}
-            shippingCost={this.state.shippingCost}
+            pricesSum={pricesSum}
+            shippingCost={shippingCost}
             onConfirmOrder={this.handleNewOrder}
-            orderingDisabled={this.props.user === null || inCartItems.length < 1}
+            orderingDisabled={this.props.user.useEmail === null || inCartItems.length < 1}
           />
         </div>
       </div>

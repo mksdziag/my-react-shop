@@ -1,21 +1,36 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { registerNewUser, logInUser } from '../store/actions';
+
+import { registerNewUser, logInUser, clearMessage } from '../../store/actions';
 
 class LoginForm extends Component {
   state = {
-    type: 'login',
+    mode: 'login',
     email: '',
     password: '',
+    message: this.props.message,
   };
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.message !== prevState.message) {
+      return { message: nextProps.message };
+    } else return null;
+  }
 
   handleFormSubmit(e) {
     e.preventDefault();
+    const { email, password } = this.state;
 
-    if (this.state.type === 'login') {
-      this.props.logInUser({ email: this.state.email, password: this.state.password });
+    if (this.state.mode === 'login') {
+      this.props.logInUser({
+        email,
+        password,
+      });
     } else {
-      this.props.registerNewUser({ email: this.state.email, password: this.state.password });
+      this.props.registerNewUser({
+        email,
+        password,
+      });
     }
   }
 
@@ -31,18 +46,25 @@ class LoginForm extends Component {
   handleModeSwitch(e) {
     e.preventDefault();
     this.setState(
-      prevState => (prevState.type === 'login' ? { type: 'register' } : { type: 'login' })
+      prevState => (prevState.mode === 'login' ? { mode: 'register' } : { mode: 'login' })
     );
   }
 
   render() {
+    const { clearMessage } = this.props;
     return (
       <div className="column is-offset-3 is-6">
         <header className="heading">
           <h2 className="title is-size-4">
-            {this.state.type === 'login' ? 'Log In' : 'Register'}:
+            {this.state.mode === 'login' ? 'Log In' : 'Register'}:
           </h2>
         </header>
+        {this.state.message && (
+          <div className="notification is-warning">
+            <button className="delete" onClick={clearMessage} />
+            {this.state.message}
+          </div>
+        )}
         <form onSubmit={e => this.handleFormSubmit(e)}>
           <div className="field">
             <label className="label">email</label>
@@ -68,11 +90,11 @@ class LoginForm extends Component {
           <div className="control buttons">
             <input
               type="submit"
-              value={this.state.type === 'login' ? 'Log In' : 'Register'}
+              value={this.state.mode === 'login' ? 'Log In' : 'Register'}
               className="button is-primary is-fullwidth"
             />
             <button onClick={e => this.handleModeSwitch(e)} className="button is-text">
-              Swich to {this.state.type === 'login' ? 'Register' : 'Log In'}
+              Swich to {this.state.mode === 'login' ? 'Register' : 'Log In'}
             </button>
           </div>
         </form>
@@ -80,14 +102,20 @@ class LoginForm extends Component {
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    message: state.info.message,
+  };
+};
 const mapDispatchToProps = dispatch => {
   return {
     registerNewUser: user => dispatch(registerNewUser(user)),
     logInUser: user => dispatch(logInUser(user)),
+    clearMessage: () => dispatch(clearMessage()),
   };
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(LoginForm);

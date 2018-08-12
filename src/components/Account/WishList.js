@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 
 import './WishList.css';
 import productsDB from '../../database/products';
+import { addItemToCart } from '../../store/actions';
 
 import AddToCartButton from '../UI/Buttons/AddToCartButton';
-import { addItemToCart } from '../../store/actions';
 
 const WishList = props => {
   const { wishListIds, onAddItemToCart, inCartItems } = props;

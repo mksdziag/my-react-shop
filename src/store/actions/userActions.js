@@ -1,44 +1,59 @@
 import * as actionTypes from '../actionTypes/actionTypes';
 import db, { auth } from '../../db/db';
-
-const userRegistered = email => ({
-  type: actionTypes.REGISTER_NEW_USER,
-  payload: { email },
-});
+import { clearMessage, addMessage } from './infoActions';
 
 export const registerNewUser = user => dispatch => {
-  auth
-    .createUserWithEmailAndPassword(user.email, user.password)
-    .then(() => dispatch(userRegistered(user.email)))
-    .catch(error => console.log(error));
-
   db.collection('users')
     .doc(user.email)
     .set({
       userEmail: user.email,
-      name: 'edit your details',
-      secondName: 'edit your details',
-      street: 'edit your details',
-      propNum: 'edit your details',
-      city: 'edit your details',
-      zip: 'edit your details',
+      name: '',
+      secondName: '',
+      street: '',
+      propNum: '',
+      city: '',
+      zip: '',
       wishlist: [],
     });
+  auth
+    .createUserWithEmailAndPassword(user.email, user.password)
+    .then(() => dispatch(userRegistered(user.email)))
+    .catch(error => dispatch(addMessage(error.message)));
 };
 
-export const userLoggedIn = email => ({
-  type: actionTypes.LOGIN_USER,
-  payload: {
-    email,
-  },
+// export const userLogInFailed = () => {
+//   return {
+//     type: actionTypes.REGISTER_FAILED,
+//   };
+// };
+
+export const userRegistered = email => ({
+  type: actionTypes.REGISTER_NEW_USER,
+  payload: { email },
 });
 
 export const logInUser = user => dispatch => {
   auth
     .signInWithEmailAndPassword(user.email, user.password)
     .then(() => dispatch(userLoggedIn(user.email)))
-    .catch(error => console.log(error));
+    .then(() => dispatch(clearMessage()))
+    .catch(error => dispatch(addMessage(error.message)));
 };
+
+export const userLoggedIn = email => {
+  return {
+    type: actionTypes.LOGIN_USER,
+    payload: {
+      email,
+    },
+  };
+};
+
+// export const userLogInFailed = () => {
+//   return {
+//     type: actionTypes.LOGIN_FAILED,
+//   };
+// };
 
 const userLoggedOut = () => ({
   type: actionTypes.LOG_OUT_USER,
@@ -47,7 +62,7 @@ const userLoggedOut = () => ({
 export const logOutUser = () => dispatch => {
   auth
     .signOut()
-    .then(() => dispatch(userLoggedOut()))
+    .then(dispatch(userLoggedOut()))
     .catch(error => console.log(error));
 };
 
@@ -55,7 +70,7 @@ export const updateUserDetails = user => dispatch => {
   db.collection('users')
     .doc(user.userEmail)
     .update(user)
-    .then(() => dispatch(updatedUserDetails(user)));
+    .then(dispatch(updatedUserDetails(user)));
 };
 
 export const updatedUserDetails = userDetails => ({

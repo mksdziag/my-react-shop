@@ -40,7 +40,7 @@ const products = [
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     tags: ['magna', 'eu', 'ut', 'non', 'ullamco'],
     orders: 0,
-    discount: 0,
+    discount: 10,
     pieces: 0,
   },
   {
@@ -298,7 +298,7 @@ const products = [
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     tags: ['occaecat', 'mollit', 'Lorem', 'mollit', 'id'],
     orders: 0,
-    discount: 0,
+    discount: 20,
     pieces: 0,
   },
   {
@@ -339,7 +339,7 @@ const products = [
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     tags: ['dolor', 'tempor', 'laborum', 'ut', 'dolor'],
     orders: 0,
-    discount: 0,
+    discount: 60,
     pieces: 0,
   },
   {
@@ -402,7 +402,7 @@ const products = [
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     tags: ['ipsum', 'id', 'aliquip', 'mollit', 'laboris'],
     orders: 0,
-    discount: 0,
+    discount: 10,
     pieces: 0,
   },
   {
@@ -509,7 +509,7 @@ const products = [
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     tags: ['Lorem', 'ut', 'do', 'aliqua', 'ipsum'],
     orders: 0,
-    discount: 0,
+    discount: 20,
     pieces: 0,
   },
   {
@@ -616,7 +616,7 @@ const products = [
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     tags: ['aute', 'laboris', 'enim', 'ad', 'fugiat'],
     orders: 0,
-    discount: 0,
+    discount: 15,
     pieces: 0,
   },
   {
@@ -726,7 +726,7 @@ const products = [
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     tags: ['proident', 'exercitation', 'excepteur', 'eu', 'adipisicing'],
     orders: 0,
-    discount: 0,
+    discount: 25,
     pieces: 0,
   },
   {
@@ -792,7 +792,7 @@ const products = [
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     tags: ['cillum', 'non', 'aute', 'aliqua', 'occaecat'],
     orders: 0,
-    discount: 0,
+    discount: 10,
     pieces: 0,
   },
   {
@@ -877,7 +877,7 @@ const products = [
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     tags: ['veniam', 'Lorem', 'anim', 'ex', 'anim'],
     orders: 0,
-    discount: 0,
+    discount: 5,
     pieces: 0,
   },
   {
@@ -921,7 +921,7 @@ const products = [
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     tags: ['incididunt', 'culpa', 'nisi', 'amet', 'enim'],
     orders: 0,
-    discount: 0,
+    discount: 10,
     pieces: 0,
   },
   {
@@ -965,7 +965,7 @@ const products = [
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     tags: ['tempor', 'exercitation', 'nostrud', 'amet', 'consequat'],
     orders: 0,
-    discount: 0,
+    discount: 15,
     pieces: 0,
   },
   {
@@ -1053,7 +1053,7 @@ const products = [
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     tags: ['ipsum', 'excepteur', 'occaecat', 'qui', 'veniam'],
     orders: 0,
-    discount: 0,
+    discount: 20,
     pieces: 0,
   },
   {
@@ -1132,7 +1132,7 @@ const products = [
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     tags: ['eiusmod', 'magna', 'id', 'anim', 'eu'],
     orders: 0,
-    discount: 0,
+    discount: 10,
     pieces: 0,
   },
   {
@@ -1280,7 +1280,7 @@ const products = [
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     tags: ['qui', 'voluptate', 'nostrud', 'quis', 'nulla'],
     orders: 0,
-    discount: 0,
+    discount: 20,
     pieces: 0,
   },
   {
@@ -1381,7 +1381,7 @@ const products = [
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     tags: ['sint', 'adipisicing', 'excepteur', 'tempor', 'commodo'],
     orders: 0,
-    discount: 0,
+    discount: 10,
     pieces: 0,
   },
   {

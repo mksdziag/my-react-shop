@@ -15,6 +15,12 @@ export const FETCH_ORDERS = 'FETCH_ORDERS';
 
 // User actions
 export const REGISTER_NEW_USER = 'REGISTER_NEW_USER';
+export const REGISTER_FAILED = 'REGISTER_FAILED';
 export const LOGIN_USER = 'LOGIN_USER';
+export const LOGIN_FAILED = 'LOGIN_FAILED';
 export const LOG_OUT_USER = 'LOG_OUT_USER';
 export const UPDATE_USER_DETAILS = 'UPDATE_USER_DETAILS';
+
+// Info Actions
+export const CLEAR_MESSAGE = 'CLEAR_MESSAGE';
+export const ADD_MESSAGE = 'ADD_MESSAGE';

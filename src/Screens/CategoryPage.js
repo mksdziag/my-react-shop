@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+
 import products from '../database/products';
+
 import CategoryHeader from '../components/CategoryHeader';
 import ProductCard from '../components/ProductCard';
 import ProductPreviewModal from '../components/UI/Modals/ProductPreviewModal';
@@ -23,6 +25,7 @@ class CategoryPage extends Component {
   componentDidUpdate(prevProps) {
     const currentCategoryName = this.props.match.params.categoryName;
     const previousCategoryName = prevProps.match.params.categoryName;
+
     if (currentCategoryName !== previousCategoryName) {
       const productsInCategory = products.filter(
         product => product.category === currentCategoryName
@@ -42,6 +45,7 @@ class CategoryPage extends Component {
 
   render() {
     const { categoryName, isModalActive, currentProduct, productsInCategory } = this.state;
+
     const productCards = productsInCategory.map(product => (
       <div key={product.id} className="column is-4-tablet is-3-widescreen">
         <ProductCard

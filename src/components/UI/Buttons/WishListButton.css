@@ -1,3 +1,10 @@
-.product-card__wishlist-icon {
+.wishlist-button {
+  border: none;
+  transition: opacity 150ms ease;
+}
+.wishlist-button:disabled:hover {
+  opacity: 0.75;
+}
+.wishlist-button__icon {
   transition: color 150ms ease;
 }
