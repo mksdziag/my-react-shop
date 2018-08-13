@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Icon } from 'react-icons-kit';
 import { ic_remove_shopping_cart as cartRemove } from 'react-icons-kit/md/ic_remove_shopping_cart';
 
 import './CartListItem.css';
 
 const CartListItem = props => {
-  const { idx, name, price, onItemRemove, pieces } = props;
+  const { idx, name, price, onItemRemove, pieces, id } = props;
 
   const onQtyChange = () => {
     console.log('zmiana');
@@ -39,7 +40,12 @@ const CartListItem = props => {
           <div className="is-size-7 has-text-grey-lighter ">size:</div>
         </div>
         <div className="column is-5">
-          <p className="cart-item__name  has-text-weight-semibold">{name}</p>
+          <Link
+            className="cart-item__name has-text-dark has-text-weight-semibold"
+            to={`/product/${id}`}
+          >
+            {name}
+          </Link>
           <div className="is-size-7 has-text-grey-lighter ">product:</div>
         </div>
         <div className="column is-2">

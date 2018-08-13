@@ -4,6 +4,7 @@ import './OrderDetails.css';
 
 const OrderDetails = props => {
   const { order } = props;
+  console.log(order);
   return (
     <div className="order-details">
       <header className="heading has-text-centered order-details__heading">
@@ -19,7 +20,7 @@ const OrderDetails = props => {
           <span className="is-size-7 has-text-grey has-text-weight-light is-lowercase">
             placed:{' '}
           </span>
-          {order.placed.toLocaleString()}
+          {new Date(order.placed).toLocaleString()}
         </div>
 
         <div className="column is-size-6 has-text-weight-semibold has-text-danger">

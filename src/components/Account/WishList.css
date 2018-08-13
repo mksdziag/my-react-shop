@@ -1,4 +1,5 @@
 .wish-list {
+  min-height: 150px;
 }
 .wish-list__item {
   box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);

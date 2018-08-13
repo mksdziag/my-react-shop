@@ -7,8 +7,8 @@ const CategoryHeader = props => {
 
   return (
     <header className="category-header">
-      <h2 className="title is-size-3 category-title">
-        Products in <span className="category-name">{title}</span> category.
+      <h2 className="title is-size-3 has-text-secondary has-text-weight-normal category-title">
+        Products in <span className="has-text-weight-bold category-name">{title}</span> category.
       </h2>
     </header>
   );

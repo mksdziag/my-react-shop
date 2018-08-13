@@ -12,6 +12,8 @@ class Search extends Component {
     this.textInput = createRef();
     this.state = {
       searchResults: [],
+      searchWord: '',
+      location: this.props.match,
     };
   }
 
@@ -19,17 +21,29 @@ class Search extends Component {
     this.textInput.current.focus();
   }
 
+  componentDidUpdate(prevProps) {
+    const { onCloseHandler } = this.props;
+    const currLocation = this.props.location.pathname;
+    const prevLocation = prevProps.location.pathname;
+
+    if (currLocation !== prevLocation) {
+      onCloseHandler();
+    }
+  }
+
   componentWillUnmount() {
     this.setState({ searchResults: [] });
   }
 
   handleSearch = e => {
-    const searchWord = e.target.value;
-    if (searchWord.length > 2) {
-      const searchResults = products.filter(product => product.name.includes(searchWord));
-      this.setState({ searchResults });
+    const searchWord = e.target.value.toLowerCase();
+    if (searchWord.length > 0) {
+      const searchResults = products.filter(product =>
+        product.name.toLowerCase().includes(searchWord)
+      );
+      this.setState({ searchResults, searchWord });
     } else {
-      this.setState({ searchResults: [] });
+      this.setState({ searchResults: [], searchWord });
     }
   };
 
@@ -50,7 +64,7 @@ class Search extends Component {
               />
             </div>
           </div>
-          <SearchResults results={this.state.searchResults} />
+          <SearchResults searchWord={this.state.searchWord} results={this.state.searchResults} />
           <button
             className="delete is-large search__close"
             aria-label="close"

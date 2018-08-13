@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Lightbox from 'lightbox-react';
+import { CSSTransition } from 'react-transition-group';
 import { Icon } from 'react-icons-kit';
 import { table } from 'react-icons-kit/icomoon/table';
-import { CSSTransition } from 'react-transition-group';
 
 import './ProductPage.css';
 import products from '../database/products';
@@ -14,12 +14,13 @@ import AddToCartButton from '../components/UI/Buttons/AddToCartButton';
 import SubPageHeader from '../components/SubPageHeader';
 import SizesTable from '../components/SizesTable';
 import ProductPagePromoBar from '../components/ProductPagePromoBar';
+import WishListButton from '../components/UI/Buttons/WishListButton';
 
 class ProductPage extends Component {
   state = {
     productId: '',
     lightboxOpen: false,
-    sizetableOpen: false,
+    sizeTableOpen: false,
     photoIndex: 0,
   };
 
@@ -38,14 +39,14 @@ class ProductPage extends Component {
 
   handleSizeTableOpenClose = () => {
     this.setState(prevState => {
-      return { sizetableOpen: !prevState.sizetableOpen };
+      return { sizeTableOpen: !prevState.sizeTableOpen };
     });
   };
 
   render() {
     const product = products.find(product => product.id === this.state.productId);
     const {
-      // id,
+      id,
       name,
       // index,
       // isActive,
@@ -57,6 +58,7 @@ class ProductPage extends Component {
       description,
       // added,
       sizes,
+      discount,
       // tags,
     } = product;
     const { onAddItemToCart, inCartItems } = this.props;
@@ -72,7 +74,7 @@ class ProductPage extends Component {
         <SubPageHeader title={name} subtitle={category} />
         <section className="section">
           <div className="columns">
-            <div className="column is-5">
+            <div className="column is-5 is-relative">
               <img
                 src={pictures[photoIndex]}
                 alt=""
@@ -97,6 +99,7 @@ class ProductPage extends Component {
                   }
                 />
               )}
+              <WishListButton additionalClasses="product-card__wishlist-add " itemId={id} />
             </div>
             <div className="column is-7">
               <header className="product-page__name-header">
@@ -114,22 +117,27 @@ class ProductPage extends Component {
                 <div className="product-page__price has-text-danger has-text-weight-semibold is-size-5 is-inline-block">
                   {price.toFixed(2)}$
                 </div>
+                {discount !== 0 && (
+                  <span className="is-size-6 has-text-danger has-font-weight-semibold">
+                    {'-' + discount + '%'}
+                  </span>
+                )}
               </div>
               <div className="columns">
                 <div className="product-page__actions  column is-6-tablet">
                   <AddToCartButton
-                    in={this.state.sizetableOpen}
+                    in={this.state.sizeTableOpen}
                     onClickHandler={() => onAddItemToCart(product)}
                     isInCart={isInCart}
                     additionalClasses={'is-medium is-fullwidth'}
                   />
                 </div>
               </div>
-              <button onClick={this.handleSizeTableOpenClose} className="button is-inverted">
-                <Icon icon={table} /> Table of sizes
+              <button onClick={this.handleSizeTableOpenClose} className="button is-inverted ">
+                <Icon icon={table} style={{ marginRight: '.5rem' }} /> Table of sizes
               </button>
               <CSSTransition
-                in={this.state.sizetableOpen}
+                in={this.state.sizeTableOpen}
                 timeout={300}
                 classNames="table-reveal"
                 mountOnEnter

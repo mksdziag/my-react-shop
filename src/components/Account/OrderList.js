@@ -6,6 +6,7 @@ import { eye } from 'react-icons-kit/icomoon/eye';
 import './OrderList.css';
 import ModalBlank from '../UI/Modals/ModalBlank';
 import OrderDetails from './OrderDetails';
+import Loader from '../UI/Loaders/Loader';
 
 class OrderList extends Component {
   state = {
@@ -23,12 +24,12 @@ class OrderList extends Component {
   };
 
   render() {
-    const { orders } = this.props;
+    const { orders, loading } = this.props;
     const ordersOutput = orders.map((order, index) => (
       <tr className="orders__item is-size-6" key={order.id}>
         <td className="is-hidden-mobile">{index + 1}.</td>
         <td className="has-text-primary">{order.total.toFixed(2)}$</td>
-        <td>{order.placed.toLocaleString()}</td>
+        <td>{new Date(order.placed).toLocaleString()}</td>
         <td>{order.items.length}</td>
         <td>
           <button
@@ -42,24 +43,28 @@ class OrderList extends Component {
     ));
 
     return (
-      <div className="orders">
-        <table className="table is-striped is-hoverable sizes-table is-fullwidth">
-          <thead>
-            <tr className="orders__header is-capitalized is-7">
-              <th
-                className="is-hidden-mobile	
+      <div className="orders is-relative">
+        {loading ? (
+          <Loader />
+        ) : (
+          <table className="table is-striped is-hoverable sizes-table is-fullwidth">
+            <thead>
+              <tr className="orders__header is-capitalized is-7">
+                <th
+                  className="is-hidden-mobile	
                   has-text-grey has-text-weight-light"
-              >
-                no.
-              </th>
-              <th className="has-text-grey has-text-weight-light">amount</th>
-              <th className="has-text-grey has-text-weight-light">date</th>
-              <th className="has-text-grey has-text-weight-light ">items</th>
-              <th className="has-text-grey has-text-weight-light ">link</th>
-            </tr>
-          </thead>
-          <tbody>{ordersOutput}</tbody>
-        </table>
+                >
+                  no.
+                </th>
+                <th className="has-text-grey has-text-weight-light">amount</th>
+                <th className="has-text-grey has-text-weight-light">date</th>
+                <th className="has-text-grey has-text-weight-light ">items</th>
+                <th className="has-text-grey has-text-weight-light ">link</th>
+              </tr>
+            </thead>
+            <tbody>{ordersOutput}</tbody>
+          </table>
+        )}
         <ModalBlank
           isModalActive={this.state.isOrderModalActive}
           onCloseClick={this.modalCloseHandler}
@@ -74,6 +79,7 @@ class OrderList extends Component {
 const mapStateToProps = state => {
   return {
     orders: state.orders.orders,
+    loading: state.orders.loading,
   };
 };
 

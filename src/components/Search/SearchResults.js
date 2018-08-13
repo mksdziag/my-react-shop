@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './SearchResults.css';
 
 const SearchResults = props => {
-  const { results } = props;
+  const { results, searchWord } = props;
 
   let searchResultsItems = (
     <div className="search-results__start-info">
@@ -13,6 +13,16 @@ const SearchResults = props => {
       </p>
     </div>
   );
+
+  if (searchWord.length > 0) {
+    searchResultsItems = (
+      <div className="search-results__start-info">
+        <p className="is-size-4 has-text-centered has-text-black-ter">
+          we did not find product which you looking for...
+        </p>
+      </div>
+    );
+  }
 
   if (results.length > 1) {
     searchResultsItems = results.map(product => {

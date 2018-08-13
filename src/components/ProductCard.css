@@ -44,14 +44,8 @@
 }
 .product-card__wishlist-add {
   position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   top: 0.5rem;
   right: 0.5rem;
-  padding: 0.5rem;
-  border-radius: 50%;
-  box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.3);
 }
 .product-card__wishlist-icon {
 }

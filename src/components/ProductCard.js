@@ -10,6 +10,7 @@ import { addItemToCart } from '../store/actions';
 
 import WishListButton from './UI/Buttons/WishListButton';
 import AddToCartButton from './UI/Buttons/AddToCartButton';
+import DiscountInfo from './DiscountInfo';
 
 const ProductCard = props => {
   const {
@@ -19,6 +20,7 @@ const ProductCard = props => {
       pictures,
       // category,
       manufacturer,
+      discount,
       price,
     },
     inCartItems,
@@ -58,7 +60,8 @@ const ProductCard = props => {
                 </button>
               </div>
             </div>
-            <WishListButton itemId={id} />
+            {discount !== 0 && <DiscountInfo discount={discount} />}
+            <WishListButton itemId={id} additionalClasses="product-card__wishlist-add " />
           </figure>
         </Link>
       </div>

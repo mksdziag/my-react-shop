@@ -4,46 +4,56 @@ import { Icon } from 'react-icons-kit';
 import { heart } from 'react-icons-kit/icomoon/heart';
 
 import './WishListButton.css';
-
 import { addItemToWishList, removeItemFromWishList } from '../../../store/actions';
 
 const WishListButton = props => {
-  const { itemId, wishListItems, onAddItemToWishList, onRemoveItemFromWishList } = props;
+  const {
+    userEmail,
+    itemId,
+    wishListItems,
+    onAddItemToWishList,
+    onRemoveItemFromWishList,
+    additionalClasses,
+  } = props;
 
   const isOnWishList = wishListItems.includes(itemId);
   const onClichHandler = e => {
     e.preventDefault();
+    e.stopPropagation();
     if (isOnWishList) {
-      onRemoveItemFromWishList(itemId);
+      onRemoveItemFromWishList(userEmail, itemId);
     } else {
-      onAddItemToWishList(itemId);
+      onAddItemToWishList(userEmail, itemId);
     }
   };
 
+  const iconClasses = isOnWishList
+    ? 'wishlist-button__icon has-text-danger'
+    : 'wishlist-button__icon has-text-grey-lighter';
+
   return (
-    <div
+    <button
       onClick={e => onClichHandler(e)}
-      className="has-background-primary product-card__wishlist-add has-text-white"
+      className={`has-background-white has-text-white wishlist-button ${additionalClasses} ${!userEmail &&
+        'tooltip is-tooltip-left'}`}
+      data-tooltip="Sign Up to add"
+      disabled={userEmail === null}
     >
-      <Icon
-        className="product-card__wishlist-icon"
-        style={{ color: isOnWishList && '#ff6666' }}
-        size={24}
-        icon={heart}
-      />
-    </div>
+      <Icon className={iconClasses} size={24} icon={heart} />
+    </button>
   );
 };
 
 const mapStateToProps = state => {
   return {
     wishListItems: state.wishList.wishListItems,
+    userEmail: state.user.userEmail,
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
-    onAddItemToWishList: id => dispatch(addItemToWishList(id)),
-    onRemoveItemFromWishList: id => dispatch(removeItemFromWishList(id)),
+    onAddItemToWishList: (userEmail, id) => dispatch(addItemToWishList(userEmail, id)),
+    onRemoveItemFromWishList: (userEmail, id) => dispatch(removeItemFromWishList(userEmail, id)),
   };
 };
 

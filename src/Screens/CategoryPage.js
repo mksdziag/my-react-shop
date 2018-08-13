@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+
 import products from '../database/products';
+
 import CategoryHeader from '../components/CategoryHeader';
 import ProductCard from '../components/ProductCard';
-import ProductPreviewModal from '../components/UI/Modals/ProductPreviewModal';
+import ProductPreview from '../components/ProductPreview';
+import ModalBlank from '../components/UI/Modals/ModalBlank';
 
 class CategoryPage extends Component {
   state = {
@@ -23,6 +26,7 @@ class CategoryPage extends Component {
   componentDidUpdate(prevProps) {
     const currentCategoryName = this.props.match.params.categoryName;
     const previousCategoryName = prevProps.match.params.categoryName;
+
     if (currentCategoryName !== previousCategoryName) {
       const productsInCategory = products.filter(
         product => product.category === currentCategoryName
@@ -42,6 +46,7 @@ class CategoryPage extends Component {
 
   render() {
     const { categoryName, isModalActive, currentProduct, productsInCategory } = this.state;
+
     const productCards = productsInCategory.map(product => (
       <div key={product.id} className="column is-4-tablet is-3-widescreen">
         <ProductCard
@@ -52,15 +57,15 @@ class CategoryPage extends Component {
     ));
 
     return (
-      <div className="container">
-        <CategoryHeader title={categoryName} />
-        <div className="columns is-multiline">{productCards}</div>
-        <ProductPreviewModal
-          isModalActive={isModalActive}
-          onQuickViewCloseHandler={this.closeProductPreview}
-          product={{ ...currentProduct }}
-        />
-      </div>
+      <section className="section">
+        <div className="container">
+          <CategoryHeader title={categoryName} />
+          <div className="columns is-multiline">{productCards}</div>
+          <ModalBlank isModalActive={isModalActive} onCloseClick={this.closeProductPreview}>
+            <ProductPreview product={{ ...currentProduct }} />
+          </ModalBlank>
+        </div>
+      </section>
     );
   }
 }
