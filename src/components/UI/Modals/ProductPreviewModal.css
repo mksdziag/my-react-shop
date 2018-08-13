@@ -4,7 +4,7 @@
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.65);
+  background-image: linear-gradient(45deg, rgba(69, 93, 122, 0.805), rgba(46, 153, 176, 0.805));
   z-index: 40;
   transition: opacity 200ms ease;
   opacity: 0;

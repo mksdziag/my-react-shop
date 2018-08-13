@@ -1,6 +1,7 @@
 import * as actionTypes from '../actionTypes/actionTypes';
 
 const initalState = {
+  loading: false,
   wishListItems: [],
 };
 
@@ -16,11 +17,18 @@ const wishListReducer = (state = initalState, action) => {
         ...state,
         wishListItems: [...state.wishListItems].filter(itemId => itemId !== action.payload.id),
       };
-    case actionTypes.FETCH_WISHLIST:
+    case actionTypes.FETCH_WISHLIST_ACTIVE:
       return {
         ...state,
+        loading: true,
+      };
+    case actionTypes.FETCH_WISHLIST_SUCCESS:
+      return {
+        ...state,
+        loading: false,
         wishListItems: [...action.payload.wishList],
       };
+
     default:
       return state;
   }

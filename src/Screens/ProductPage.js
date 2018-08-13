@@ -99,7 +99,7 @@ class ProductPage extends Component {
                   }
                 />
               )}
-              <WishListButton itemId={id} />
+              <WishListButton additionalClasses="product-card__wishlist-add " itemId={id} />
             </div>
             <div className="column is-7">
               <header className="product-page__name-header">
@@ -133,8 +133,8 @@ class ProductPage extends Component {
                   />
                 </div>
               </div>
-              <button onClick={this.handleSizeTableOpenClose} className="button is-inverted">
-                <Icon icon={table} /> Table of sizes
+              <button onClick={this.handleSizeTableOpenClose} className="button is-inverted ">
+                <Icon icon={table} style={{ marginRight: '.5rem' }} /> Table of sizes
               </button>
               <CSSTransition
                 in={this.state.sizeTableOpen}

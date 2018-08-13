@@ -7,7 +7,14 @@ import './WishListButton.css';
 import { addItemToWishList, removeItemFromWishList } from '../../../store/actions';
 
 const WishListButton = props => {
-  const { userEmail, itemId, wishListItems, onAddItemToWishList, onRemoveItemFromWishList } = props;
+  const {
+    userEmail,
+    itemId,
+    wishListItems,
+    onAddItemToWishList,
+    onRemoveItemFromWishList,
+    additionalClasses,
+  } = props;
 
   const isOnWishList = wishListItems.includes(itemId);
   const onClichHandler = e => {
@@ -27,7 +34,7 @@ const WishListButton = props => {
   return (
     <button
       onClick={e => onClichHandler(e)}
-      className={`has-background-white product-card__wishlist-add has-text-white wishlist-button ${!userEmail &&
+      className={`has-background-white has-text-white wishlist-button ${additionalClasses} ${!userEmail &&
         'tooltip is-tooltip-left'}`}
       data-tooltip="Sign Up to add"
       disabled={userEmail === null}

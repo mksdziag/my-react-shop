@@ -3,10 +3,12 @@ import { connect } from 'react-redux';
 
 import './UserInfo.css';
 import { logOutUser, updateUserDetails } from '../../store/actions/';
-import db from '../../db/db';
+
+import Loader from '../UI/Loaders/Loader';
 
 class UserInfo extends Component {
   state = {
+    loading: false,
     editing: false,
     userEmail: this.props.user.userEmail,
     name: this.props.user.name,
@@ -17,29 +19,11 @@ class UserInfo extends Component {
     zip: this.props.user.zip,
   };
 
-  componentDidMount() {
-    db.collection('users')
-      .doc(this.props.user.userEmail)
-      .get()
-      .then(doc => {
-        if (doc.exists) {
-          const userDetails = doc.data();
-          this.setState({
-            name: userDetails.name,
-            secondName: userDetails.secondName,
-            street: userDetails.street,
-            propNum: userDetails.propNum,
-            city: userDetails.city,
-            zip: userDetails.zip,
-          });
-        } else {
-          console.log('No such document!');
-        }
-      })
-      .catch(function(error) {
-        console.log('Error getting document:', error);
-      });
-  }
+  // static getDerivedStateFromProps(nextProps, prevState) {
+  //   if (nextProps.user !== prevState.message) {
+  //     return { message: nextProps.message };
+  //   } else return null;
+  // }
 
   handleLogOut = () => {
     this.props.logOutUser();
@@ -86,15 +70,15 @@ class UserInfo extends Component {
         <div className="column user-info__details">
           <div className="user-info__name">
             <span className="is-size-7 is-italic has-text-grey-light">First name:</span>
-            <p>{this.state.name}</p>
+            <p>{this.props.user.name}</p>
           </div>
           <div className="user-info__sec-name">
             <span className="is-size-7 is-italic has-text-grey-light">Second name:</span>
-            <p>{this.state.secondName}</p>
+            <p>{this.props.user.secondName}</p>
           </div>
           <div className="user-info__email">
             <span className="is-size-7 is-italic has-text-grey-light">email:</span>
-            <p>{this.state.userEmail}</p>
+            <p>{this.props.user.userEmail}</p>
           </div>
         </div>
         <div className="column user-info__address">
@@ -102,21 +86,21 @@ class UserInfo extends Component {
             <div className="columns is-mobile ">
               <div className="column  is-8">
                 <span className="is-size-7 is-italic has-text-grey-light">Street:</span>
-                <p>{this.state.street}</p>
+                <p>{this.props.user.street}</p>
               </div>
               <div className="column is-4 ">
                 <span className="is-size-7 is-italic has-text-grey-light">no.</span>
-                <p>{this.state.propNum}</p>
+                <p>{this.props.user.propNum}</p>
               </div>
             </div>
           </div>
           <div className="user-info__city">
             <span className="is-size-7 is-italic has-text-grey-light">City:</span>
-            <p>{this.state.city}</p>
+            <p>{this.props.user.city}</p>
           </div>
           <div className="user-info__zip">
             <span className="is-size-7 is-italic has-text-grey-light">zip code:</span>
-            <p>{this.state.zip}</p>
+            <p>{this.props.user.zip}</p>
           </div>
         </div>
         <div className="column is-2 user-info__action buttons control">
@@ -239,7 +223,11 @@ class UserInfo extends Component {
       );
     }
 
-    return <section className="user-info">{userInfo}</section>;
+    return (
+      <section className="user-info is-relative">
+        {this.state.loading ? <Loader /> : userInfo}
+      </section>
+    );
   }
 }
 

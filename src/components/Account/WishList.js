@@ -7,9 +7,11 @@ import productsDB from '../../database/products';
 import { addItemToCart } from '../../store/actions';
 
 import AddToCartButton from '../UI/Buttons/AddToCartButton';
+import Loader from '../UI/Loaders/Loader';
+import WishListButton from '../UI/Buttons/WishListButton';
 
 const WishList = props => {
-  const { wishListIds, onAddItemToCart, inCartItems } = props;
+  const { wishListIds, onAddItemToCart, inCartItems, loading } = props;
 
   const wishListItems = [];
   for (let wishListItemId of wishListIds) {
@@ -31,6 +33,9 @@ const WishList = props => {
 
       return (
         <li className="wish-list__item level columns is-mobile" key={id}>
+          <div className="column is-relative">
+            <WishListButton itemId={id} />
+          </div>
           <div className="column  is-paddingless  wish-list__item-cell">
             <Link to={`/product/${id}`}>
               <img src={pictures[0]} alt="" className="wish-list__item-image" />
@@ -62,12 +67,13 @@ const WishList = props => {
     });
   }
 
-  return <ul className="wish-list">{wishListItemsOutput}</ul>;
+  return <ul className="wish-list is-relative">{loading ? <Loader /> : wishListItemsOutput}</ul>;
 };
 
 const mapStateToProps = state => {
   return {
     wishListIds: state.wishList.wishListItems,
+    loading: state.wishList.loading,
     inCartItems: state.cart.inCartItems,
   };
 };

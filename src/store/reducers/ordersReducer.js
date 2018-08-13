@@ -2,6 +2,7 @@ import * as actionTypes from '../actionTypes/actionTypes';
 
 const initalState = {
   orders: [],
+  loading: false,
 };
 
 const ordersReducer = (state = initalState, action) => {
@@ -16,10 +17,16 @@ const ordersReducer = (state = initalState, action) => {
         ...state,
         orders: [...state.orders].filter(order => order.id !== action.payload.id),
       };
-    case actionTypes.FETCH_ORDERS:
+    case actionTypes.FETCH_ORDERS_SUCCESS:
       return {
         ...state,
+        loading: false,
         orders: [...action.payload.orders],
+      };
+    case actionTypes.FETCH_ORDERS_ACTIVE:
+      return {
+        ...state,
+        loading: true,
       };
     default:
       return state;

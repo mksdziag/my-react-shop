@@ -34,6 +34,7 @@ export const itemFromWishListRemoved = id => ({
 });
 
 export const fetchWishList = userEmail => dispatch => {
+  dispatch(wishListFetchingActive());
   db.collection('users')
     .doc(userEmail)
     .get()
@@ -49,8 +50,12 @@ export const fetchWishList = userEmail => dispatch => {
 };
 
 export const wishListFetched = wishList => ({
-  type: actionTypes.FETCH_WISHLIST,
+  type: actionTypes.FETCH_WISHLIST_SUCCESS,
   payload: {
     wishList,
   },
+});
+
+export const wishListFetchingActive = () => ({
+  type: actionTypes.FETCH_WISHLIST_ACTIVE,
 });

@@ -56,15 +56,17 @@ class CategoryPage extends Component {
     ));
 
     return (
-      <div className="container">
-        <CategoryHeader title={categoryName} />
-        <div className="columns is-multiline">{productCards}</div>
-        <ProductPreviewModal
-          isModalActive={isModalActive}
-          onQuickViewCloseHandler={this.closeProductPreview}
-          product={{ ...currentProduct }}
-        />
-      </div>
+      <section className="section">
+        <div className="container">
+          <CategoryHeader title={categoryName} />
+          <div className="columns is-multiline">{productCards}</div>
+          <ProductPreviewModal
+            isModalActive={isModalActive}
+            onQuickViewCloseHandler={this.closeProductPreview}
+            product={{ ...currentProduct }}
+          />
+        </div>
+      </section>
     );
   }
 }

@@ -24,6 +24,7 @@ export const removeOrder = id => ({
 });
 
 export const fetchOrders = userEmail => dispatch => {
+  dispatch(ordersFetchingActive());
   db.collection('orders')
     .where('user', '==', userEmail)
     .get()
@@ -37,8 +38,12 @@ export const fetchOrders = userEmail => dispatch => {
 };
 
 const ordersFetched = orders => ({
-  type: actionTypes.FETCH_ORDERS,
+  type: actionTypes.FETCH_ORDERS_SUCCESS,
   payload: {
     orders,
   },
+});
+
+const ordersFetchingActive = () => ({
+  type: actionTypes.FETCH_ORDERS_ACTIVE,
 });

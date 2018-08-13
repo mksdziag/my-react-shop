@@ -15,23 +15,6 @@ class MyAccount extends Component {
     userEmail: null,
   };
 
-  componentDidMount() {
-    const { userEmail } = this.state;
-    const { isUserLogged, fetchOrders, fetchWishList } = this.props;
-    if (isUserLogged) {
-      fetchOrders(userEmail);
-      fetchWishList(userEmail);
-    }
-  }
-  // componentDidUpdate() {
-  //   const { userEmail } = this.state;
-  //   const { isUserLogged, fetchOrders, fetchWishList } = this.props;
-  //   if (isUserLogged) {
-  //     fetchOrders(userEmail);
-  //     fetchWishList(userEmail);
-  //   }
-  // }
-
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.user.userEmail !== prevState.userEmail) {
       return { userEmail: nextProps.user.userEmail };

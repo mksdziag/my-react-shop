@@ -1,6 +1,8 @@
 import * as actionTypes from '../actionTypes/actionTypes';
 import db, { auth } from '../../db/db';
 import { clearMessage, addMessage } from './infoActions';
+import { fetchOrders } from './ordersActions';
+import { fetchWishList } from './wishListActions';
 
 export const registerNewUser = user => dispatch => {
   db.collection('users')
@@ -21,12 +23,6 @@ export const registerNewUser = user => dispatch => {
     .catch(error => dispatch(addMessage(error.message)));
 };
 
-// export const userLogInFailed = () => {
-//   return {
-//     type: actionTypes.REGISTER_FAILED,
-//   };
-// };
-
 export const userRegistered = email => ({
   type: actionTypes.REGISTER_NEW_USER,
   payload: { email },
@@ -40,20 +36,17 @@ export const logInUser = user => dispatch => {
     .catch(error => dispatch(addMessage(error.message)));
 };
 
-export const userLoggedIn = email => {
-  return {
+export const userLoggedIn = email => dispatch => {
+  dispatch(fetchOrders(email));
+  dispatch(fetchWishList(email));
+  dispatch(fetchUserDetails(email));
+  dispatch({
     type: actionTypes.LOGIN_USER,
     payload: {
       email,
     },
-  };
+  });
 };
-
-// export const userLogInFailed = () => {
-//   return {
-//     type: actionTypes.LOGIN_FAILED,
-//   };
-// };
 
 const userLoggedOut = () => ({
   type: actionTypes.LOG_OUT_USER,
@@ -64,6 +57,23 @@ export const logOutUser = () => dispatch => {
     .signOut()
     .then(dispatch(userLoggedOut()))
     .catch(error => console.log(error));
+};
+
+export const fetchUserDetails = user => dispatch => {
+  db.collection('users')
+    .doc(user)
+    .get()
+    .then(doc => {
+      if (doc.exists) {
+        const userDetails = doc.data();
+        dispatch(updatedUserDetails(userDetails));
+      } else {
+        console.log('No such document!');
+      }
+    })
+    .catch(error => {
+      console.log('Error getting document:', error);
+    });
 };
 
 export const updateUserDetails = user => dispatch => {

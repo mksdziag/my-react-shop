@@ -14,7 +14,12 @@ shadow large :
 secondary font
   font-family: 'Norican', cursive;
 
-
+  Palette
+  $color1: #2e99b0;
+  $color2: #455d7a;
+  $color3: #ff2e4c;
+  $color4: #fcd77f;
+  $color5: #43926b;
 
 */
 

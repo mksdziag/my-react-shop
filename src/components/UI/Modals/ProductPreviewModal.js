@@ -41,7 +41,9 @@ const ProductPreviewModal = props => {
             </div>
             <div className="column is-7">
               <header className="product-preview-modal__product-header">
-                <h2 className="title">{name}</h2>
+                <Link to={`/product/${id}`}>
+                  <h2 className="title">{name}</h2>
+                </Link>
                 <h4 className="subtitle has-text-grey">
                   <Link
                     className="is-size-6-touch has-text-grey "
