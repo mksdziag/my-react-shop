@@ -4,7 +4,8 @@ import products from '../database/products';
 
 import CategoryHeader from '../components/CategoryHeader';
 import ProductCard from '../components/ProductCard';
-import ProductPreviewModal from '../components/UI/Modals/ProductPreviewModal';
+import ProductPreview from '../components/ProductPreview';
+import ModalBlank from '../components/UI/Modals/ModalBlank';
 
 class CategoryPage extends Component {
   state = {
@@ -60,11 +61,9 @@ class CategoryPage extends Component {
         <div className="container">
           <CategoryHeader title={categoryName} />
           <div className="columns is-multiline">{productCards}</div>
-          <ProductPreviewModal
-            isModalActive={isModalActive}
-            onQuickViewCloseHandler={this.closeProductPreview}
-            product={{ ...currentProduct }}
-          />
+          <ModalBlank isModalActive={isModalActive} onCloseClick={this.closeProductPreview}>
+            <ProductPreview product={{ ...currentProduct }} />
+          </ModalBlank>
         </div>
       </section>
     );

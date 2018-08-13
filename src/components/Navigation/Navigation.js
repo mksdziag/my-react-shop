@@ -42,10 +42,13 @@ class Navigation extends Component {
 
   render() {
     return (
-      <nav className="navbar is-fixed-top has-background-white 	" aria-label="main navigation">
+      <nav className="navbar is-fixed-top has-background-white " aria-label="main navigation">
         <div className="container container--paddingless">
           <div className="navbar-brand">
-            <Link to="/" className="navbar-item has-text-secondary has-text-dark is-size-3">
+            <Link
+              to="/"
+              className="navbar-item has-text-secondary has-text-dark is-size-4-touch is-size-3"
+            >
               MyReactShop
             </Link>
             <div

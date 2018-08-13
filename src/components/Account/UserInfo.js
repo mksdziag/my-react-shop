@@ -133,7 +133,7 @@ class UserInfo extends Component {
                     onChange={e => this.handleInputChange(e, 'name')}
                     name="name"
                     type="text"
-                    placeholder="name"
+                    placeholder={`current ${this.props.user.name}`}
                   />
                 </div>
                 <div className="user-info__sec-name">
@@ -143,7 +143,7 @@ class UserInfo extends Component {
                     name="secondName"
                     onChange={e => this.handleInputChange(e, 'secondName')}
                     type="text"
-                    placeholder="second name"
+                    placeholder={`current ${this.props.user.secondName}`}
                   />
                 </div>
                 <div className="user-info__email">
@@ -161,7 +161,7 @@ class UserInfo extends Component {
                         onChange={e => this.handleInputChange(e, 'street')}
                         name="street"
                         type="text"
-                        placeholder="name"
+                        placeholder={`current ${this.props.user.street}`}
                       />
                     </div>
                     <div className="column is-4 ">
@@ -171,7 +171,7 @@ class UserInfo extends Component {
                         onChange={e => this.handleInputChange(e, 'propNum')}
                         name="propNum"
                         type="text"
-                        placeholder="number"
+                        placeholder={`current ${this.props.user.propNum}`}
                       />
                     </div>
                   </div>
@@ -183,7 +183,7 @@ class UserInfo extends Component {
                     onChange={e => this.handleInputChange(e, 'city')}
                     name="city"
                     type="text"
-                    placeholder="city"
+                    placeholder={`current ${this.props.user.city}`}
                   />
                 </div>
                 <div className="user-info__zip">
@@ -193,7 +193,7 @@ class UserInfo extends Component {
                     onChange={e => this.handleInputChange(e, 'zip')}
                     name="zip"
                     type="text"
-                    placeholder="zip"
+                    placeholder={`current ${this.props.user.zip}`}
                   />
                 </div>
               </div>

@@ -33,7 +33,7 @@ const WishList = props => {
 
       return (
         <li className="wish-list__item level columns is-mobile" key={id}>
-          <div className="column is-relative">
+          <div className="column is-relative is-hidden-mobile">
             <WishListButton itemId={id} />
           </div>
           <div className="column  is-paddingless  wish-list__item-cell">

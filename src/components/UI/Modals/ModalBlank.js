@@ -18,7 +18,7 @@ const ModalBlank = props => {
         <div className="blank-modal">
           <div className="blank_modal__content">{children}</div>
           <button
-            className="delete is-large product-preview-modal__close"
+            className="delete is-large blank-modal__close"
             aria-label="close"
             onClick={onCloseClick}
           />
