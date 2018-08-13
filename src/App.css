@@ -11,6 +11,11 @@ shadow large :
   shadow small: 
   box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
 
+secondary font
+  font-family: 'Norican', cursive;
+
+
+
 */
 
 /* Main Content */
@@ -22,6 +27,9 @@ shadow large :
   padding-left: 1rem;
   padding-right: 1rem;
 }
+.container--paddingless {
+  padding: 0;
+}
 
 .section--paddingless-vertical {
   padding-left: 0;
@@ -30,4 +38,8 @@ shadow large :
 
 .is-relative {
   position: relative;
+}
+
+.has-text-secondary {
+  font-family: 'Cardo', serif;
 }

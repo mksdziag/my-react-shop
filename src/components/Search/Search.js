@@ -24,9 +24,11 @@ class Search extends Component {
   }
 
   handleSearch = e => {
-    const searchWord = e.target.value;
+    const searchWord = e.target.value.toLowerCase();
     if (searchWord.length > 2) {
-      const searchResults = products.filter(product => product.name.includes(searchWord));
+      const searchResults = products.filter(product =>
+        product.name.toLowerCase().includes(searchWord)
+      );
       this.setState({ searchResults });
     } else {
       this.setState({ searchResults: [] });

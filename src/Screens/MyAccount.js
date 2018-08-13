@@ -43,7 +43,7 @@ class MyAccount extends Component {
 
     return (
       <div className="container">
-        <SubPageHeader title="My Account" />
+        <SubPageHeader title="My Account" subtitle="Manage Your orders and details" />
         {isUserLogged ? (
           <Fragment>
             <UserInfo user={this.state.userEmail} />

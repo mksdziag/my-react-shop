@@ -42,68 +42,67 @@ class Navigation extends Component {
 
   render() {
     return (
-      <nav className="navbar is-dark is-fixed-top is-primary 	" aria-label="main navigation">
-        <div className="navbar-brand">
-          <Link to="/" className="navbar-item">
-            MyReactShop
-          </Link>
-          <div
-            className={`navbar-burger burger  ${this.state.isMobileMenuOpen && 'is-active'}`}
-            onClick={this.menuOpenHandler}
-          >
-            <span />
-            <span />
-            <span />
-          </div>
-        </div>
-        <div
-          className={`navbar-menu has-background-primary ${this.state.isMobileMenuOpen &&
-            'is-active'}`}
-        >
-          <div className="navbar-start" />
-          <div className="navbar-end ">
-            <div className="navbar-item">
-              <SearchButton onClickHandler={this.searchOpenHandler} />
+      <nav className="navbar is-fixed-top has-background-white 	" aria-label="main navigation">
+        <div className="container container--paddingless">
+          <div className="navbar-brand">
+            <Link to="/" className="navbar-item has-text-secondary has-text-dark is-size-3">
+              MyReactShop
+            </Link>
+            <div
+              className={`navbar-burger burger  ${this.state.isMobileMenuOpen && 'is-active'}`}
+              onClick={this.menuOpenHandler}
+            >
+              <span />
+              <span />
+              <span />
             </div>
-            <Link to="/category/dress" className="navbar-item has-text-white ">
-              Dresses
-            </Link>
-            <Link to="/category/overall" className="navbar-item has-text-white ">
-              Overalls
-            </Link>
-            <Link to="/category/jacket" className="navbar-item has-text-white ">
-              Jackets
-            </Link>
-            <Link to="/category/skirt" className="navbar-item has-text-white ">
-              Skirts
-            </Link>
-            <Link to="/category/trousers" className="navbar-item has-text-white ">
-              Trousers
-            </Link>
-            <Link to="/contact" className="navbar-item has-text-white ">
-              Contact
-            </Link>
-            <Link to="/my-account" className="navbar-item has-text-white ">
-              <Icon className="navbar-icon" icon={user} />
-              My Account
-            </Link>
-            <Link to="/cart" className="navbar-item has-text-white">
-              <Icon className="navbar-icon" icon={cart} />
-              Cart
-              <NavigationCartIndicator />
-            </Link>
           </div>
-        </div>
+          <div className={`navbar-menu  ${this.state.isMobileMenuOpen && 'is-active'}`}>
+            <div className="navbar-start" />
+            <div className="navbar-end ">
+              <div className="navbar-item">
+                <SearchButton onClickHandler={this.searchOpenHandler} />
+              </div>
+              <Link to="/category/dress" className="navbar-item has-text-dark ">
+                Dresses
+              </Link>
+              <Link to="/category/overall" className="navbar-item has-text-dark ">
+                Overalls
+              </Link>
+              <Link to="/category/jacket" className="navbar-item has-text-dark ">
+                Jackets
+              </Link>
+              <Link to="/category/skirt" className="navbar-item has-text-dark ">
+                Skirts
+              </Link>
+              <Link to="/category/trousers" className="navbar-item has-text-dark ">
+                Trousers
+              </Link>
+              <Link to="/contact" className="navbar-item has-text-dark ">
+                Contact
+              </Link>
+              <Link to="/my-account" className="navbar-item has-text-dark ">
+                <Icon className="navbar-icon" icon={user} />
+                My Account
+              </Link>
+              <Link to="/cart" className="navbar-item has-text-dark">
+                <Icon className="navbar-icon" icon={cart} />
+                Cart
+                <NavigationCartIndicator />
+              </Link>
+            </div>
+          </div>
 
-        <CSSTransition
-          in={this.state.isSearchOpen}
-          timeout={300}
-          classNames="fade"
-          unmountOnExit
-          mountOnEnter
-        >
-          <Search onCloseHandler={this.searchCloseHandler} />
-        </CSSTransition>
+          <CSSTransition
+            in={this.state.isSearchOpen}
+            timeout={300}
+            classNames="fade"
+            unmountOnExit
+            mountOnEnter
+          >
+            <Search onCloseHandler={this.searchCloseHandler} />
+          </CSSTransition>
+        </div>
       </nav>
     );
   }

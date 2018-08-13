@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import 'bulma/css/bulma.css';
+// import 'bulma/css/bulma.css'; replaced with my custom bulma theme
+import './mystyles.css';
 import 'bulma-tooltip';
 import './App.css';
 import { userLoggedIn } from './store/actions';
