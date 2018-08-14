@@ -6,7 +6,6 @@ import './ProductPreview.css';
 import AddToCartButton from './UI/Buttons/AddToCartButton';
 
 const ProductPreview = props => {
-  console.log(props);
   const {
     product,
     product: {
@@ -25,7 +24,7 @@ const ProductPreview = props => {
     <div className="columns level">
       <div className="column is-5">
         <div className="product-preview-modal__image-holder">
-          <img className="product-preview-modal__image" src={pictures} alt="" />
+          <img className="product-preview-modal__image" src={pictures[0]} alt="" />
         </div>
       </div>
       <div className="column is-7">
