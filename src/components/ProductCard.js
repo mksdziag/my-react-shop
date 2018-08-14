@@ -58,15 +58,19 @@ const ProductCard = props => {
         </Link>
       </div>
       <div className="card-content product-card__info">
-        <Link to={`/product/${id}`} className="title is-size-5 product-card__name">
-          {name}
-        </Link>
-        <Link
-          className="subtitle is-size-7 has-text-dark-grey product-card__brand has-text-right is-italic is-block has-text-right"
-          to={`/brand/${brand}`}
-        >
-          {brand}
-        </Link>
+        <header>
+          <Link to={`/product/${id}`} className="title is-size-5 product-card__name">
+            {name}
+          </Link>
+        </header>
+        <div className="has-text-right">
+          <Link
+            className="subtitle is-size-7 has-text-grey has-text-right is-italic has-text-right product-card__brand"
+            to={`/brand/${brand}`}
+          >
+            {brand}
+          </Link>
+        </div>
         <div className="columns is-centered">
           <div className="column is-4-touch is-4 has-text-centered has-text-danger has-text-weight-semibold product-card__price">
             {price.toFixed(2)}$

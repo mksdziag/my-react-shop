@@ -29,7 +29,7 @@ const SearchResults = props => {
       const { id, name, price, pictures, category, brand } = product;
 
       return (
-        <li className="is-primary has-text-black is-fullwidth search-result" key={id}>
+        <li className="is-primary has-text-black is-fullwidth search-results__item" key={id}>
           <Link className="has-text-grey" to={`/product/${id}`}>
             <article className="media">
               <figure className="media-left">

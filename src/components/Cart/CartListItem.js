@@ -47,7 +47,7 @@ const CartListItem = props => {
                 onChange={onQtyChangeHandler}
                 min={1}
               />
-              <div className="is-size-8 has-text-grey-lighter ">qty:</div>
+              <div className="is-size-7 has-text-grey-lighter ">qty:</div>
             </div>
           </div>
         </div>
