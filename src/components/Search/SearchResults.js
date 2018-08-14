@@ -26,10 +26,10 @@ const SearchResults = props => {
 
   if (results.length > 1) {
     searchResultsItems = results.map(product => {
-      const { id, name, price, pictures, category, manufacturer } = product;
+      const { id, name, price, pictures, category, brand } = product;
 
       return (
-        <li className="is-primary has-text-black is-fullwidth search-result" key={id}>
+        <li className="is-primary has-text-black is-fullwidth search-results__item" key={id}>
           <Link className="has-text-grey" to={`/product/${id}`}>
             <article className="media">
               <figure className="media-left">
@@ -43,7 +43,7 @@ const SearchResults = props => {
                 <div className="content">
                   <p>
                     <strong className="is-uppercase">{name}</strong>{' '}
-                    <small className="is-uppercase">{manufacturer}</small>
+                    <small className="is-uppercase">{brand}</small>
                     <small className="is-capitalized has-color-grey">{category}</small>
                   </p>
                 </div>

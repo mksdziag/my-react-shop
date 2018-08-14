@@ -8,7 +8,6 @@ import { table } from 'react-icons-kit/icomoon/table';
 
 import './ProductPage.css';
 import products from '../database/products';
-import { addItemToCart } from '../store/actions';
 
 import AddToCartButton from '../components/UI/Buttons/AddToCartButton';
 import SubPageHeader from '../components/SubPageHeader';
@@ -54,15 +53,13 @@ class ProductPage extends Component {
       pictures,
       category,
       // color,
-      manufacturer,
+      brand,
       description,
       // added,
       sizes,
       discount,
       // tags,
     } = product;
-    const { onAddItemToCart, inCartItems } = this.props;
-    const isInCart = inCartItems.some(item => item.id === this.state.productId);
     const { photoIndex } = this.state;
     const productsToCatBar = products
       .filter(item => item.category === product.category)
@@ -71,8 +68,8 @@ class ProductPage extends Component {
 
     return (
       <div className="container product-page">
-        <SubPageHeader title={name} subtitle={category} />
-        <section className="section">
+        <section className="section is-small-mobile">
+          <SubPageHeader title={name} subtitle={category} />
           <div className="columns">
             <div className="column is-5 is-relative">
               <img
@@ -105,8 +102,8 @@ class ProductPage extends Component {
               <header className="product-page__name-header">
                 <h2 className="title product-page__name is-4">{name}</h2>
                 <h4 className="subtitle is-6 is-uppercase">
-                  <Link className="has-text-black-ter	" to={`/manufacturer/${manufacturer}`}>
-                    {manufacturer}
+                  <Link className="has-text-black-ter	" to={`/brand/${brand}`}>
+                    {brand}
                   </Link>
                 </h4>
               </header>
@@ -126,9 +123,8 @@ class ProductPage extends Component {
               <div className="columns">
                 <div className="product-page__actions  column is-6-tablet">
                   <AddToCartButton
-                    in={this.state.sizeTableOpen}
-                    onClickHandler={() => onAddItemToCart(product)}
-                    isInCart={isInCart}
+                    itemId={id}
+                    product={{ ...product }}
                     additionalClasses={'is-medium is-fullwidth'}
                   />
                 </div>
@@ -148,7 +144,7 @@ class ProductPage extends Component {
             </div>
           </div>
         </section>
-        <section className="section">
+        <section className="section is-large">
           <ProductPagePromoBar products={productsToCatBar} />
         </section>
       </div>
@@ -159,17 +155,7 @@ class ProductPage extends Component {
 const mapStateToProps = state => {
   return {
     wishListItems: state.wishList.wishListItems,
-    inCartItems: state.cart.inCartItems,
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onAddItemToCart: item => dispatch(addItemToCart(item)),
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ProductPage);
+export default connect(mapStateToProps)(ProductPage);

@@ -2,6 +2,9 @@
   padding: 1rem;
 }
 
+.order-details__item-column {
+  padding: 0.25rem;
+}
 .order-details__heading {
   margin-bottom: 1.5rem;
 }

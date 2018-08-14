@@ -24,7 +24,7 @@ const FrontPagePromo = () => {
                 className="tile has-text-white is-child notification front-promo__article front-promo__article--background-right"
                 style={{ backgroundImage: `url(${promotionsBackground})` }}
               >
-                <Link to="/category/dress">
+                <Link to="/sale">
                   <p className="title">Promotions</p>
                   <p className="subtitle">Large discounts for you</p>
                 </Link>

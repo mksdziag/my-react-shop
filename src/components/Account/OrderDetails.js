@@ -4,7 +4,6 @@ import './OrderDetails.css';
 
 const OrderDetails = props => {
   const { order } = props;
-  console.log(order);
   return (
     <div className="order-details">
       <header className="heading has-text-centered order-details__heading">
@@ -30,15 +29,26 @@ const OrderDetails = props => {
           {order.total.toFixed(2)}$
         </div>
       </div>
-      <ul className={'order-details__items-list'}>
+      <ul className="order-details__items-list">
         {order.items.map((item, index) => (
-          <div key={item.name} className="columns is-mobile has-text-centered order-details__item">
-            <div className="column is-1">{index + 1}</div>
-            <div className="column is-size-7-mobile">{item.name}</div>
-            <div className="column has-text-primary has-text-weight-semibold">
+          <li key={item.name} className="columns level is-mobile order-details__item">
+            <div className="column order-details__item-column has-text-centered is-1">
+              {index + 1}
+            </div>
+            <div className="column order-details__item-column has-text-centered  is-hidden-mobile is-3-touch is-1">
+              <img src={item.picture} alt="product" className="order-details__item-picture" />
+            </div>
+            <div className="column order-details__item-column ">{item.name}</div>
+            <div className="column order-details__item-column has-text-centered is-1">
+              {item.size}
+            </div>
+            <div className="column order-details__item-column has-text-centered is-1">
+              {item.quantity}
+            </div>
+            <div className="column order-details__item-column is-2 has-text-primary has-text-weight-semibold">
               {item.price.toFixed(2)}$
             </div>
-          </div>
+          </li>
         ))}
       </ul>
     </div>
