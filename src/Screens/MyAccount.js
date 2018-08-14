@@ -6,7 +6,6 @@ import { fetchOrders, logOutUser, fetchWishList } from '../store/actions/';
 import SubPageHeader from '../components/SubPageHeader';
 import WishList from '../components/Account/WishList';
 import OrderList from '../components/Account/OrderList';
-import ModalBlank from '../components/UI/Modals/ModalBlank';
 import LoginForm from '../components/Account/LoginForm';
 import UserInfo from '../components/Account/UserInfo';
 
@@ -40,7 +39,7 @@ class MyAccount extends Component {
                   <div className="column is-5 is-offset-1-widescreen is-4-widescreen">
                     <h3 className="title is-size-4">My wish list</h3>
                     <WishList />
-                  </div>{' '}
+                  </div>
                 </div>
               </section>
             </Fragment>
@@ -49,7 +48,6 @@ class MyAccount extends Component {
               <LoginForm />
             </div>
           )}
-          <ModalBlank isModalActive={false} />
         </section>
       </div>
     );

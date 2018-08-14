@@ -16,7 +16,7 @@ const ModalBlank = props => {
     >
       <div className="is-overlay blank-modal__overlay">
         <div className="blank-modal">
-          <div className="blank_modal__content">{children}</div>
+          {children}
           <button
             className="delete is-large blank-modal__close"
             aria-label="close"
