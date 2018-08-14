@@ -22,7 +22,11 @@ const CartSummary = props => {
           disabled={orderingDisabled}
           className="button is-success is-medium is-fullwidth"
         >
-          confirm order
+          {orderingDisabled
+            ? pricesSum === 0
+              ? 'your cart is empty'
+              : 'log in to place order'
+            : 'confirm order'}
         </button>
       </div>
     </div>

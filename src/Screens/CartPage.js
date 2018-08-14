@@ -88,8 +88,8 @@ class CartPage extends Component {
 
     if (this.state.orderStatus === 'finished') {
       cartItemsOutput = (
-        <div className="has-text-centered">
-          <h3 className="title is-size-5">Your order has been send sucessfully.</h3>
+        <div className="notification is-success has-text-centered">
+          <h3 className="title is-size-6">Your order has been send sucessfully.</h3>
         </div>
       );
     }
@@ -103,7 +103,7 @@ class CartPage extends Component {
             pricesSum={pricesSum}
             shippingCost={shippingCost}
             onConfirmOrder={this.handleNewOrder}
-            orderingDisabled={this.props.user.useEmail === null || inCartItems.length < 1}
+            orderingDisabled={!this.props.user.isLogged || inCartItems.length < 1}
           />
         </div>
       </div>
