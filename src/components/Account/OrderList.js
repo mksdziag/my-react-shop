@@ -25,22 +25,24 @@ class OrderList extends Component {
 
   render() {
     const { orders, loading } = this.props;
-    const ordersOutput = orders.map((order, index) => (
-      <tr className="orders__item is-size-6" key={order.id}>
-        <td className="is-hidden-mobile">{index + 1}.</td>
-        <td className="has-text-primary">{order.total.toFixed(2)}$</td>
-        <td>{new Date(order.placed).toLocaleString()}</td>
-        <td>{order.items.reduce((acc, currItem) => acc + currItem.quantity, 0)}</td>
-        <td>
-          <button
-            onClick={() => this.modalOpenHandler(order.id)}
-            className="button is-small is-primary is-outlined"
-          >
-            <Icon icon={eye} />
-          </button>
-        </td>
-      </tr>
-    ));
+    const ordersOutput = orders
+      .sort((orderA, orderB) => (orderA.place > orderB.placed ? -1 : 1))
+      .map((order, index) => (
+        <tr className="orders__item is-size-6" key={order.id}>
+          <td className="is-hidden-mobile">{index + 1}.</td>
+          <td className="has-text-primary">{order.total.toFixed(2)}$</td>
+          <td>{new Date(order.placed).toLocaleString()}</td>
+          <td>{order.items.reduce((acc, currItem) => acc + currItem.quantity, 0)}</td>
+          <td>
+            <button
+              onClick={() => this.modalOpenHandler(order.id)}
+              className="button is-small is-primary is-outlined"
+            >
+              <Icon icon={eye} />
+            </button>
+          </td>
+        </tr>
+      ));
 
     return (
       <div className="orders is-relative">

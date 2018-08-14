@@ -74,7 +74,7 @@ class CartPage extends Component {
     const { pricesSum, shippingCost } = this.state;
 
     let cartItemsOutput = inCartItems
-      .sort((a, b) => (a.name > b.name ? -1 : 1))
+      .sort((productA, productB) => (productA.name < productB.name ? -1 : 1))
       .map((product, index) => (
         <CartListItem
           key={product.id}
