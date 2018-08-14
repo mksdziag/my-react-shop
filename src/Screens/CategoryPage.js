@@ -41,7 +41,7 @@ class CategoryPage extends Component {
   };
 
   closeProductPreview = () => {
-    this.setState({ currentProduct: '', isModalActive: false });
+    this.setState({ isModalActive: false });
   };
 
   render() {

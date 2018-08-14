@@ -39,7 +39,7 @@ class BrandPage extends Component {
   };
 
   closeProductPreview = () => {
-    this.setState({ currentProduct: '', isPreviewActive: false });
+    this.setState({ isPreviewActive: false });
   };
 
   render() {
