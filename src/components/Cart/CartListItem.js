@@ -6,11 +6,25 @@ import { ic_remove_shopping_cart as cartRemove } from 'react-icons-kit/md/ic_rem
 import './CartListItem.css';
 
 const CartListItem = props => {
-  const { idx, name, price, onItemRemove, quantity, id, onChangeInCartItemQuantity } = props;
+  const {
+    idx,
+    name,
+    price,
+    onItemRemove,
+    quantity,
+    id,
+    onChangeItemQuantity,
+    onChangeItemSize,
+  } = props;
 
-  const onQtyChange = e => {
+  const onQtyChangeHandler = e => {
     const quamtity = e.target.valueAsNumber;
-    onChangeInCartItemQuantity(id, quamtity);
+    onChangeItemQuantity(id, quamtity);
+  };
+
+  const onSizeChangeHandler = e => {
+    const size = e.target.value;
+    onChangeItemSize(id, size);
   };
 
   return (
@@ -30,15 +44,23 @@ const CartListItem = props => {
                 type="number"
                 value={quantity}
                 placeholder="quantity"
-                onChange={onQtyChange}
+                onChange={onQtyChangeHandler}
                 min={1}
               />
               <div className="is-size-8 has-text-grey-lighter ">qty:</div>
             </div>
           </div>
         </div>
-        <div className="column is-1 ">
-          <p className="cart-item__size">S</p>
+        <div className="column is-2 ">
+          <div className="select is-small">
+            <select onChange={onSizeChangeHandler} name="size" id="size">
+              <option className="cart-item__size">S</option>
+              <option className="cart-item__size">M</option>
+              <option className="cart-item__size">L</option>
+              <option className="cart-item__size">XL</option>
+              <option className="cart-item__size">XXL</option>
+            </select>
+          </div>
           <div className="is-size-7 has-text-grey-lighter ">size:</div>
         </div>
         <div className="column is-5">

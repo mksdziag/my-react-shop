@@ -1,12 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Icon } from 'react-icons-kit';
 import { circleRight } from 'react-icons-kit/icomoon/circleRight';
 import { eye } from 'react-icons-kit/icomoon/eye';
 
 import './ProductCard.css';
-import { addItemToCart } from '../store/actions';
 
 import WishListButton from './UI/Buttons/WishListButton';
 import AddToCartButton from './UI/Buttons/AddToCartButton';
@@ -14,6 +12,7 @@ import DiscountInfo from './DiscountInfo';
 
 const ProductCard = props => {
   const {
+    product,
     product: {
       id,
       name,
@@ -23,21 +22,13 @@ const ProductCard = props => {
       discount,
       price,
     },
-    inCartItems,
-    onAddItemToCart,
     onQuickViewOpenHandler,
   } = props;
 
-  const addToCartClickHandler = e => {
-    e.preventDefault();
-    onAddItemToCart(props.product);
-  };
   const onQuickViewClickHandler = e => {
     e.preventDefault();
     onQuickViewOpenHandler();
   };
-
-  const isInCart = inCartItems.some(item => item.id === id);
 
   return (
     <div className="card product-card">
@@ -48,8 +39,8 @@ const ProductCard = props => {
             <div className=" is-overlay product-card__figure-overlay">
               <div className="product-card__overlay-actions">
                 <AddToCartButton
-                  onClickHandler={e => addToCartClickHandler(e)}
-                  isInCart={isInCart}
+                  product={{ ...product }}
+                  itemId={id}
                   iconOnly
                   additionalClasses={'is-inverted'}
                 />
@@ -83,7 +74,7 @@ const ProductCard = props => {
         </div>
       </div>
       <footer className="product-card__actions">
-        <AddToCartButton isFullWidth onClickHandler={addToCartClickHandler} isInCart={isInCart} />
+        <AddToCartButton product={{ ...product }} isFullWidth itemId={id} />
         <Link to={`/product/${id}`} className="button is-fullwidth is-primary is-outlined">
           <Icon className="button-icon" icon={circleRight} />
           <span>open</span>
@@ -93,18 +84,4 @@ const ProductCard = props => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    inCartItems: state.cart.inCartItems,
-  };
-};
-const mapDispatchToProps = dispatch => {
-  return {
-    onAddItemToCart: item => dispatch(addItemToCart(item)),
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ProductCard);
+export default ProductCard;

@@ -1,12 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Icon } from 'react-icons-kit';
 import { ic_shopping_cart as inCartIcon } from 'react-icons-kit/md/ic_shopping_cart';
 import { ic_add_shopping_cart as addToCartIcon } from 'react-icons-kit/md/ic_add_shopping_cart';
 
 import './AddToCartButton.css';
+import { addItemToCart } from '../../../store/actions';
 
 const AddToCartButton = props => {
-  const { isFullWidth, onClickHandler, isInCart, iconOnly, additionalClasses } = props;
+  const { isFullWidth, itemId, iconOnly, additionalClasses, product, onAddItemToCart } = props;
+  const isInCart = props.inCartItems.some(item => item.id === itemId);
 
   const buttonClassList = isInCart
     ? isFullWidth
@@ -19,9 +22,15 @@ const AddToCartButton = props => {
       : `button is-primary add-to-cart-button ${additionalClasses} ${isInCart && 'tooltip'}`;
   const buttonText = isInCart ? 'in cart' : 'Add To Cart';
 
+  const addToCartClickHandler = e => {
+    e.preventDefault();
+    product.size = 'S';
+    onAddItemToCart(product);
+  };
+
   return (
     <button
-      onClick={onClickHandler}
+      onClick={addToCartClickHandler}
       className={buttonClassList}
       disabled={isInCart}
       data-tooltip={isInCart && 'change quantity in cart'}
@@ -32,4 +41,18 @@ const AddToCartButton = props => {
   );
 };
 
-export default AddToCartButton;
+const mapStateToProps = state => {
+  return {
+    inCartItems: state.cart.inCartItems,
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    onAddItemToCart: item => dispatch(addItemToCart(item)),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AddToCartButton);

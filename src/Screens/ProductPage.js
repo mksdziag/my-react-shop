@@ -8,7 +8,6 @@ import { table } from 'react-icons-kit/icomoon/table';
 
 import './ProductPage.css';
 import products from '../database/products';
-import { addItemToCart } from '../store/actions';
 
 import AddToCartButton from '../components/UI/Buttons/AddToCartButton';
 import SubPageHeader from '../components/SubPageHeader';
@@ -61,8 +60,6 @@ class ProductPage extends Component {
       discount,
       // tags,
     } = product;
-    const { onAddItemToCart, inCartItems } = this.props;
-    const isInCart = inCartItems.some(item => item.id === this.state.productId);
     const { photoIndex } = this.state;
     const productsToCatBar = products
       .filter(item => item.category === product.category)
@@ -126,9 +123,8 @@ class ProductPage extends Component {
               <div className="columns">
                 <div className="product-page__actions  column is-6-tablet">
                   <AddToCartButton
-                    in={this.state.sizeTableOpen}
-                    onClickHandler={() => onAddItemToCart(product)}
-                    isInCart={isInCart}
+                    itemId={id}
+                    product={{ ...product }}
                     additionalClasses={'is-medium is-fullwidth'}
                   />
                 </div>
@@ -159,17 +155,7 @@ class ProductPage extends Component {
 const mapStateToProps = state => {
   return {
     wishListItems: state.wishList.wishListItems,
-    inCartItems: state.cart.inCartItems,
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onAddItemToCart: item => dispatch(addItemToCart(item)),
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ProductPage);
+export default connect(mapStateToProps)(ProductPage);

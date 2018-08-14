@@ -17,6 +17,5 @@
   overflow-y: auto;
 }
 .order-details__item {
-  margin: 0.25rem auto 0.25rem;
   box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
 }

@@ -1,10 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import './ProductPreview.css';
 
-import { addItemToCart } from '../store/actions';
 import AddToCartButton from './UI/Buttons/AddToCartButton';
 
 const ProductPreview = props => {
@@ -21,11 +19,7 @@ const ProductPreview = props => {
       // added,
       // sizes,
     },
-    inCartItems,
-    onAddItemToCart,
   } = props;
-
-  const isInCart = inCartItems.some(item => item.id === id);
 
   return (
     <div className="columns level">
@@ -49,26 +43,11 @@ const ProductPreview = props => {
           {price}$
         </span>
         <div className="product-preview-modal__actions">
-          <AddToCartButton onClickHandler={() => onAddItemToCart(product)} isInCart={isInCart} />
+          <AddToCartButton product={{ ...product }} itemId={id} />
         </div>
       </div>
     </div>
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    inCartItems: state.cart.inCartItems,
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    onAddItemToCart: item => dispatch(addItemToCart(item)),
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ProductPreview);
+export default ProductPreview;
