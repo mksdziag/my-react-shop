@@ -26,7 +26,7 @@ class OrderList extends Component {
   render() {
     const { orders, loading } = this.props;
     const ordersOutput = orders
-      .sort((orderA, orderB) => (orderA.place > orderB.placed ? -1 : 1))
+      .sort((orderA, orderB) => (orderA.placed > orderB.placed ? -1 : 1))
       .map((order, index) => (
         <tr className="orders__item is-size-6" key={order.id}>
           <td className="is-hidden-mobile">{index + 1}.</td>
