@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { v4 } from 'uuid';
 
 import {
-  changeInCartItemQuantity,
+  changeItemQuantity,
+  changeItemSize,
   removeItemFromCart,
   createNewOrder,
   removeAllItemsFromCart,
@@ -50,7 +51,7 @@ class CartPage extends Component {
         brand: item.brand,
         price: item.price,
         picture: item.pictures[0],
-        size: 'S',
+        size: item.size,
         quantity: item.quantity,
       };
     });
@@ -69,7 +70,7 @@ class CartPage extends Component {
   };
 
   render() {
-    const { inCartItems, removeItemFromCart, changeInCartItemQuantity } = this.props;
+    const { inCartItems, removeItemFromCart, changeItemQuantity, changeItemSize } = this.props;
     const { pricesSum, shippingCost } = this.state;
 
     let cartItemsOutput = inCartItems
@@ -79,9 +80,8 @@ class CartPage extends Component {
           key={product.id}
           idx={index}
           {...product}
-          onChangeInCartItemQuantity={(itemId, quantity) =>
-            changeInCartItemQuantity(itemId, quantity)
-          }
+          onChangeItemQuantity={(itemId, quantity) => changeItemQuantity(itemId, quantity)}
+          onChangeItemSize={(itemId, size) => changeItemSize(itemId, size)}
           onItemRemove={() => removeItemFromCart(product.id)}
         />
       ));
@@ -122,8 +122,8 @@ const mapDispatchToProps = dispatch => {
     removeItemFromCart: id => dispatch(removeItemFromCart(id)),
     createNewOrder: order => dispatch(createNewOrder(order)),
     removeAllItemsFromCart: () => dispatch(removeAllItemsFromCart()),
-    changeInCartItemQuantity: (itemId, quantity) =>
-      dispatch(changeInCartItemQuantity(itemId, quantity)),
+    changeItemQuantity: (itemId, quantity) => dispatch(changeItemQuantity(itemId, quantity)),
+    changeItemSize: (itemId, size) => dispatch(changeItemSize(itemId, size)),
   };
 };
 

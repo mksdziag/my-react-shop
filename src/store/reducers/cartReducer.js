@@ -15,14 +15,27 @@ const cartReducer = (state = initalState, action) => {
         ],
       };
     case actionTypes.CHANGE_IN_CART_ITEM_QUANTITY:
-      const editedItem = state.inCartItems.find(product => product.id === action.payload.itemId);
-      editedItem.quantity = action.payload.quantity;
-
+      const itemWithChangedQty = state.inCartItems.find(
+        product => product.id === action.payload.itemId
+      );
+      itemWithChangedQty.quantity = action.payload.quantity;
       return {
         ...state,
         inCartItems: [
           ...state.inCartItems.filter(product => product.id !== action.payload.itemId),
-          editedItem,
+          itemWithChangedQty,
+        ],
+      };
+    case actionTypes.CHANGE_IN_CART_ITEM_SIZE:
+      const itemWithChangedSize = state.inCartItems.find(
+        product => product.id === action.payload.itemId
+      );
+      itemWithChangedSize.size = action.payload.size;
+      return {
+        ...state,
+        inCartItems: [
+          ...state.inCartItems.filter(product => product.id !== action.payload.itemId),
+          itemWithChangedSize,
         ],
       };
     case actionTypes.REMOVE_ITEM_FROM_CART:

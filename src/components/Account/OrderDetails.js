@@ -40,6 +40,9 @@ const OrderDetails = props => {
             </div>
             <div className="column order-details__item-column ">{item.name}</div>
             <div className="column order-details__item-column has-text-centered is-1">
+              {item.size}
+            </div>
+            <div className="column order-details__item-column has-text-centered is-1">
               {item.quantity}
             </div>
             <div className="column order-details__item-column is-2 has-text-primary has-text-weight-semibold">
