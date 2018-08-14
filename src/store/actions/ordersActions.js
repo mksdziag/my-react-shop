@@ -2,7 +2,6 @@ import * as actionTypes from '../actionTypes/actionTypes';
 import db from '../../db/db';
 
 export const createNewOrder = order => dispatch => {
-  console.log(order);
   db.collection('orders')
     .add(order)
     .catch(error => console.log(error));

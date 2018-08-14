@@ -28,10 +28,6 @@ secondary font
   min-height: 680px;
 }
 
-.container {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
 .container--paddingless {
   padding: 0;
 }

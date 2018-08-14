@@ -30,7 +30,7 @@ class OrderList extends Component {
         <td className="is-hidden-mobile">{index + 1}.</td>
         <td className="has-text-primary">{order.total.toFixed(2)}$</td>
         <td>{new Date(order.placed).toLocaleString()}</td>
-        <td>{order.items.length}</td>
+        <td>{order.items.reduce((acc, currItem) => acc + currItem.quantity, 0)}</td>
         <td>
           <button
             onClick={() => this.modalOpenHandler(order.id)}

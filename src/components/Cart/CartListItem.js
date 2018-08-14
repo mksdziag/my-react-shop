@@ -6,10 +6,11 @@ import { ic_remove_shopping_cart as cartRemove } from 'react-icons-kit/md/ic_rem
 import './CartListItem.css';
 
 const CartListItem = props => {
-  const { idx, name, price, onItemRemove, pieces, id } = props;
+  const { idx, name, price, onItemRemove, quantity, id, onChangeInCartItemQuantity } = props;
 
-  const onQtyChange = () => {
-    console.log('zmiana');
+  const onQtyChange = e => {
+    const quamtity = e.target.valueAsNumber;
+    onChangeInCartItemQuantity(id, quamtity);
   };
 
   return (
@@ -21,17 +22,18 @@ const CartListItem = props => {
         >
           <p className="cart-item__lp">{idx + 1}.</p>
         </div>
-        <div className="column is-2">
+        <div className="column is-1">
           <div className="field">
             <div className="control">
               <input
-                className="input"
+                className="input is-small"
                 type="number"
-                value={pieces}
+                value={quantity}
                 placeholder="quantity"
                 onChange={onQtyChange}
+                min={1}
               />
-              <div className="is-size-7 has-text-grey-lighter ">qty:</div>
+              <div className="is-size-8 has-text-grey-lighter ">qty:</div>
             </div>
           </div>
         </div>

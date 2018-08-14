@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { v4 } from 'uuid';
 
-import { removeItemFromCart, createNewOrder, removeAllItemsFromCart } from '../store/actions';
+import {
+  changeInCartItemQuantity,
+  removeItemFromCart,
+  createNewOrder,
+  removeAllItemsFromCart,
+} from '../store/actions';
 
 import SubPageHeader from '../components/SubPageHeader';
 import CartListItem from '../components/Cart/CartListItem';
@@ -12,8 +17,22 @@ class CartPage extends Component {
   state = {
     orderStatus: 'active',
     shippingCost: 5,
-    pricesSum: this.props.inCartItems.reduce((acc, currItem) => acc + currItem.price, 0),
+    pricesSum: this.props.inCartItems.reduce(
+      (acc, currItem) => acc + currItem.price * currItem.quantity,
+      0
+    ),
   };
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const prevPricesSum = prevState.pricesSum;
+    const nextPricesSum = nextProps.inCartItems.reduce(
+      (acc, currItem) => acc + currItem.price * currItem.quantity,
+      0
+    );
+    if (prevPricesSum !== nextPricesSum) {
+      return { pricesSum: nextPricesSum };
+    } else return null;
+  }
 
   handleNewOrder = () => {
     const {
@@ -28,9 +47,11 @@ class CartPage extends Component {
       return {
         id: item.id,
         name: item.name,
+        brand: item.brand,
         price: item.price,
-        quantity: 1,
+        picture: item.pictures[0],
         size: 'S',
+        quantity: item.quantity,
       };
     });
 
@@ -48,17 +69,22 @@ class CartPage extends Component {
   };
 
   render() {
-    const { inCartItems, removeItemFromCart } = this.props;
+    const { inCartItems, removeItemFromCart, changeInCartItemQuantity } = this.props;
     const { pricesSum, shippingCost } = this.state;
 
-    let cartItemsOutput = inCartItems.map((product, index) => (
-      <CartListItem
-        key={product.id}
-        idx={index}
-        {...product}
-        onItemRemove={() => removeItemFromCart(product.id)}
-      />
-    ));
+    let cartItemsOutput = inCartItems
+      .sort((a, b) => (a.name > b.name ? -1 : 1))
+      .map((product, index) => (
+        <CartListItem
+          key={product.id}
+          idx={index}
+          {...product}
+          onChangeInCartItemQuantity={(itemId, quantity) =>
+            changeInCartItemQuantity(itemId, quantity)
+          }
+          onItemRemove={() => removeItemFromCart(product.id)}
+        />
+      ));
 
     if (this.state.orderStatus === 'finished') {
       cartItemsOutput = (
@@ -96,6 +122,8 @@ const mapDispatchToProps = dispatch => {
     removeItemFromCart: id => dispatch(removeItemFromCart(id)),
     createNewOrder: order => dispatch(createNewOrder(order)),
     removeAllItemsFromCart: () => dispatch(removeAllItemsFromCart()),
+    changeInCartItemQuantity: (itemId, quantity) =>
+      dispatch(changeInCartItemQuantity(itemId, quantity)),
   };
 };
 

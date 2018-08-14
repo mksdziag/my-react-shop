@@ -54,7 +54,7 @@ class ProductPage extends Component {
       pictures,
       category,
       // color,
-      manufacturer,
+      brand,
       description,
       // added,
       sizes,
@@ -71,8 +71,8 @@ class ProductPage extends Component {
 
     return (
       <div className="container product-page">
-        <SubPageHeader title={name} subtitle={category} />
-        <section className="section">
+        <section className="section is-small-mobile">
+          <SubPageHeader title={name} subtitle={category} />
           <div className="columns">
             <div className="column is-5 is-relative">
               <img
@@ -105,8 +105,8 @@ class ProductPage extends Component {
               <header className="product-page__name-header">
                 <h2 className="title product-page__name is-4">{name}</h2>
                 <h4 className="subtitle is-6 is-uppercase">
-                  <Link className="has-text-black-ter	" to={`/manufacturer/${manufacturer}`}>
-                    {manufacturer}
+                  <Link className="has-text-black-ter	" to={`/brand/${brand}`}>
+                    {brand}
                   </Link>
                 </h4>
               </header>
@@ -148,7 +148,7 @@ class ProductPage extends Component {
             </div>
           </div>
         </section>
-        <section className="section">
+        <section className="section is-large">
           <ProductPagePromoBar products={productsToCatBar} />
         </section>
       </div>

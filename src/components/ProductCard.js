@@ -19,7 +19,7 @@ const ProductCard = props => {
       name,
       pictures,
       // category,
-      manufacturer,
+      brand,
       discount,
       price,
     },
@@ -51,9 +51,10 @@ const ProductCard = props => {
                   onClickHandler={e => addToCartClickHandler(e)}
                   isInCart={isInCart}
                   iconOnly
+                  additionalClasses={'is-inverted'}
                 />
                 <button
-                  className="button is-primary product-card__figure-overlay-button"
+                  className="button is-primary is-inverted product-card__figure-overlay-button"
                   onClick={e => onQuickViewClickHandler(e)}
                 >
                   <Icon icon={eye} />
@@ -66,13 +67,14 @@ const ProductCard = props => {
         </Link>
       </div>
       <div className="card-content product-card__info">
-        <Link to={`/product/${id}`}>
-          <p className="title is-5 product-card__name ">{name}</p>
+        <Link to={`/product/${id}`} className="title is-size-5 product-card__name">
+          {name}
         </Link>
-        <Link to={`/manufacturer/${manufacturer}`}>
-          <p className="subtitle is-7 has-text-dark-grey product-card__manufacturer has-text-right is-italic">
-            {manufacturer}
-          </p>
+        <Link
+          className="subtitle is-size-7 has-text-dark-grey product-card__brand has-text-right is-italic is-block has-text-right"
+          to={`/brand/${brand}`}
+        >
+          {brand}
         </Link>
         <div className="columns is-centered">
           <div className="column is-4-touch is-4 has-text-centered has-text-danger has-text-weight-semibold product-card__price">

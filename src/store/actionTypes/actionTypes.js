@@ -1,6 +1,7 @@
 // cart actions
 export const ADD_ITEM_TO_CART = 'ADD_ITEM_TO_CART';
 export const REMOVE_ITEM_FROM_CART = 'REMOVE_ITEM_FROM_CART';
+export const CHANGE_IN_CART_ITEM_QUANTITY = 'CHANGE_IN_CART_ITEM_QUANTITY';
 export const EMPTY_CART = 'EMPTY_CART';
 
 // wishList actions

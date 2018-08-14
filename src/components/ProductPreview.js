@@ -17,7 +17,7 @@ const ProductPreview = props => {
       price,
       pictures,
       // category,
-      manufacturer,
+      brand,
       // added,
       // sizes,
     },
@@ -40,8 +40,8 @@ const ProductPreview = props => {
             <h2 className="title">{name}</h2>
           </Link>
           <h4 className="subtitle has-text-grey">
-            <Link className="is-size-6-touch has-text-grey " to={`/manufacturer/${manufacturer}`}>
-              {manufacturer}
+            <Link className="is-size-6-touch has-text-grey " to={`/brand/${brand}`}>
+              {brand}
             </Link>
           </h4>
         </header>
