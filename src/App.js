@@ -14,6 +14,7 @@ import AppHeader from './components/AppHeader';
 import FrontPage from './Screens/FrontPage';
 import CategoryPage from './Screens/CategoryPage';
 import BrandPage from './Screens/BrandPage';
+import SalesPage from './Screens/SalesPage';
 import MyAccount from './Screens/MyAccount';
 import CartPage from './Screens/CartPage';
 import ContactPage from './Screens/ContactPage';
@@ -41,6 +42,7 @@ class App extends Component {
             <Route path="/category/:categoryName" component={CategoryPage} />
             <Route path="/product/:productId" component={ProductPage} />
             <Route path="/brand/:brand" component={BrandPage} />
+            <Route path="/sale" component={SalesPage} />
             <Route path="/my-account" component={MyAccount} />
             <Route path="/contact" component={ContactPage} />
             <Route path="/cart" component={CartPage} />
