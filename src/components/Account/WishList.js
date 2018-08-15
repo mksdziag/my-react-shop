@@ -3,19 +3,18 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import './WishList.css';
-import productsDB from '../../database/products';
-import { addItemToCart } from '../../store/actions';
+import products from '../../database/products';
 
 import AddToCartButton from '../UI/Buttons/AddToCartButton';
 import Loader from '../UI/Loaders/Loader';
 import WishListButton from '../UI/Buttons/WishListButton';
 
 const WishList = props => {
-  const { wishListIds, onAddItemToCart, inCartItems, loading } = props;
-
+  const { wishListIds, loading } = props;
   const wishListItems = [];
+
   for (let wishListItemId of wishListIds) {
-    wishListItems.push(productsDB.find(item => item.id === wishListItemId));
+    wishListItems.push(products.find(item => item.id === wishListItemId));
   }
 
   let wishListItemsOutput = (
@@ -29,7 +28,6 @@ const WishList = props => {
   if (wishListItems.length > 0) {
     wishListItemsOutput = wishListItems.map(item => {
       const { id, pictures, name, price } = item;
-      const isInCart = inCartItems.some(itemInCart => itemInCart.id === id);
 
       return (
         <li className="wish-list__item level columns is-mobile" key={id}>
@@ -57,8 +55,8 @@ const WishList = props => {
           <div className="column wish-list__item-cell">
             <AddToCartButton
               iconOnly
-              onClickHandler={() => onAddItemToCart(item)}
-              isInCart={isInCart}
+              itemId={id}
+              product={{ ...item }}
               additionalClasses={'is-small '}
             />
           </div>
@@ -74,16 +72,7 @@ const mapStateToProps = state => {
   return {
     wishListIds: state.wishList.wishListItems,
     loading: state.wishList.loading,
-    inCartItems: state.cart.inCartItems,
-  };
-};
-const mapDispatchToProps = dispatch => {
-  return {
-    onAddItemToCart: item => dispatch(addItemToCart(item)),
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(WishList);
+export default connect(mapStateToProps)(WishList);
