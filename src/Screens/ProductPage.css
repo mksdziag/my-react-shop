@@ -24,6 +24,10 @@
   border-bottom: 2px solid rgba(255, 124, 48, 0.808);
 }
 
+.product-page__discount {
+  margin-left: 1rem;
+}
+
 .product-page__actions {
 }
 

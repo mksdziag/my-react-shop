@@ -115,7 +115,7 @@ class ProductPage extends Component {
                   {price.toFixed(2)}$
                 </div>
                 {discount !== 0 && (
-                  <span className="is-size-6 has-text-danger has-font-weight-semibold">
+                  <span className="is-size-6 has-text-link is-italic has-text-weight-semibold product-page__discount">
                     {'-' + discount + '%'}
                   </span>
                 )}
@@ -144,7 +144,7 @@ class ProductPage extends Component {
             </div>
           </div>
         </section>
-        <section className="section is-large">
+        <section className="section">
           <ProductPagePromoBar products={productsToCatBar} />
         </section>
       </div>
