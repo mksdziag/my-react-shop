@@ -1,4 +1,4 @@
-#My ReactShop
+# My ReactShop
 
 Simple Online store React application.
 Application state managed with Redux.
@@ -6,7 +6,7 @@ App supports creating accounts, placing orders, adding and updating customer per
 Visual layer based on a personalized version of Bulma CSS.
 Auth and backend part by Firebase Firestore.
 
-##Libraries and packages used in project:
+## Libraries and packages used in project:
 
 - React
 - Redux,
@@ -18,7 +18,7 @@ Auth and backend part by Firebase Firestore.
 - React-transition-group
 - Redux-thunk
 
-##Screenshots
+## Screenshots
 
 ![category page](https://picoolio.net/images/2018/08/15/mrs-category9c11596251229c58.jpg)
 ![product page](https://picoolio.net/images/2018/08/15/mrs-productpagec9fbe1420711930a.jpg)
