@@ -1,5 +1,10 @@
 # My ReactShop
 
+### [Live](https://react-shop-mksdziag.netlify.com/ 'powered by netlify')
+
+email: demo@myreactshop.com  
+password: myreactshop
+
 Simple Online store React application.
 Application state managed with Redux.
 App supports creating accounts, placing orders, adding and updating customer personal data, creating wishlist and many more.
