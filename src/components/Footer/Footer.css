@@ -1,0 +1,10 @@
+.footer-nav__list {
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-nav__item {
+  padding: 1rem 2rem;
+  text-align: center;
+}
