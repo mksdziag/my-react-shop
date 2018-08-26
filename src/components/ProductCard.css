@@ -1,7 +1,8 @@
 .product-card {
   position: relative;
+  max-width: 325px;
   border-radius: 5px;
-  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0.35rem 1.25rem rgba(0, 0, 0, 0.3);
   overflow: hidden;
 }
 .product-card__image-holder {

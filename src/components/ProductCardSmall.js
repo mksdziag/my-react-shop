@@ -12,7 +12,6 @@ import DiscountInfo from './DiscountInfo';
 
 const ProductCard = props => {
   const {
-    small,
     additionalClasses,
     product,
     product: {
@@ -79,15 +78,13 @@ const ProductCard = props => {
           </div>
         </div>
       </div>
-      {small || (
-        <footer className="product-card__actions">
-          <AddToCartButton product={{ ...product }} isFullWidth itemId={id} />
-          <Link to={`/product/${id}`} className="button is-fullwidth is-primary is-outlined">
-            <Icon className="button-icon" icon={circleRight} />
-            <span>open</span>
-          </Link>
-        </footer>
-      )}
+      <footer className="product-card__actions">
+        <AddToCartButton product={{ ...product }} isFullWidth itemId={id} />
+        <Link to={`/product/${id}`} className="button is-fullwidth is-primary is-outlined">
+          <Icon className="button-icon" icon={circleRight} />
+          <span>open</span>
+        </Link>
+      </footer>
     </div>
   );
 };

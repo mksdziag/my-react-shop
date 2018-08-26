@@ -44,3 +44,20 @@ secondary font
 .has-text-secondary {
   font-family: 'Cardo', serif;
 }
+.slick-slider {
+  margin: 0 auto;
+  width: calc(100% - 2rem);
+}
+
+.slider-item {
+  padding: 1rem 0.5rem;
+}
+/* overiding default style from slick slider package */
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+  padding: 1rem 0 !important;
+}
+
+.has-border-1 {
+  border: 1px solid rgba(128, 128, 128, 0.2);
+}
