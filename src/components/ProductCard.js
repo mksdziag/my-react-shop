@@ -12,7 +12,8 @@ import DiscountInfo from './DiscountInfo';
 
 const ProductCard = props => {
   const {
-    small,
+    noActionFooter,
+    noOverlayLink,
     additionalClasses,
     product,
     product: {
@@ -32,37 +33,64 @@ const ProductCard = props => {
     onQuickViewOpenHandler();
   };
 
+  let productImage = (
+    <Link to={`/product/${id}`}>
+      <figure className="image product-card__figure ">
+        <img className="product-card__image" src={pictures[0]} alt="product" />
+        <div className=" is-overlay product-card__figure-overlay">
+          <div className="product-card__overlay-actions">
+            <AddToCartButton
+              product={{ ...product }}
+              itemId={id}
+              iconOnly
+              additionalClasses={'is-inverted'}
+            />
+            <button
+              className="button is-primary is-inverted product-card__figure-overlay-button"
+              onClick={e => onQuickViewClickHandler(e)}
+            >
+              <Icon icon={eye} />
+            </button>
+          </div>
+        </div>
+        {discount !== 0 && <DiscountInfo discount={discount} />}
+        <WishListButton itemId={id} additionalClasses="product-card__wishlist-add " />
+      </figure>
+    </Link>
+  );
+  if (noOverlayLink) {
+    productImage = (
+      <figure className="image product-card__figure ">
+        <img className="product-card__image" src={pictures[0]} alt="product" />
+        <div className=" is-overlay product-card__figure-overlay">
+          <div className="product-card__overlay-actions">
+            <AddToCartButton
+              product={{ ...product }}
+              itemId={id}
+              iconOnly
+              additionalClasses={'is-inverted'}
+            />
+            <Link
+              to={`/product/${id}`}
+              className="button is-primary is-inverted product-card__figure-overlay-button"
+            >
+              <Icon icon={circleRight} />
+            </Link>
+          </div>
+        </div>
+        {discount !== 0 && <DiscountInfo discount={discount} />}
+        <WishListButton itemId={id} additionalClasses="product-card__wishlist-add " />
+      </figure>
+    );
+  }
+
   return (
     <div className={'card product-card ' + additionalClasses}>
-      <div className="card-image product-card__image-holder">
-        <Link to={`/product/${id}`}>
-          <figure className="image product-card__figure ">
-            <img className="product-card__image" src={pictures[0]} alt="product" />
-            <div className=" is-overlay product-card__figure-overlay">
-              <div className="product-card__overlay-actions">
-                <AddToCartButton
-                  product={{ ...product }}
-                  itemId={id}
-                  iconOnly
-                  additionalClasses={'is-inverted'}
-                />
-                <button
-                  className="button is-primary is-inverted product-card__figure-overlay-button"
-                  onClick={e => onQuickViewClickHandler(e)}
-                >
-                  <Icon icon={eye} />
-                </button>
-              </div>
-            </div>
-            {discount !== 0 && <DiscountInfo discount={discount} />}
-            <WishListButton itemId={id} additionalClasses="product-card__wishlist-add " />
-          </figure>
-        </Link>
-      </div>
+      <div className="card-image product-card__image-holder">{productImage}</div>
       <div className="card-content product-card__info">
         <header>
           <Link to={`/product/${id}`} className="title is-size-5 product-card__name">
-            {name}
+            {name.length <= 24 ? name : name.slice(0, 22) + '...'}
           </Link>
         </header>
         <div className="has-text-right">
@@ -79,7 +107,7 @@ const ProductCard = props => {
           </div>
         </div>
       </div>
-      {small || (
+      {noActionFooter || (
         <footer className="product-card__actions">
           <AddToCartButton product={{ ...product }} isFullWidth itemId={id} />
           <Link to={`/product/${id}`} className="button is-fullwidth is-primary is-outlined">

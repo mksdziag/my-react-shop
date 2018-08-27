@@ -1,7 +1,9 @@
 import React from 'react';
 import Slider from 'react-slick';
+
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import './ProductsCarousel.css';
 import products from '../../database/products';
 
 import ProductCard from '../ProductCard';
@@ -58,7 +60,7 @@ class SimpleSlider extends React.Component {
       <Slider {...settings}>
         {products.slice(randomStartIndex, randomStartIndex + sliderLength).map(product => (
           <div key={product.id} className={'slider-item'}>
-            <ProductCard small={true} product={product} />
+            <ProductCard noActionFooter={true} noOverlayLink={true} product={product} />
           </div>
         ))}
       </Slider>

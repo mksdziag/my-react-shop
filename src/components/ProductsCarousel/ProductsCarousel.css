@@ -1,0 +1,14 @@
+.slick-slider {
+  margin: 0 auto;
+  width: calc(100% - 2rem);
+}
+
+/* overiding default style from slick slider package */
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+  padding: 1rem 0 !important;
+}
+
+.slider-item {
+  padding: 1rem 0.5rem;
+}
