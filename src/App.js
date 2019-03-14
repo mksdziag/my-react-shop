@@ -1,26 +1,27 @@
-import React, { Component } from 'react';
-import { Switch, Route, withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { Switch, Route, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 
 // import 'bulma/css/bulma.css'; replaced with my custom bulma theme
-import './mystyles.css';
-import 'bulma-tooltip';
-import './App.css';
-import { userLoggedIn } from './store/actions';
-import { auth } from './db/db';
+import "./mystyles.css";
+import "bulma-tooltip";
+import "./App.css";
+import { userLoggedIn } from "./store/actions";
+import { auth } from "./db/db";
 
-import Navigation from './components/Navigation/Navigation';
-import AppHeader from './components/AppHeader';
-import FrontPage from './Screens/FrontPage';
-import CategoryPage from './Screens/CategoryPage';
-import BrandPage from './Screens/BrandPage';
-import SalesPage from './Screens/SalesPage';
-import MyAccount from './Screens/MyAccount';
-import CartPage from './Screens/CartPage';
-import ContactPage from './Screens/ContactPage';
-import ProductPage from './Screens/ProductPage';
-import Footer from './components/Footer/Footer';
-import FloatingCart from './components/Cart/FloatingCart';
+import Navigation from "./components/Navigation/Navigation";
+import AppHeader from "./components/AppHeader";
+import FrontPage from "./Screens/FrontPage";
+import CategoryPage from "./Screens/CategoryPage";
+import BrandPage from "./Screens/BrandPage";
+import SalesPage from "./Screens/SalesPage";
+import MyAccount from "./Screens/MyAccount";
+import CartPage from "./Screens/CartPage";
+import ContactPage from "./Screens/ContactPage";
+import ProductPage from "./Screens/ProductPage";
+import Footer from "./components/Footer/Footer";
+import FloatingCart from "./components/Cart/FloatingCart";
+import AdminPage from "./Screens/AdminPage";
 
 class App extends Component {
   componentDidMount() {
@@ -46,6 +47,7 @@ class App extends Component {
             <Route path="/my-account" component={MyAccount} />
             <Route path="/contact" component={ContactPage} />
             <Route path="/cart" component={CartPage} />
+            <Route path="/admin" component={AdminPage} />
           </Switch>
         </main>
         <FloatingCart />
@@ -56,7 +58,7 @@ class App extends Component {
 }
 
 const mapDispachToProps = dispatch => ({
-  userLoggedIn: user => dispatch(userLoggedIn(user.email)),
+  userLoggedIn: user => dispatch(userLoggedIn(user.email))
 });
 
 export default withRouter(

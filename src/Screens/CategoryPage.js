@@ -1,42 +1,49 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import products from '../database/products';
-
-import CategoryHeader from '../components/CategoryHeader';
-import ProductCard from '../components/ProductCard';
-import ProductPreview from '../components/ProductPreview';
-import ModalBlank from '../components/UI/Modals/ModalBlank';
+import CategoryHeader from "../components/CategoryHeader";
+import ProductCard from "../components/ProductCard";
+import ProductPreview from "../components/ProductPreview";
+import ModalBlank from "../components/UI/Modals/ModalBlank";
+import http from "../utils/http";
 
 class CategoryPage extends Component {
   state = {
-    categoryName: '',
+    categoryName: "",
     productsInCategory: [],
-    currentProduct: '',
-    isModalActive: false,
+    currentProduct: "",
+    isModalActive: false
   };
 
   // setting state when component mounts first time
-  componentDidMount() {
+  async componentDidMount() {
     const { categoryName } = this.props.match.params;
-    const productsInCategory = products.filter(product => product.category === categoryName);
-    this.setState({ categoryName, productsInCategory });
+    const { data: productsInCategory } = await http.get(
+      `products/category/available/${categoryName}`
+    );
+
+    this.setState({
+      categoryName,
+      productsInCategory
+    });
   }
 
   // if route changes fetching and filtering products
-  componentDidUpdate(prevProps) {
+  async componentDidUpdate(prevProps) {
     const currentCategoryName = this.props.match.params.categoryName;
     const previousCategoryName = prevProps.match.params.categoryName;
 
     if (currentCategoryName !== previousCategoryName) {
-      const productsInCategory = products.filter(
-        product => product.category === currentCategoryName
+      const { data: productsInCategory } = await http.get(
+        `products/category/available/${currentCategoryName}`
       );
       this.setState({ categoryName: currentCategoryName, productsInCategory });
     }
   }
 
-  showProductPreview = id => {
-    const currentProduct = this.state.productsInCategory.find(product => product.id === id);
+  showProductPreview = _id => {
+    const currentProduct = this.state.productsInCategory.find(
+      product => product._id === _id
+    );
     this.setState({ currentProduct, isModalActive: true });
   };
 
@@ -45,13 +52,18 @@ class CategoryPage extends Component {
   };
 
   render() {
-    const { categoryName, isModalActive, currentProduct, productsInCategory } = this.state;
+    const {
+      categoryName,
+      isModalActive,
+      currentProduct,
+      productsInCategory
+    } = this.state;
 
     const productCards = productsInCategory.map(product => (
-      <div key={product.id} className="column is-4-tablet is-3-widescreen">
+      <div key={product._id} className="column is-4-tablet is-3-widescreen">
         <ProductCard
           product={product}
-          onQuickViewOpenHandler={() => this.showProductPreview(product.id)}
+          onQuickViewOpenHandler={() => this.showProductPreview(product._id)}
         />
       </div>
     ));
@@ -61,7 +73,10 @@ class CategoryPage extends Component {
         <div className="container">
           <CategoryHeader title={categoryName} />
           <div className="columns is-multiline">{productCards}</div>
-          <ModalBlank isModalActive={isModalActive} onCloseClick={this.closeProductPreview}>
+          <ModalBlank
+            isModalActive={isModalActive}
+            onCloseClick={this.closeProductPreview}
+          >
             <ProductPreview product={{ ...currentProduct }} />
           </ModalBlank>
         </div>

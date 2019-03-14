@@ -8,51 +8,51 @@ import './AddToCartButton.css';
 import { addItemToCart } from '../../../store/actions';
 
 const AddToCartButton = props => {
-  const { isFullWidth, itemId, iconOnly, additionalClasses, product, onAddItemToCart } = props;
-  const isInCart = props.inCartItems.some(item => item.id === itemId);
+	const { isFullWidth, itemId, iconOnly, additionalClasses, product, onAddItemToCart } = props;
+	const isInCart = props.inCartItems.some(item => item._id === itemId);
 
-  const buttonClassList = isInCart
-    ? isFullWidth
-      ? `button is-fullwidth is-warning add-to-cart-button ${additionalClasses} ${isInCart &&
-          'tooltip'}`
-      : `button is-warning add-to-cart-button ${additionalClasses} ${isInCart && 'tooltip'}`
-    : isFullWidth
-      ? `button is-fullwidth is-primary add-to-cart-button ${additionalClasses} ${isInCart &&
-          'tooltip'}`
-      : `button is-primary add-to-cart-button ${additionalClasses} ${isInCart && 'tooltip'}`;
-  const buttonText = isInCart ? 'in cart' : 'Add To Cart';
+	const buttonClassList = isInCart
+		? isFullWidth
+			? `button is-fullwidth is-warning add-to-cart-button ${additionalClasses} ${isInCart &&
+					'tooltip'}`
+			: `button is-warning add-to-cart-button ${additionalClasses} ${isInCart && 'tooltip'}`
+		: isFullWidth
+		? `button is-fullwidth is-primary add-to-cart-button ${additionalClasses} ${isInCart &&
+				'tooltip'}`
+		: `button is-primary add-to-cart-button ${additionalClasses} ${isInCart && 'tooltip'}`;
+	const buttonText = isInCart ? 'in cart' : 'Add To Cart';
 
-  const addToCartClickHandler = e => {
-    e.preventDefault();
-    product.size = 'S';
-    onAddItemToCart(product);
-  };
+	const addToCartClickHandler = e => {
+		e.preventDefault();
+		product.size = 'S';
+		onAddItemToCart(product);
+	};
 
-  return (
-    <button
-      onClick={addToCartClickHandler}
-      className={buttonClassList}
-      disabled={isInCart}
-      data-tooltip={isInCart && 'change quantity in cart'}
-    >
-      <Icon size={18} className="button-icon" icon={isInCart ? inCartIcon : addToCartIcon} />
-      {iconOnly || <span>{buttonText}</span>}
-    </button>
-  );
+	return (
+		<button
+			onClick={addToCartClickHandler}
+			className={buttonClassList}
+			disabled={isInCart}
+			data-tooltip={isInCart && 'change quantity in cart'}
+		>
+			<Icon size={18} className="button-icon" icon={isInCart ? inCartIcon : addToCartIcon} />
+			{iconOnly || <span>{buttonText}</span>}
+		</button>
+	);
 };
 
 const mapStateToProps = state => {
-  return {
-    inCartItems: state.cart.inCartItems,
-  };
+	return {
+		inCartItems: state.cart.inCartItems,
+	};
 };
 const mapDispatchToProps = dispatch => {
-  return {
-    onAddItemToCart: item => dispatch(addItemToCart(item)),
-  };
+	return {
+		onAddItemToCart: item => dispatch(addItemToCart(item)),
+	};
 };
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+	mapStateToProps,
+	mapDispatchToProps
 )(AddToCartButton);

@@ -1,10 +1,10 @@
-import React, { Component, createRef } from 'react';
-import { withRouter } from 'react-router-dom';
+import React, { Component, createRef } from "react";
+import { withRouter } from "react-router-dom";
 
-import './Search.css';
-import products from '../../database/products';
+import "./Search.css";
 
-import SearchResults from './SearchResults';
+import SearchResults from "./SearchResults";
+import http from "../../utils/http";
 
 class Search extends Component {
   constructor(props) {
@@ -12,8 +12,8 @@ class Search extends Component {
     this.textInput = createRef();
     this.state = {
       searchResults: [],
-      searchWord: '',
-      location: this.props.match,
+      searchWord: "",
+      location: this.props.match
     };
   }
 
@@ -35,11 +35,11 @@ class Search extends Component {
     this.setState({ searchResults: [] });
   }
 
-  handleSearch = e => {
+  handleSearch = async e => {
     const searchWord = e.target.value.toLowerCase();
     if (searchWord.length > 0) {
-      const searchResults = products.filter(product =>
-        product.name.toLowerCase().includes(searchWord)
+      const { data: searchResults } = await http.get(
+        `/products/search/${searchWord}`
       );
       this.setState({ searchResults, searchWord });
     } else {
@@ -64,7 +64,10 @@ class Search extends Component {
               />
             </div>
           </div>
-          <SearchResults searchWord={this.state.searchWord} results={this.state.searchResults} />
+          <SearchResults
+            searchWord={this.state.searchWord}
+            results={this.state.searchResults}
+          />
           <button
             className="delete is-large search__close"
             aria-label="close"

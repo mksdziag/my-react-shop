@@ -1,17 +1,17 @@
-import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
+import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
 
-import { fetchOrders, logOutUser, fetchWishList } from '../store/actions/';
+import { fetchOrders, logOutUser, fetchWishList } from "../store/actions/";
 
-import SubPageHeader from '../components/SubPageHeader';
-import WishList from '../components/Account/WishList';
-import OrderList from '../components/Account/OrderList';
-import LoginForm from '../components/Account/LoginForm';
-import UserInfo from '../components/Account/UserInfo';
+import SubPageHeader from "../components/SubPageHeader";
+import WishList from "../components/Account/WishList";
+import OrderList from "../components/Account/OrderList";
+import LoginForm from "../components/Account/LoginForm";
+import UserInfo from "../components/Account/UserInfo";
 
 class MyAccount extends Component {
   state = {
-    userEmail: null,
+    userEmail: null
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -24,9 +24,12 @@ class MyAccount extends Component {
     const { isUserLogged } = this.props;
 
     return (
-      <div className="container">
-        <section className="section">
-          <SubPageHeader title="My Account" subtitle="Manage Your orders and details" />
+      <section className="section">
+        <div className="container">
+          <SubPageHeader
+            title="My Account"
+            subtitle="Manage Your orders and details"
+          />
           {isUserLogged ? (
             <Fragment>
               <UserInfo user={this.state.userEmail} />
@@ -48,15 +51,15 @@ class MyAccount extends Component {
               <LoginForm />
             </div>
           )}
-        </section>
-      </div>
+        </div>
+      </section>
     );
   }
 }
 const mapStateToProps = state => {
   return {
     isUserLogged: state.user.isLogged,
-    user: state.user,
+    user: state.user
   };
 };
 
@@ -64,7 +67,7 @@ const mapDispachToProps = dispatch => {
   return {
     fetchOrders: userEmail => dispatch(fetchOrders(userEmail)),
     fetchWishList: userEmail => dispatch(fetchWishList(userEmail)),
-    logOutUser: () => dispatch(logOutUser()),
+    logOutUser: () => dispatch(logOutUser())
   };
 };
 

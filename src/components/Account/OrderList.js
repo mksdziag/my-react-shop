@@ -1,25 +1,25 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Icon } from 'react-icons-kit';
-import { eye } from 'react-icons-kit/icomoon/eye';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Icon } from "react-icons-kit";
+import { eye } from "react-icons-kit/icomoon/eye";
 
-import './OrderList.css';
-import ModalBlank from '../UI/Modals/ModalBlank';
-import OrderDetails from './OrderDetails';
-import Loader from '../UI/Loaders/Loader';
+import "./OrderList.css";
+import ModalBlank from "../UI/Modals/ModalBlank";
+import OrderDetails from "./OrderDetails";
+import Loader from "../UI/Loaders/Loader";
 
 class OrderList extends Component {
   state = {
     isOrderModalActive: false,
-    activeOrder: '',
+    activeOrder: ""
   };
 
   modalCloseHandler = () => {
     this.setState({ isOrderModalActive: false });
   };
 
-  modalOpenHandler = id => {
-    const activeOrder = this.props.orders.find(order => order.id === id);
+  modalOpenHandler = _id => {
+    const activeOrder = this.props.orders.find(order => order._id === _id);
     this.setState({ activeOrder, isOrderModalActive: true });
   };
 
@@ -32,10 +32,12 @@ class OrderList extends Component {
           <td className="is-hidden-mobile">{index + 1}.</td>
           <td className="has-text-primary">{order.total.toFixed(2)}$</td>
           <td>{new Date(order.placed).toLocaleString()}</td>
-          <td>{order.items.reduce((acc, currItem) => acc + currItem.quantity, 0)}</td>
+          <td>
+            {order.items.reduce((acc, currItem) => acc + currItem.quantity, 0)}
+          </td>
           <td>
             <button
-              onClick={() => this.modalOpenHandler(order.id)}
+              onClick={() => this.modalOpenHandler(order._id)}
               className="button is-small is-primary is-outlined"
             >
               <Icon icon={eye} />
@@ -71,7 +73,9 @@ class OrderList extends Component {
           isModalActive={this.state.isOrderModalActive}
           onCloseClick={this.modalCloseHandler}
         >
-          {this.state.activeOrder && <OrderDetails order={this.state.activeOrder} />}
+          {this.state.activeOrder && (
+            <OrderDetails order={this.state.activeOrder} />
+          )}
         </ModalBlank>
       </div>
     );
@@ -81,7 +85,7 @@ class OrderList extends Component {
 const mapStateToProps = state => {
   return {
     orders: state.orders.orders,
-    loading: state.orders.loading,
+    loading: state.orders.loading
   };
 };
 

@@ -1,21 +1,22 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import { CSSTransition } from 'react-transition-group';
-import { Link } from 'react-router-dom';
-import { Icon } from 'react-icons-kit';
-import { user } from 'react-icons-kit/icomoon/user';
-import { cart } from 'react-icons-kit/icomoon/cart';
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import { CSSTransition } from "react-transition-group";
+import { Link } from "react-router-dom";
+import { Icon } from "react-icons-kit";
+import { user } from "react-icons-kit/icomoon/user";
+import { cart } from "react-icons-kit/icomoon/cart";
+import { ic_build as adminIcon } from "react-icons-kit/md/ic_build";
 
-import './Navigation.css';
+import "./Navigation.css";
 
-import NavigationCartIndicator from './NavigationCartIndicator';
-import SearchButton from '../Search/SearchButton';
-import Search from '../Search/Search';
+import NavigationCartIndicator from "./NavigationCartIndicator";
+import SearchButton from "../Search/SearchButton";
+import Search from "../Search/Search";
 
 class Navigation extends Component {
   state = {
     isSearchOpen: false,
-    isMobileMenuOpen: false,
+    isMobileMenuOpen: false
   };
 
   componentDidUpdate(prevProps) {
@@ -42,7 +43,10 @@ class Navigation extends Component {
 
   render() {
     return (
-      <nav className="navbar is-fixed-top has-background-white " aria-label="main navigation">
+      <nav
+        className="navbar is-fixed-top has-background-white "
+        aria-label="main navigation"
+      >
         <div className="container container--paddingless">
           <div className="navbar-brand">
             <Link
@@ -52,7 +56,8 @@ class Navigation extends Component {
               MyReactShop
             </Link>
             <div
-              className={`navbar-burger burger  ${this.state.isMobileMenuOpen && 'is-active'}`}
+              className={`navbar-burger burger  ${this.state.isMobileMenuOpen &&
+                "is-active"}`}
               onClick={this.menuOpenHandler}
             >
               <span />
@@ -60,7 +65,10 @@ class Navigation extends Component {
               <span />
             </div>
           </div>
-          <div className={`navbar-menu  ${this.state.isMobileMenuOpen && 'is-active'}`}>
+          <div
+            className={`navbar-menu  ${this.state.isMobileMenuOpen &&
+              "is-active"}`}
+          >
             <div className="navbar-start" />
             <div className="navbar-end ">
               <div className="navbar-item">
@@ -69,20 +77,33 @@ class Navigation extends Component {
               <Link to="/category/dress" className="navbar-item has-text-dark ">
                 Dresses
               </Link>
-              <Link to="/category/overall" className="navbar-item has-text-dark ">
+              <Link
+                to="/category/overall"
+                className="navbar-item has-text-dark "
+              >
                 Overalls
               </Link>
-              <Link to="/category/jacket" className="navbar-item has-text-dark ">
+              <Link
+                to="/category/jacket"
+                className="navbar-item has-text-dark "
+              >
                 Jackets
               </Link>
               <Link to="/category/skirt" className="navbar-item has-text-dark ">
                 Skirts
               </Link>
-              <Link to="/category/trousers" className="navbar-item has-text-dark ">
+              <Link
+                to="/category/trousers"
+                className="navbar-item has-text-dark "
+              >
                 Trousers
               </Link>
               <Link to="/contact" className="navbar-item has-text-dark ">
                 Contact
+              </Link>
+              <Link to="/admin" className="navbar-item has-text-dark ">
+                <Icon className="navbar-icon" icon={adminIcon} />
+                Admin Panel
               </Link>
               <Link to="/my-account" className="navbar-item has-text-dark ">
                 <Icon className="navbar-icon" icon={user} />

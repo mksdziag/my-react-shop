@@ -1,14 +1,14 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Icon } from 'react-icons-kit';
-import { circleRight } from 'react-icons-kit/icomoon/circleRight';
-import { eye } from 'react-icons-kit/icomoon/eye';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Icon } from "react-icons-kit";
+import { circleRight } from "react-icons-kit/icomoon/circleRight";
+import { eye } from "react-icons-kit/icomoon/eye";
 
-import './ProductCard.css';
+import "./ProductCard.css";
 
-import WishListButton from './UI/Buttons/WishListButton';
-import AddToCartButton from './UI/Buttons/AddToCartButton';
-import DiscountInfo from './DiscountInfo';
+import WishListButton from "./UI/Buttons/WishListButton";
+import AddToCartButton from "./UI/Buttons/AddToCartButton";
+import DiscountInfo from "./DiscountInfo";
 
 const ProductCard = props => {
   const {
@@ -16,16 +16,8 @@ const ProductCard = props => {
     noOverlayLink,
     additionalClasses,
     product,
-    product: {
-      id,
-      name,
-      pictures,
-      // category,
-      brand,
-      discount,
-      price,
-    },
-    onQuickViewOpenHandler,
+    product: { _id, name, pictures, brand, discount, price },
+    onQuickViewOpenHandler
   } = props;
 
   const onQuickViewClickHandler = e => {
@@ -34,16 +26,16 @@ const ProductCard = props => {
   };
 
   let productImage = (
-    <Link to={`/product/${id}`}>
+    <Link to={`/product/${_id}`}>
       <figure className="image product-card__figure ">
         <img className="product-card__image" src={pictures[0]} alt="product" />
         <div className=" is-overlay product-card__figure-overlay">
           <div className="product-card__overlay-actions">
             <AddToCartButton
               product={{ ...product }}
-              itemId={id}
+              itemId={_id}
               iconOnly
-              additionalClasses={'is-inverted'}
+              additionalClasses={"is-inverted"}
             />
             <button
               className="button is-primary is-inverted product-card__figure-overlay-button"
@@ -54,7 +46,10 @@ const ProductCard = props => {
           </div>
         </div>
         {discount !== 0 && <DiscountInfo discount={discount} />}
-        <WishListButton itemId={id} additionalClasses="product-card__wishlist-add " />
+        <WishListButton
+          itemId={_id}
+          additionalClasses="product-card__wishlist-add "
+        />
       </figure>
     </Link>
   );
@@ -66,12 +61,12 @@ const ProductCard = props => {
           <div className="product-card__overlay-actions">
             <AddToCartButton
               product={{ ...product }}
-              itemId={id}
+              itemId={_id}
               iconOnly
-              additionalClasses={'is-inverted'}
+              additionalClasses={"is-inverted"}
             />
             <Link
-              to={`/product/${id}`}
+              to={`/product/${_id}`}
               className="button is-primary is-inverted product-card__figure-overlay-button"
             >
               <Icon icon={circleRight} />
@@ -79,18 +74,26 @@ const ProductCard = props => {
           </div>
         </div>
         {discount !== 0 && <DiscountInfo discount={discount} />}
-        <WishListButton itemId={id} additionalClasses="product-card__wishlist-add " />
+        <WishListButton
+          itemId={_id}
+          additionalClasses="product-card__wishlist-add "
+        />
       </figure>
     );
   }
 
   return (
-    <div className={'card product-card ' + additionalClasses}>
-      <div className="card-image product-card__image-holder">{productImage}</div>
+    <div className={"card product-card " + additionalClasses}>
+      <div className="card-image product-card__image-holder">
+        {productImage}
+      </div>
       <div className="card-content product-card__info">
         <header>
-          <Link to={`/product/${id}`} className="title is-size-5 product-card__name">
-            {name.length <= 24 ? name : name.slice(0, 22) + '...'}
+          <Link
+            to={`/product/${_id}`}
+            className="title is-size-5 product-card__name"
+          >
+            {name.length <= 24 ? name : name.slice(0, 22) + "..."}
           </Link>
         </header>
         <div className="has-text-right">
@@ -109,8 +112,11 @@ const ProductCard = props => {
       </div>
       {noActionFooter || (
         <footer className="product-card__actions">
-          <AddToCartButton product={{ ...product }} isFullWidth itemId={id} />
-          <Link to={`/product/${id}`} className="button is-fullwidth is-primary is-outlined">
+          <AddToCartButton product={{ ...product }} isFullWidth itemId={_id} />
+          <Link
+            to={`/product/${_id}`}
+            className="button is-fullwidth is-primary is-outlined"
+          >
             <Icon className="button-icon" icon={circleRight} />
             <span>open</span>
           </Link>

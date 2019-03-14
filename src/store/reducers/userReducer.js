@@ -1,15 +1,16 @@
-import * as actionTypes from '../actionTypes/actionTypes';
+import * as actionTypes from "../actionTypes/actionTypes";
 
 const initalState = {
   isLogged: false,
+  isAdmin: true,
   userEmail: null,
-  name: 'edit your details...',
-  secondName: 'edit your details...',
-  street: 'edit your details...',
-  propNum: 'edit your details...',
-  city: 'edit your details...',
-  zip: 'edit your details...',
-  wishList: [],
+  name: "edit your details...",
+  secondName: "edit your details...",
+  street: "edit your details...",
+  propNum: "edit your details...",
+  city: "edit your details...",
+  zip: "edit your details...",
+  wishList: []
 };
 
 const userReducer = (state = initalState, action) => {
@@ -18,31 +19,31 @@ const userReducer = (state = initalState, action) => {
       return {
         ...state,
         isLogged: true,
-        userEmail: action.payload.email,
+        userEmail: action.payload.email
       };
     case actionTypes.LOGIN_USER:
       return {
         ...state,
         isLogged: true,
-        userEmail: action.payload.email,
+        userEmail: action.payload.email
       };
     case actionTypes.LOGIN_FAILED:
       return {
         ...state,
         isLogged: false,
-        userEmail: null,
+        userEmail: null
       };
 
     case actionTypes.LOG_OUT_USER:
       return {
         ...state,
         isLogged: false,
-        userEmail: null,
+        userEmail: null
       };
     case actionTypes.UPDATE_USER_DETAILS:
       return {
         ...state,
-        ...action.payload.userDetails,
+        ...action.payload.userDetails
       };
     default:
       return state;
