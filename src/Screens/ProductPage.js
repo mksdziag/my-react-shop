@@ -30,7 +30,6 @@ class ProductPage extends Component {
     const { productId } = this.props.match.params;
     const { data: product } = await http.get(`/products/${productId}`);
     this.setState({ loading: false, product, productId });
-
     this.fetchProductsToCatBar();
   }
 
@@ -75,9 +74,10 @@ class ProductPage extends Component {
   };
 
   displayProductView = () => {
+    console.log(this.state);
     const { product } = this.state;
 
-    if (product !== undefined) {
+    if (product !== null) {
       const {
         _id,
         name,
