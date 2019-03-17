@@ -13,6 +13,7 @@ import SubPageHeader from "../components/SubPageHeader";
 import SizesTable from "../components/SizesTable";
 import ProductPagePromoBar from "../components/ProductPagePromoBar";
 import WishListButton from "../components/UI/Buttons/WishListButton";
+import Loader from "../components/UI/Loaders/Loader";
 import http from "../utils/http";
 
 class ProductPage extends Component {
@@ -195,7 +196,13 @@ class ProductPage extends Component {
     const { loading } = this.state;
     return (
       <div className="container product-page">
-        {loading ? <p>Loading...</p> : this.displayProductView()}
+        {loading ? (
+          <div className="loader-wrapper">
+            <Loader />
+          </div>
+        ) : (
+          this.displayProductView()
+        )}
       </div>
     );
   }
