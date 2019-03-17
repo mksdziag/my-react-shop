@@ -75,7 +75,6 @@ class ProductPage extends Component {
   };
 
   displayProductView = () => {
-    console.log(this.state);
     const { product } = this.state;
 
     if (product !== null) {

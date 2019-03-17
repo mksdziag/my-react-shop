@@ -58,7 +58,6 @@ class SimpleSlider extends React.Component {
       ]
     };
 
-    console.log(this.props.products);
     return (
       <Slider {...settings}>
         {this.props.products.length > 0
