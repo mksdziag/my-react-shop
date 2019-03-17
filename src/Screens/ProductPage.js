@@ -103,7 +103,7 @@ class ProductPage extends Component {
                   className="product-page__picture"
                   onClick={this.handleLightboxOpen}
                 />
-                {this.state.lightboxOpen && (
+                {this.state.lightboxOpen ? (
                   <Lightbox
                     mainSrc={pictures[photoIndex]}
                     nextSrc={pictures[(photoIndex + 1) % pictures.length]}
@@ -125,7 +125,7 @@ class ProductPage extends Component {
                       })
                     }
                   />
-                )}
+                ) : null}
                 <WishListButton
                   additionalClasses="product-card__wishlist-add "
                   itemId={_id}
@@ -147,11 +147,11 @@ class ProductPage extends Component {
                   <div className="product-page__price has-text-danger has-text-weight-semibold is-size-5 is-inline-block">
                     {price.toFixed(2)}$
                   </div>
-                  {discount !== 0 && (
+                  {discount !== 0 ? (
                     <span className="is-size-6 has-text-link is-italic has-text-weight-semibold product-page__discount">
                       {"-" + discount + "%"}
                     </span>
-                  )}
+                  ) : null}
                 </div>
                 <div className="columns">
                   <div className="product-page__actions  column is-6-tablet">
@@ -182,9 +182,9 @@ class ProductPage extends Component {
             </div>
           </section>
           <section className="section">
-            {productsToCatBar.length > 0 && (
+            {productsToCatBar.length > 0 ? (
               <ProductPagePromoBar products={productsToCatBar} />
-            )}
+            ) : null}
           </section>
         </Fragment>
       );

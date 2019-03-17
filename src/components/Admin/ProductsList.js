@@ -102,16 +102,16 @@ class ProductsList extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.products.length > 0 && this.renderProducts()}
+            {this.state.products.length > 0 ? this.renderProducts() : null}
           </tbody>
         </table>
-        {this.state.products.length && (
+        {this.state.products.length ? (
           <Pagination
             onPageChange={pageNumber => this.handlePageChange(pageNumber)}
             pagesCount={this.state.paginationItems}
             currentPage={this.state.page}
           />
-        )}
+        ) : null}
       </div>
     );
   }

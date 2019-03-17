@@ -45,7 +45,7 @@ const ProductCard = props => {
             </button>
           </div>
         </div>
-        {discount !== 0 && <DiscountInfo discount={discount} />}
+        {discount !== 0 ? <DiscountInfo discount={discount} /> : null}
         <WishListButton
           itemId={_id}
           additionalClasses="product-card__wishlist-add "
@@ -73,7 +73,7 @@ const ProductCard = props => {
             </Link>
           </div>
         </div>
-        {discount !== 0 && <DiscountInfo discount={discount} />}
+        {discount !== 0 ? <DiscountInfo discount={discount} /> : null}
         <WishListButton
           itemId={_id}
           additionalClasses="product-card__wishlist-add "

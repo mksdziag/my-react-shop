@@ -317,14 +317,14 @@ class ProductEditForm extends Component {
             </div>
           </div>
         </div>
-        {this.state.pictures.length > 0 && (
+        {this.state.pictures.length > 0 ? (
           <Fragment>
             <p>Added pictures</p>
             <div className="columns">
               <div className="column">{this.renderPicturesLinks()}</div>
             </div>
           </Fragment>
-        )}
+        ) : null}
         <div className="field">
           <label htmlFor="sizes" className="label">
             Product sizes
@@ -357,14 +357,14 @@ class ProductEditForm extends Component {
             </div>
           </div>
         </div>
-        {this.state.sizes.length > 0 && (
+        {this.state.sizes.length > 0 ? (
           <Fragment>
             <p>Added sizes</p>
             <div className="columns">
               <div className="column">{this.renderSizes()}</div>
             </div>
           </Fragment>
-        )}
+        ) : null}
         <div className="field">
           <label htmlFor="tag" className="label">
             Product tag
@@ -392,14 +392,14 @@ class ProductEditForm extends Component {
             </div>
           </div>
         </div>
-        {this.state.tags.length > 0 && (
+        {this.state.tags.length > 0 ? (
           <Fragment>
             <p>Added tags</p>
             <div className="columns">
               <div className="column">{this.renderTags()}</div>
             </div>
           </Fragment>
-        )}
+        ) : null}
 
         <div className="field">
           <label htmlFor="color" className="label">

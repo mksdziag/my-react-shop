@@ -61,18 +61,19 @@ class SimpleSlider extends React.Component {
     console.log(this.props.products);
     return (
       <Slider {...settings}>
-        {this.props.products.length > 0 &&
-          this.props.products
-            .slice(randomStartIndex, randomStartIndex + sliderLength)
-            .map(product => (
-              <div key={product._id} className={"slider-item"}>
-                <ProductCard
-                  noActionFooter={true}
-                  noOverlayLink={true}
-                  product={product}
-                />
-              </div>
-            ))}
+        {this.props.products.length > 0
+          ? this.props.products
+              .slice(randomStartIndex, randomStartIndex + sliderLength)
+              .map(product => (
+                <div key={product._id} className={"slider-item"}>
+                  <ProductCard
+                    noActionFooter={true}
+                    noOverlayLink={true}
+                    product={product}
+                  />
+                </div>
+              ))
+          : null}
       </Slider>
     );
   }

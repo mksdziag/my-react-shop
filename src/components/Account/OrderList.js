@@ -73,9 +73,9 @@ class OrderList extends Component {
           isModalActive={this.state.isOrderModalActive}
           onCloseClick={this.modalCloseHandler}
         >
-          {this.state.activeOrder && (
+          {this.state.activeOrder ? (
             <OrderDetails order={this.state.activeOrder} />
-          )}
+          ) : null}
         </ModalBlank>
       </div>
     );
