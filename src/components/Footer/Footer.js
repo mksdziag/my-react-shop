@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import './Footer.css';
+import "./Footer.css";
 
 const Footer = () => {
   return (
@@ -35,8 +35,8 @@ const Footer = () => {
             >
               My React Shop
             </a>
-          </strong>{' '}
-          by{' '}
+          </strong>{" "}
+          by{" "}
           <a
             target="_blank"
             rel="noopener noreferrer"
@@ -48,24 +48,36 @@ const Footer = () => {
         </p>
         <p>
           Made with
-          <a target="_blank" rel="noopener noreferrer" href="https://github.com/facebook/react">
-            {' '}
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/facebook/react"
+          >
+            {" "}
             React
           </a>
           ,
-          <a target="_blank" rel="noopener noreferrer" href="https://github.com/reduxjs/redux">
-            {' '}
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/reduxjs/redux"
+          >
+            {" "}
             Redux
           </a>
           ,
           <a target="_blank" rel="noopener noreferrer" href="https://bulma.io/">
-            {' '}
+            {" "}
             Bulma
           </a>
-          . Photos from{' '}
-          <a target="_blank" rel="noopener noreferrer" href="http://www.modabergamo.pl">
-            {' '}
-            Bergamo
+          . Photos from{" "}
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="http://www.jestesmodna.pl"
+          >
+            {" "}
+            jestesmodna.pl
           </a>
         </p>
       </div>
