@@ -34,6 +34,10 @@ class ProductPage extends Component {
     this.fetchProductsToCatBar();
   }
 
+  componentWillUnmount(){
+	  this.setState({productId: '', product: null, loading: true , photoIndex: 0, productsToCatBar: []})
+  }
+
   fetchProductsToCatBar = async () => {
     const { category } = this.state.product;
     const { productId } = this.state;

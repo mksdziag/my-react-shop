@@ -40,6 +40,10 @@ class CategoryPage extends Component {
     }
   }
 
+  componentWillUnmount(){
+	  this.setState({categoryName: '', productsInCategory: [], currentProduct: "", isModalActive: false})
+  }
+
   showProductPreview = _id => {
     const currentProduct = this.state.productsInCategory.find(
       product => product._id === _id
