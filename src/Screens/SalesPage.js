@@ -1,21 +1,30 @@
 import React, { Component } from 'react';
 
-import products from '../database/products';
-
 import CategoryHeader from '../components/CategoryHeader';
 import ProductCard from '../components/ProductCard';
 import ProductPreview from '../components/ProductPreview';
 import ModalBlank from '../components/UI/Modals/ModalBlank';
+import http from '../utils/http';
 
-class CategoryPage extends Component {
+class SalesPage extends Component {
 	state = {
 		currentProduct: null,
 		isModalActive: false,
-		discountedProducts: products.filter(product => product.discount > 0),
+		products: [],
 	};
 
+	async componentDidMount() {
+		try {
+			const {data: products} = await http.get('products/sale');
+			this.setState({products})			
+		} catch (error) {
+			console.log(error)
+		}
+	}
+	
+
 	showProductPreview = _id => {
-		const currentProduct = this.state.discountedProducts.find(product => product._id === _id);
+		const currentProduct = this.state.products.find(product => product._id === _id);
 		this.setState({ currentProduct, isModalActive: true });
 	};
 
@@ -24,9 +33,9 @@ class CategoryPage extends Component {
 	};
 
 	render() {
-		const { isModalActive, currentProduct, discountedProducts } = this.state;
+		const { isModalActive, currentProduct, products } = this.state;
 
-		const productCards = discountedProducts.map(product => (
+		const productCards = products.map(product => (
 			<div key={product._id} className="column is-4-tablet is-3-widescreen">
 				<ProductCard
 					product={product}
@@ -49,4 +58,4 @@ class CategoryPage extends Component {
 	}
 }
 
-export default CategoryPage;
+export default SalesPage;
