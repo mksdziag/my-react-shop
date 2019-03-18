@@ -18,7 +18,7 @@ class BrandPage extends Component {
 	// setting state when component mounts first time
 	async componentDidMount() {
 		const { brand } = this.props.match.params;
-		const { data: productsOfBrand } = await http.get(`brand/${brand}`);
+		const { data: productsOfBrand } = await http.get(`products/brand/${brand}`);
 
 		this.setState({ brand, productsOfBrand });
 	}
@@ -29,7 +29,7 @@ class BrandPage extends Component {
 		const previousBrand = prevProps.match.params.brand;
 
 		if (currentBrand !== previousBrand) {
-			const { data: productsOfBrand } = await http.get(`brand/${currentBrand}`);
+			const { data: productsOfBrand } = await http.get(`products/brand/${currentBrand}`);
 			this.setState({ brand: currentBrand, productsOfBrand });
 		}
 	}
