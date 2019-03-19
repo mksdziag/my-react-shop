@@ -11,7 +11,8 @@
 	position: relative;
 	overflow: hidden;
 	border-radius: 5px;
-	box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+	border: 1px solid rgba(0, 0, 0, 0.035);
+	box-shadow: 0 0.15rem .35rem rgba(0, 0, 0, 0.05);
 	height: 100%;
 }
 
@@ -26,17 +27,38 @@
 	flex-direction: column;
 	justify-content: center;
 	background-image: linear-gradient(rgba(61, 64, 104, 0.35) 70%, rgba(0, 0, 0, 0.35));
-	transition: opacity 200ms ease-in-out;
+	transition: opacity 250ms ease-in-out, transform 300ms ease-in-out;
 	opacity: 0;
+	transform: translateY(5%);
 }
 
 .product-page-promo__item-caption:hover {
 	opacity: 1;
+	transform: translateY(0);
 }
 
 .product-page-promo__item-price {
 	padding: 0.25rem;
 	background: rgba(61, 64, 104, 0.7);
+	transform: translateY(50%);
+	opacity: 0;
+	transition: opacity 300ms ease-in-out 150ms, transform 350ms ease-in-out 150ms;
 }
 
-.product-page-promo__item-name {}
+.product-page-promo__item-caption:hover .product-page-promo__item-price {
+	opacity: 1;
+	transform: translateY(0)
+}
+
+.product-page-promo__item-name {
+	font-weight: 700;
+	opacity: 0;
+	transform: translateY(30%);
+	transition: opacity 300ms ease-in-out 150ms, transform 350ms ease-in-out 150ms;
+
+}
+
+.product-page-promo__item-caption:hover .product-page-promo__item-name {
+	opacity: 1;
+	transform: translateY(0)
+}

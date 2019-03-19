@@ -34,8 +34,14 @@ class ProductPage extends Component {
     this.fetchProductsToCatBar();
   }
 
-  componentWillUnmount(){
-	  this.setState({productId: '', product: null, loading: true , photoIndex: 0, productsToCatBar: []})
+  componentWillUnmount() {
+    this.setState({
+      productId: "",
+      product: null,
+      loading: true,
+      photoIndex: 0,
+      productsToCatBar: []
+    });
   }
 
   fetchProductsToCatBar = async () => {
@@ -59,8 +65,9 @@ class ProductPage extends Component {
     const previousProductId = prevProps.match.params.productId;
 
     if (currentProductId !== previousProductId) {
-      const { data: product } = await http.get(`/products/${currentProductId}`);
+      this.setState({ loading: true });
 
+      const { data: product } = await http.get(`/products/${currentProductId}`);
       this.setState({ loading: false, product });
     }
   }

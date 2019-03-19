@@ -3,8 +3,8 @@ import { withRouter } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 import { Link } from "react-router-dom";
 import { Icon } from "react-icons-kit";
-import { user } from "react-icons-kit/icomoon/user";
-import { cart } from "react-icons-kit/icomoon/cart";
+import { user } from "react-icons-kit/ikons/user";
+import { shopping_cart } from "react-icons-kit/ikons/shopping_cart";
 import { ic_build as adminIcon } from "react-icons-kit/md/ic_build";
 
 import "./Navigation.css";
@@ -110,7 +110,7 @@ class Navigation extends Component {
                 My Account
               </Link>
               <Link to="/cart" className="navbar-item has-text-dark">
-                <Icon className="navbar-icon" icon={cart} />
+                <Icon className="navbar-icon" icon={shopping_cart} />
                 Cart
                 <NavigationCartIndicator />
               </Link>

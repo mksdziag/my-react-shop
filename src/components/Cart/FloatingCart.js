@@ -1,10 +1,10 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { Icon } from 'react-icons-kit';
-import { cart } from 'react-icons-kit/icomoon/cart';
+import React from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { Icon } from "react-icons-kit";
+import { shopping_cart } from "react-icons-kit/ikons/shopping_cart";
 
-import './FloatingCart.css';
+import "./FloatingCart.css";
 
 const FloatingCart = props => {
   const { inCartItems } = props;
@@ -13,7 +13,11 @@ const FloatingCart = props => {
   return (
     <Link to="/cart">
       <div className="has-background-primary floating-cart">
-        <Icon className="has-text-white floating-cart__icon" icon={cart} size={32} />
+        <Icon
+          className="has-text-white floating-cart__icon"
+          icon={shopping_cart}
+          size={32}
+        />
         <div className="has-background-white  floating-cart__quantity-indicator">
           <span className="has-text-grey has-text-weight-semibold floating-cart__quantity">
             {qty}
@@ -26,7 +30,7 @@ const FloatingCart = props => {
 
 const mapStateToProps = state => {
   return {
-    inCartItems: state.cart.inCartItems,
+    inCartItems: state.cart.inCartItems
   };
 };
 

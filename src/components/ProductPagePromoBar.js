@@ -21,12 +21,12 @@ const ProductPagePromoBar = props => {
           />
           <Link to={`/product/${_id}`}>
             <figcaption className="is-overlay product-page-promo__item-caption">
+              <h5 className="is-size-4 has-text-white product-page-promo__item-name">
+                {name}
+              </h5>
               <p className="is-size-4 has-text-primary has-text-weight-semibold product-page-promo__item-price">
                 {price}$
               </p>
-              <h5 className="title is-size-4 has-text-white product-page-promo__item-name">
-                {name}
-              </h5>
             </figcaption>
           </Link>
         </figure>

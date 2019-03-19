@@ -50,7 +50,7 @@ class WishList extends React.Component {
             <div className="column is-relative is-hidden-mobile">
               <WishListButton itemId={_id} />
             </div>
-            <div className="column  is-paddingless  wish-list__item-cell">
+            <div className="column  is-paddingless wish-list__item-cell">
               <Link to={`/product/${_id}`}>
                 <img
                   src={pictures[0]}

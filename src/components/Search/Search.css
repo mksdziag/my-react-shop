@@ -1,6 +1,10 @@
 .search__backdrop {
   position: fixed;
-  background-image: linear-gradient(45deg, rgba(69, 93, 122, 0.805), rgba(46, 153, 176, 0.805));
+  background-image: linear-gradient(
+    45deg,
+    rgba(69, 93, 122, 0.805),
+    rgba(46, 153, 176, 0.805)
+  );
   transition: opacity 300ms cubic-bezier(0.25, 0.5, 0.5, 0.9);
   opacity: 0;
 }
@@ -17,7 +21,7 @@
   transform: translate(-50%, -35%);
   background-color: #fff;
   opacity: 1;
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.35);
   transition: transform 300ms cubic-bezier(0.25, 0.5, 0.5, 0.9),
     opacity 300ms cubic-bezier(0.25, 0.5, 0.5, 0.9);
