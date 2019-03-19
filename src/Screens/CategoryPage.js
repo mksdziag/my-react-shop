@@ -33,6 +33,8 @@ class CategoryPage extends Component {
     const previousCategoryName = prevProps.match.params.categoryName;
 
     if (currentCategoryName !== previousCategoryName) {
+      this.setState({ loading: true });
+
       const { data: productsInCategory } = await http.get(
         `products/category/available/${currentCategoryName}`
       );
@@ -40,8 +42,13 @@ class CategoryPage extends Component {
     }
   }
 
-  componentWillUnmount(){
-	  this.setState({categoryName: '', productsInCategory: [], currentProduct: "", isModalActive: false})
+  componentWillUnmount() {
+    this.setState({
+      categoryName: "",
+      productsInCategory: [],
+      currentProduct: "",
+      isModalActive: false
+    });
   }
 
   showProductPreview = _id => {
