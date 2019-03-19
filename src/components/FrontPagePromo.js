@@ -2,14 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import "./FrontPagePromo.css";
-import products from "../database/products";
 
 import todaysPickBackground from "../assets/images/girl-vertical.jpg";
 import blogBackground from "../assets/images/blog.jpg";
 import promotionsBackground from "../assets/images/girl1.jpg";
 
 const FrontPagePromo = () => {
-  const bestseller = products[18];
   return (
     <section className="section front-promo">
       <div className="tile is-ancestor">
@@ -42,7 +40,7 @@ const FrontPagePromo = () => {
                   <p className="subtitle">clients cant be wrong</p>
                   <figure className="image">
                     <img
-                      src={bestseller.pictures[0]}
+                      src={todaysPickBackground}
                       alt="product"
                       className="is-block front-promo__best-seller-image"
                     />
