@@ -19,7 +19,6 @@ class OrderList extends Component {
   };
 
   modalOpenHandler = id => {
-    console.log(this.props.orders);
     const activeOrder = this.props.orders.find(order => order.id === id);
     this.setState({ activeOrder, isOrderModalActive: true });
   };
