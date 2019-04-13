@@ -33,13 +33,6 @@ const userReducer = (state = initialState, action) => {
         isLogged: false,
         userEmail: null
       };
-
-    case actionTypes.LOG_OUT_USER:
-      return {
-        ...state,
-        isLogged: false,
-        userEmail: null
-      };
     case actionTypes.UPDATE_USER_DETAILS:
       return {
         ...state,
