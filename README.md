@@ -2,8 +2,13 @@
 
 ### [Live](https://react-shop-mksdziag.netlify.com/ 'powered by netlify')
 
+Login as generic shop client:  
 email: demo@myreactshop.com  
 password: myreactshop
+
+Login as shop  admin:  
+email: admin@myreactshop.com  
+password: admin1234  
 
 Simple Online store React application.
 Application state managed with Redux.

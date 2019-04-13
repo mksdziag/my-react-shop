@@ -21,8 +21,8 @@ class Navigation extends Component {
 
   componentDidUpdate(prevProps) {
     const currentLocation = this.props.location.key;
-    const previousLocattion = prevProps.location.key;
-    if (currentLocation !== previousLocattion) {
+    const previousLocation = prevProps.location.key;
+    if (currentLocation !== previousLocation) {
       this.setState({ isMobileMenuOpen: false });
     }
   }
@@ -101,10 +101,12 @@ class Navigation extends Component {
               <Link to="/contact" className="navbar-item has-text-dark ">
                 Contact
               </Link>
-              <Link to="/admin" className="navbar-item has-text-dark ">
-                <Icon className="navbar-icon" icon={adminIcon} />
-                Admin Panel
-              </Link>
+              {this.props.isAdmin ? (
+                <Link to="/admin" className="navbar-item has-text-dark ">
+                  <Icon className="navbar-icon" icon={adminIcon} />
+                  Admin Panel
+                </Link>
+              ) : null}
               <Link to="/my-account" className="navbar-item has-text-dark ">
                 <Icon className="navbar-icon" icon={user} />
                 My Account

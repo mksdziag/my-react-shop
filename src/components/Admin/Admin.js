@@ -13,7 +13,7 @@ class Admin extends Component {
             <div className="column ">
               <Link
                 to={`${this.props.match.path}/products/add-new`}
-                className="button is-success is-fullwidth"
+                className="button is-medium is-success is-fullwidth button-tile"
               >
                 Add New product
               </Link>
@@ -21,18 +21,21 @@ class Admin extends Component {
             <div className="column ">
               <Link
                 to={`${this.props.match.path}/products/list`}
-                className="button is-link is-fullwidth"
+                className="button is-medium is-link is-fullwidth button-tile"
               >
                 Manage Products
               </Link>
             </div>
             <div className="column">
-              <Link to="/my-account" className="button is-primary is-fullwidth">
+              <Link
+                to="/my-account"
+                className="button is-medium is-primary is-fullwidth button-tile"
+              >
                 My account
               </Link>
             </div>
             <div className="column">
-              <button className="button is-warning is-inverted is-fullwidth">
+              <button className="button is-medium is-warning is-inverted is-fullwidth button-tile">
                 Log out
               </button>
             </div>

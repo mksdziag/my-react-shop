@@ -1,20 +1,20 @@
-import * as actionTypes from '../actionTypes/actionTypes';
+import * as actionTypes from "../actionTypes/actionTypes";
 
-const initalState = {
-  message: '',
+const initialState = {
+  message: ""
 };
 
-const infoReducer = (state = initalState, action) => {
+const infoReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ADD_MESSAGE:
       return {
         ...state,
-        message: action.payload.message,
+        message: action.payload.message
       };
     case actionTypes.CLEAR_MESSAGE:
       return {
         ...state,
-        message: '',
+        message: ""
       };
     default:
       return state;

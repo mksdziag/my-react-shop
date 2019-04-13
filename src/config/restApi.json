@@ -1,3 +1,4 @@
 {
-	"apiUri": "https://secret-caverns-90491.herokuapp.com"
+	"apiUri": "https://secret-caverns-90491.herokuapp.com",
+	"apiUriDev": "http://localhost:8081"
 }

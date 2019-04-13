@@ -35,7 +35,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Navigation />
+        <Navigation isAdmin={this.props.user.isAdmin} />
         <AppHeader />
         <main className="main-content">
           <Switch>
@@ -57,13 +57,18 @@ class App extends Component {
   }
 }
 
-const mapDispachToProps = dispatch => ({
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  };
+};
+const mapDispatchToProps = dispatch => ({
   userLoggedIn: user => dispatch(userLoggedIn(user.email))
 });
 
 export default withRouter(
   connect(
-    null,
-    mapDispachToProps
+    mapStateToProps,
+    mapDispatchToProps
   )(App)
 );

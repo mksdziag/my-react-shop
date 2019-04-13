@@ -63,7 +63,7 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispachToProps = dispatch => {
+const mapDispatchToProps = dispatch => {
   return {
     fetchOrders: userEmail => dispatch(fetchOrders(userEmail)),
     fetchWishList: userEmail => dispatch(fetchWishList(userEmail)),
@@ -73,5 +73,5 @@ const mapDispachToProps = dispatch => {
 
 export default connect(
   mapStateToProps,
-  mapDispachToProps
+  mapDispatchToProps
 )(MyAccount);

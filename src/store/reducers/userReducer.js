@@ -1,8 +1,8 @@
 import * as actionTypes from "../actionTypes/actionTypes";
 
-const initalState = {
+const initialState = {
   isLogged: false,
-  isAdmin: true,
+  isAdmin: false,
   userEmail: null,
   name: "edit your details...",
   secondName: "edit your details...",
@@ -13,7 +13,7 @@ const initalState = {
   wishList: []
 };
 
-const userReducer = (state = initalState, action) => {
+const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.REGISTER_NEW_USER:
       return {

@@ -6,6 +6,7 @@ import "./FrontPagePromo.css";
 import todaysPickBackground from "../assets/images/girl-vertical.jpg";
 import blogBackground from "../assets/images/blog.jpg";
 import promotionsBackground from "../assets/images/girl1.jpg";
+import bestsellerPic from "../assets/images/bestseller.jpg";
 
 const FrontPagePromo = () => {
   return (
@@ -15,9 +16,9 @@ const FrontPagePromo = () => {
           <div className="tile">
             <div className="tile is-parent is-vertical">
               <article className="tile is-child notification is-primary">
-                <p className="subtitle">first time here?</p>
+                <p className="subtitle">Manage your details and orders</p>
                 <Link to="/my-account">
-                  <p className="title">Register and start shopping</p>
+                  <p className="title">My account</p>
                 </Link>
               </article>
               <article
@@ -40,7 +41,7 @@ const FrontPagePromo = () => {
                   <p className="subtitle">clients cant be wrong</p>
                   <figure className="image">
                     <img
-                      src={todaysPickBackground}
+                      src={bestsellerPic}
                       alt="product"
                       className="is-block front-promo__best-seller-image"
                     />
@@ -68,8 +69,8 @@ const FrontPagePromo = () => {
             className="tile is-child notification is-success front-promo__article"
             style={{ backgroundImage: `url(${todaysPickBackground})` }}
           >
-            <div className="content">
-              <Link to="/products/5c8eb305d8f8d40017361c32">
+            <div className="content has-text-right">
+              <Link to="/product/5c8eb1add8f8d40017361c2e">
                 <p className="title">Today's pick</p>
                 <p className="subtitle">This is our proposition for You</p>
               </Link>
