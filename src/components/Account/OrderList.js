@@ -11,15 +11,16 @@ import Loader from "../UI/Loaders/Loader";
 class OrderList extends Component {
   state = {
     isOrderModalActive: false,
-    activeOrder: ""
+    activeOrder: null
   };
 
   modalCloseHandler = () => {
-    this.setState({ isOrderModalActive: false });
+    this.setState({ isOrderModalActive: false, activeOrder: null });
   };
 
-  modalOpenHandler = _id => {
-    const activeOrder = this.props.orders.find(order => order._id === _id);
+  modalOpenHandler = id => {
+    console.log(this.props.orders);
+    const activeOrder = this.props.orders.find(order => order.id === id);
     this.setState({ activeOrder, isOrderModalActive: true });
   };
 
@@ -37,7 +38,7 @@ class OrderList extends Component {
           </td>
           <td>
             <button
-              onClick={() => this.modalOpenHandler(order._id)}
+              onClick={() => this.modalOpenHandler(order.id)}
               className="button is-small is-primary is-outlined"
             >
               <Icon icon={eye} />
